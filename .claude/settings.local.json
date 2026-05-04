@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:corretoraimperio.com.br)",
+      "WebSearch",
+      "WebFetch(domain:www.reclameaqui.com.br)",
+      "WebFetch(domain:www.corretoraimperio.com.br)",
+      "WebFetch(domain:www.instagram.com)",
+      "WebFetch(domain:www.portoseguro.com.br)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -sI https://corretoraimperio.com.br)",
+      "mcp__shell__read_file",
+      "mcp__shell__list_directory",
+      "mcp__shell__start_process",
+      "mcp__shell__read_process_output",
+      "mcp__shell__interact_with_process",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(git config *)",
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git branch *)"
+    ]
+  }
+}

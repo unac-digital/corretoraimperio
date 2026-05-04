@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Bots de IA — permitidos para indexação e citação em respostas geradas
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://corretoraimperio.com.br/sitemap.xml
