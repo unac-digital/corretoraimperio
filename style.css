@@ -535,40 +535,104 @@ strong { font-weight: var(--font-semibold); }
 
 /* ── Seguradoras Banner ─────────────────────────────────── */
 .seguradoras {
-  padding: var(--space-12) 0;
+  padding: var(--space-8) 0;
   background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
 }
 .seguradoras__label {
   text-align: center;
-  font-size: var(--font-sm);
+  font-family: var(--font-display);
+  font-size: var(--font-xl);
   font-weight: var(--font-semibold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-muted);
-  margin-bottom: var(--space-8);
+  color: var(--color-primary);
+  margin: 0 0 var(--space-6);
+  letter-spacing: -0.01em;
+  padding: 0 var(--space-4);
 }
-.seguradoras__grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-4) var(--space-8);
+.seguradoras-track {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
 }
-.seguradora-item {
+.seguradoras-slider {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-5);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
-  font-size: var(--font-sm);
-  font-weight: var(--font-semibold);
-  color: var(--color-muted);
+  width: max-content;
+  padding: var(--space-2) 0;
+  animation: seguradoras-marquee var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
+}
+.seguradoras-slider > .seguradoras-logo { margin-right: var(--space-12); }
+.seguradoras-slider:hover { animation-play-state: paused; }
+.seguradoras-slider--reverse { animation-direction: reverse; }
+.seguradoras.is-paused .seguradoras-slider { animation-play-state: paused; }
+.seguradoras--saude {
   background: var(--color-bg);
-  white-space: nowrap;
+  border-top: 0;
 }
-.seguradora-item svg { color: var(--color-accent); }
+.seguradoras + .seguradoras--saude { margin-top: 0; border-top: 1px solid var(--color-border); }
+.seguradoras__pause {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: var(--space-6) auto 0;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+.seguradoras__pause:hover,
+.seguradoras__pause:focus-visible {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: rgba(0,0,0,0.02);
+}
+.seguradoras__pause:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.seguradoras__pause-wrap { text-align: center; }
+.seguradoras__pause-icon { width: 14px; height: 14px; flex-shrink: 0; }
+.seguradoras__pause .icon-play { display: none; }
+.seguradoras.is-paused .seguradoras__pause .icon-pause { display: none; }
+.seguradoras.is-paused .seguradoras__pause .icon-play { display: inline-block; }
+@keyframes seguradoras-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .seguradoras-slider { animation: none; }
+}
+.seguradoras-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  flex-shrink: 0;
+  filter: grayscale(1) brightness(2) contrast(0.55);
+  opacity: 0.65;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.seguradoras-logo:hover {
+  filter: grayscale(0) brightness(1) contrast(1);
+  opacity: 1;
+}
+.seguradoras-logo img {
+  height: 42px;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+  display: block;
+}
 
 /* ── Sobre ──────────────────────────────────────────────── */
 .sobre__inner {

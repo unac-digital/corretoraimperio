@@ -139,15 +139,24 @@
 
     <!-- ── Seguradoras ───────────────────────────────────── -->
     <section class="seguradoras" aria-label="Principais operadoras parceiras">
-      <div class="container">
-        <p class="seguradoras__label" data-editable="emp-seguradoras-label">Cotamos nas maiores operadoras do Brasil</p>
-        <ul class="seguradoras__list" role="list">
-          <li class="seguradoras__item" data-editable="emp-seguradora-1">SulAmérica</li>
-          <li class="seguradoras__item" data-editable="emp-seguradora-2">Bradesco Saúde</li>
-          <li class="seguradoras__item" data-editable="emp-seguradora-3">Porto Seguro</li>
-          <li class="seguradoras__item" data-editable="emp-seguradora-4">Hapvida</li>
-          <li class="seguradoras__item" data-editable="emp-seguradora-5">+ outras</li>
-        </ul>
+      <!-- Lista acessível para leitores de tela -->
+      <p class="visually-hidden">Cotamos nas principais operadoras do Brasil: SulAmérica, Bradesco Saúde, Porto Seguro e Hapvida.</p>
+
+      <h2 class="seguradoras__label" data-editable="emp-seguradoras-label">Cotamos nas maiores operadoras do Brasil</h2>
+
+      <div class="seguradoras-track" aria-hidden="true">
+        <div class="seguradoras-slider">
+          <!-- Grupo 1 -->
+          <div class="seguradoras-logo"><img src="logos/sulamerica.png" alt="SulAmérica Seguros" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="logos/bradesco-saude.svg" alt="Bradesco Saúde" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="logos/porto-seguro.svg" alt="Porto Seguro" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="logos/hapvida.png" alt="Hapvida" loading="lazy"></div>
+          <!-- Grupo 2 — duplicado para loop infinito -->
+          <div class="seguradoras-logo"><img src="logos/sulamerica.png" alt="" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="logos/bradesco-saude.svg" alt="" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="logos/porto-seguro.svg" alt="" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="logos/hapvida.png" alt="" loading="lazy"></div>
+        </div>
       </div>
     </section>
 
@@ -288,6 +297,112 @@
             </a>
           </article>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Benefícios VR ───────────────────────────────────── -->
+    <section class="section" id="beneficios" aria-labelledby="beneficios-heading">
+      <div class="container">
+        <span class="section-eyebrow">Gestão de Benefícios</span>
+        <h2 class="section-title" id="beneficios-heading">Benefícios completos para sua equipe</h2>
+        <p style="color:var(--color-muted);max-width:680px;line-height:1.7;margin-top:.5rem">
+          Além do plano de saúde, sua empresa pode oferecer uma plataforma completa de benefícios com a VR — aceita em mais de 360 mil estabelecimentos em todo o Brasil.
+        </p>
+
+        <ul class="beneficios__grid" role="list">
+
+          <li class="beneficio-card animate-fade-up" role="listitem">
+            <div class="beneficio-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2"/><path d="M18 6a2 2 0 01-2-2V2"/><path d="M18 15v7"/><circle cx="18" cy="12" r="3"/></svg>
+            </div>
+            <h3 class="beneficio-card__title">Vale Refeição e Alimentação</h3>
+            <p class="beneficio-card__desc">Funcionários escolhem o que comprar — refeição no restaurante ou alimentos no mercado. A empresa define o valor e a data de crédito.</p>
+          </li>
+
+          <li class="beneficio-card animate-fade-up" role="listitem">
+            <div class="beneficio-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>
+            </div>
+            <h3 class="beneficio-card__title">Vale Combustível</h3>
+            <p class="beneficio-card__desc">Auxílio para deslocamento casa-trabalho. Aceito nos principais postos de combustível, com controle total pela empresa.</p>
+          </li>
+
+          <li class="beneficio-card animate-fade-up" role="listitem">
+            <div class="beneficio-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/></svg>
+            </div>
+            <h3 class="beneficio-card__title">Ponto Eletrônico</h3>
+            <p class="beneficio-card__desc">100% em conformidade com a Portaria 671 e a LGPD. Sistema antifraude integrado para registro de jornada sem complicação.</p>
+          </li>
+
+          <li class="beneficio-card animate-fade-up" role="listitem">
+            <div class="beneficio-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <h3 class="beneficio-card__title">Total Pass</h3>
+            <p class="beneficio-card__desc">Acesso a academias, estúdios e espaços de bem-estar com descontos exclusivos para seus colaboradores — saúde além do plano médico.</p>
+          </li>
+
+          <li class="beneficio-card animate-fade-up" role="listitem">
+            <div class="beneficio-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.37 10.8 19.79 19.79 0 01.27 2.18 2 2 0 012.27 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-.63a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <h3 class="beneficio-card__title">Telemedicina</h3>
+            <p class="beneficio-card__desc">Consultas médicas online para seus funcionários, sem filas e sem deslocamento. Atendimento humanizado disponível quando precisar.</p>
+          </li>
+
+          <li class="beneficio-card animate-fade-up" role="listitem">
+            <div class="beneficio-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+            </div>
+            <h3 class="beneficio-card__title">Desconto em Farmácia Online</h3>
+            <p class="beneficio-card__desc">Descontos em medicamentos e produtos de saúde em farmácias parceiras. Seu time economiza sem sair de casa.</p>
+          </li>
+
+          <li class="beneficio-card animate-fade-up" role="listitem">
+            <div class="beneficio-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3 class="beneficio-card__title">VR Fidelidade</h3>
+            <p class="beneficio-card__desc">Programa de fidelidade da empresa: acumule pontos e premie colaboradores por desempenho. Engajamento e retenção de talentos.</p>
+          </li>
+
+          <li class="beneficio-card animate-fade-up" role="listitem">
+            <div class="beneficio-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="beneficio-card__title">Seguro Alimentação</h3>
+            <p class="beneficio-card__desc">Crédito de R$ 400 em caso de sinistro para garantir alimentação dos colaboradores — uma rede de segurança adicional para sua equipe.</p>
+          </li>
+
+        </ul>
+
+        <!-- Cobertura da rede VR -->
+        <div class="beneficios__coverage" aria-label="Abrangência da rede VR">
+          <div class="beneficios__coverage-item">
+            <strong class="beneficios__coverage-num">360 mil+</strong>
+            <span class="beneficios__coverage-label">estabelecimentos credenciados</span>
+          </div>
+          <div class="beneficios__coverage-divider" aria-hidden="true"></div>
+          <div class="beneficios__coverage-item">
+            <strong class="beneficios__coverage-num">5.000+</strong>
+            <span class="beneficios__coverage-label">municípios atendidos</span>
+          </div>
+          <div class="beneficios__coverage-divider" aria-hidden="true"></div>
+          <div class="beneficios__coverage-item">
+            <strong class="beneficios__coverage-num">Cielo · Rede · Getnet</strong>
+            <span class="beneficios__coverage-label">e outras maquininhas parceiras</span>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:var(--space-8)">
+          <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20benef%C3%ADcios%20VR%20para%20minha%20empresa"
+             class="btn btn--accent"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Saber mais sobre benefícios pelo WhatsApp">
+            Saber mais sobre benefícios
+          </a>
         </div>
       </div>
     </section>

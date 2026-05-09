@@ -1,5 +1,91 @@
 'use strict';
 
+/* ─── Carrossel infinito de seguradoras ──────────────── */
+(function () {
+  const SPEED_PX_PER_SEC = 60;
+
+  const setupMarquee = (slider) => {
+    const section = slider.closest('.seguradoras');
+    if (!section) return;
+    const track = slider.parentElement;
+    const originals = Array.from(slider.children);
+    if (!originals.length) return;
+
+    slider.querySelectorAll('[data-clone]').forEach((n) => n.remove());
+
+    const trackWidth = () => track.getBoundingClientRect().width;
+    const sliderWidth = () => slider.scrollWidth;
+
+    let safety = 0;
+    while (sliderWidth() < trackWidth() * 1.2 && safety < 6) {
+      originals.forEach((el) => {
+        const clone = el.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.setAttribute('data-clone', 'pad');
+        slider.appendChild(clone);
+      });
+      safety++;
+    }
+
+    const halfChildren = Array.from(slider.children);
+    halfChildren.forEach((el) => {
+      const clone = el.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.setAttribute('data-clone', 'half');
+      slider.appendChild(clone);
+    });
+
+    const halfWidth = sliderWidth() / 2;
+    const duration = Math.max(20, halfWidth / SPEED_PX_PER_SEC);
+    slider.style.setProperty('--marquee-duration', duration.toFixed(1) + 's');
+
+    section.classList.add('is-ready');
+  };
+
+  const runAll = () => {
+    document.querySelectorAll('.seguradoras-slider[data-marquee]').forEach(setupMarquee);
+  };
+
+  const onReady = () => {
+    const imgs = document.querySelectorAll('.seguradoras-slider img');
+    let pending = imgs.length;
+    if (!pending) { runAll(); return; }
+    imgs.forEach((img) => {
+      if (img.complete) {
+        if (--pending === 0) runAll();
+      } else {
+        img.addEventListener('load', () => { if (--pending === 0) runAll(); }, { once: true });
+        img.addEventListener('error', () => { if (--pending === 0) runAll(); }, { once: true });
+      }
+    });
+    setTimeout(runAll, 2500);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onReady, { once: true });
+  } else {
+    onReady();
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(runAll, 200);
+  });
+
+  document.querySelectorAll('.seguradoras').forEach((section) => {
+    const btn = section.querySelector('.seguradoras__pause');
+    if (!btn) return;
+    const label = btn.querySelector('.seguradoras__pause-label');
+    btn.addEventListener('click', () => {
+      const paused = section.classList.toggle('is-paused');
+      btn.setAttribute('aria-pressed', String(paused));
+      btn.setAttribute('aria-label', paused ? 'Retomar animação dos logos' : 'Pausar animação dos logos');
+      if (label) label.textContent = paused ? 'Retomar' : 'Pausar';
+    });
+  });
+})();
+
 /* ─── Mobile menu ─────────────────────────────────────── */
 (function () {
   const btn = document.querySelector('.header__menu-btn');
@@ -99,7 +185,7 @@
 /* ─── Counter animation (C2) ─────────────────────────── */
 (function () {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const counters = document.querySelectorAll('.stats__number[data-target]');
+  const counters = document.querySelectorAll('.counter[data-target], .stats__number[data-target]');
   if (!counters.length) return;
 
   const easeOut = (t) => 1 - Math.pow(1 - t, 3);

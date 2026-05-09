@@ -232,32 +232,66 @@
       </div>
     </section>
 
-    <!-- ── Seguradoras ────────────────────────────────────── -->
-    <section class="seguradoras" aria-label="Seguradoras parceiras">
-      <div class="container">
-        <p class="seguradoras__label">Trabalhamos com as maiores seguradoras do Brasil</p>
-        <ul class="seguradoras__grid" role="list">
-          <li class="seguradora-item" role="listitem">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            SulAmérica
-          </li>
-          <li class="seguradora-item" role="listitem">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Bradesco Saúde
-          </li>
-          <li class="seguradora-item" role="listitem">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Porto Seguro
-          </li>
-          <li class="seguradora-item" role="listitem">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Hapvida
-          </li>
-          <li class="seguradora-item" role="listitem">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            E outras +
-          </li>
-        </ul>
+    <!-- ── Seguradoras parceiras ──────────────────────────── -->
+    <section class="seguradoras seguradoras--auto" aria-label="Seguradoras parceiras">
+      <p class="visually-hidden">
+        Seguradoras parceiras: Porto Seguro, Azul Seguros, Tokio Marine, Yelum, Mapfre, Allianz, Bradesco, Suhai, Zurich, Pier, Ezze, Berkley e Potencial.
+      </p>
+
+      <h2 class="seguradoras__label">Seguradoras parceiras</h2>
+      <div class="seguradoras-track" aria-hidden="true">
+        <div class="seguradoras-slider" data-marquee>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=portoseguro.com.br&sz=128" alt="Porto Seguro" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=azulseguros.com.br&sz=128" alt="Azul Seguros" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=tokiomarine.com.br&sz=128" alt="Tokio Marine" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=yelumseguradora.com.br&sz=128" alt="Yelum Seguradora" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=mapfre.com.br&sz=128" alt="Mapfre" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=allianz.com.br&sz=128" alt="Allianz" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=bradescoseguros.com.br&sz=128" alt="Bradesco Seguros" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=suhaiseguradora.com&sz=128" alt="Suhai Seguradora" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=zurich.com.br&sz=128" alt="Zurich" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=pier.digital&sz=128" alt="Pier" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=ezzeseguros.com.br&sz=128" alt="Ezze" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=berkley.com&sz=128" alt="Berkley" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=potencialseguros.com.br&sz=128" alt="Potencial Seguros" loading="lazy"></div>
+        </div>
+      </div>
+
+      <div class="seguradoras__pause-wrap">
+        <button type="button" class="seguradoras__pause" aria-pressed="false" aria-label="Pausar animação dos logos">
+          <svg class="seguradoras__pause-icon icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="seguradoras__pause-icon icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span class="seguradoras__pause-label">Pausar</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Operadoras de saúde parceiras ──────────────────── -->
+    <section class="seguradoras seguradoras--saude seguradoras--auto" aria-label="Operadoras de saúde parceiras">
+      <p class="visually-hidden">
+        Operadoras de saúde parceiras: Porto Saúde, Bradesco Saúde, SulAmérica, Amil, Hapvida, São Miguel Saúde, Unihosp e Unimed.
+      </p>
+
+      <h2 class="seguradoras__label">Operadoras de saúde parceiras</h2>
+      <div class="seguradoras-track" aria-hidden="true">
+        <div class="seguradoras-slider seguradoras-slider--reverse" data-marquee>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=portoseguro.com.br&sz=128" alt="Porto Saúde" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=bradescosaude.com.br&sz=128" alt="Bradesco Saúde" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=sulamerica.com.br&sz=128" alt="SulAmérica" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=amil.com.br&sz=128" alt="Amil" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=hapvida.com.br&sz=128" alt="Hapvida" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=saomiguelsaude.com.br&sz=128" alt="São Miguel Saúde" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=unihosp.com.br&sz=128" alt="Unihosp" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="https://www.google.com/s2/favicons?domain=unimed.coop.br&sz=128" alt="Unimed" loading="lazy"></div>
+        </div>
+      </div>
+
+      <div class="seguradoras__pause-wrap">
+        <button type="button" class="seguradoras__pause" aria-pressed="false" aria-label="Pausar animação dos logos">
+          <svg class="seguradoras__pause-icon icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="seguradoras__pause-icon icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span class="seguradoras__pause-label">Pausar</span>
+        </button>
       </div>
     </section>
 
