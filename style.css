@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    IMPÉRIO CORRETORA DE SEGUROS — style.css
    Paleta: Cinza chumbo + preto + dourado (fiel à logo)
    Tipografia: DM Serif Display + DM Sans
@@ -521,14 +521,14 @@ strong { font-weight: var(--font-semibold); }
 }
 .audience-card:hover .audience-card__arrow { transform: translateX(4px); }
 @media (max-width: 1024px) {
-  .hero__inner { grid-template-columns: 1fr; gap: var(--space-12); }
+  .hero__inner { grid-template-columns: minmax(0, 1fr); gap: var(--space-12); }
   .hero__title { font-size: var(--font-3xl); }
   .hero__subtitle { max-width: 100%; }
   .hero__audience-cards { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 480px) {
   .hero { min-height: auto; }
-  .hero__audience-cards { grid-template-columns: 1fr; }
+  .hero__audience-cards { grid-template-columns: minmax(0, 1fr); }
   .hero__ctas { flex-direction: column; }
   .hero__ctas .btn { width: 100%; justify-content: center; }
 }
@@ -685,11 +685,11 @@ strong { font-weight: var(--font-semibold); }
   gap: var(--space-8);
 }
 @media (max-width: 900px) {
-  .sobre__inner { grid-template-columns: 1fr; }
+  .sobre__inner { grid-template-columns: minmax(0, 1fr); }
   .sobre__highlights { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 480px) {
-  .sobre__highlights { grid-template-columns: 1fr; }
+  .sobre__highlights { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ── Stats ──────────────────────────────────────────────── */
@@ -800,7 +800,7 @@ strong { font-weight: var(--font-semibold); }
 }
 .service-item svg { color: var(--color-accent); flex-shrink: 0; }
 @media (max-width: 768px) {
-  .audience-section { grid-template-columns: 1fr; }
+  .audience-section { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ── Diferenciais ───────────────────────────────────────── */
@@ -847,7 +847,7 @@ strong { font-weight: var(--font-semibold); }
   .diferenciais__grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 580px) {
-  .diferenciais__grid { grid-template-columns: 1fr; }
+  .diferenciais__grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ── Depoimentos ────────────────────────────────────────── */
@@ -921,7 +921,7 @@ strong { font-weight: var(--font-semibold); }
   .depoimentos__grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 580px) {
-  .depoimentos__grid { grid-template-columns: 1fr; }
+  .depoimentos__grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ── Prêmios ────────────────────────────────────────────── */
@@ -1079,9 +1079,9 @@ strong { font-weight: var(--font-semibold); }
 .form__success-text { font-size: var(--font-md); font-weight: var(--font-semibold); color: var(--color-primary); }
 .form__success-sub { font-size: var(--font-sm); color: var(--color-muted); }
 .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
-@media (max-width: 480px) { .form__row { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .form__row { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 900px) {
-  .contato__inner { grid-template-columns: 1fr; }
+  .contato__inner { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ── Footer ─────────────────────────────────────────────── */
@@ -1157,7 +1157,7 @@ strong { font-weight: var(--font-semibold); }
   .footer__brand { grid-column: 1 / -1; }
 }
 @media (max-width: 580px) {
-  .footer__inner { grid-template-columns: 1fr; }
+  .footer__inner { grid-template-columns: minmax(0, 1fr); }
   .footer__bottom { flex-direction: column; text-align: center; }
 }
 
@@ -1261,7 +1261,7 @@ strong { font-weight: var(--font-semibold); }
   .como-funciona__steps::before { display: none; }
 }
 @media (max-width: 480px) {
-  .como-funciona__steps { grid-template-columns: 1fr; }
+  .como-funciona__steps { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ── Serviços página interna ────────────────────────────── */
@@ -1322,7 +1322,7 @@ strong { font-weight: var(--font-semibold); }
 }
 .servico-card__feature svg { color: var(--color-accent); flex-shrink: 0; }
 @media (max-width: 900px) { .servicos__grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 580px) { .servicos__grid { grid-template-columns: 1fr; } }
+@media (max-width: 580px) { .servicos__grid { grid-template-columns: minmax(0, 1fr); } }
 
 /* ── FAQ ────────────────────────────────────────────────── */
 .faq__list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-3); }
@@ -1721,7 +1721,7 @@ body.menu-open { overflow: hidden; }
 .dor__icon--bad { color: #dc2626; flex-shrink: 0; margin-top: 2px; }
 .dor__icon--good { color: #16a34a; flex-shrink: 0; margin-top: 2px; }
 @media (max-width: 768px) {
-  .dor__grid { grid-template-columns: 1fr; }
+  .dor__grid { grid-template-columns: minmax(0, 1fr); }
   .dor__col--solution { padding: var(--space-6); }
 }
 

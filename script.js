@@ -256,6 +256,7 @@
           const otherAnswer = document.getElementById(otherId);
           if (otherAnswer) {
             otherAnswer.hidden = true;
+            otherAnswer.classList.remove('is-open');
             otherAnswer.style.maxHeight = null;
           }
           otherBtn.closest('.faq__item')?.classList.remove('faq__item--open');
@@ -264,6 +265,7 @@
 
       btn.setAttribute('aria-expanded', String(!isExpanded));
       answer.hidden = isExpanded;
+      answer.classList.toggle('is-open', !isExpanded);
       if (!isExpanded) {
         answer.style.maxHeight = answer.scrollHeight + 'px';
       } else {
