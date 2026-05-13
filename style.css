@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    IMPÉRIO CORRETORA DE SEGUROS — style.css
    Paleta: Cinza chumbo + preto + dourado (fiel à logo)
    Tipografia: DM Serif Display + DM Sans
@@ -263,6 +263,7 @@ strong { font-weight: var(--font-semibold); }
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 .header__inner {
   display: flex;

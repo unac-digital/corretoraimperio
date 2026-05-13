@@ -133,13 +133,9 @@
   const header = document.querySelector('.header');
   if (!header) return;
 
-  let lastY = 0;
   const onScroll = () => {
     const y = window.scrollY;
     header.classList.toggle('header--scrolled', y > 50);
-    header.classList.toggle('header--hidden', y > lastY + 10 && y > 200);
-    if (y < lastY - 10 || y < 100) header.classList.remove('header--hidden');
-    lastY = y;
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
