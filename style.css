@@ -1482,8 +1482,18 @@ strong { font-weight: var(--font-semibold); }
 
 /* ── Header — scroll states ─────────────────────────────── */
 .header--scrolled {
-  background: rgba(26, 61, 43, 0.97);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+  background: var(--color-primary-d);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+}
+.header--scrolled .header__nav a {
+  color: rgba(255,255,255,0.82);
+}
+.header--scrolled .header__nav a:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--color-accent);
+}
+.header--scrolled .header__menu-btn {
+  color: var(--color-white);
 }
 .header--hidden {
   transform: translateY(-100%);
@@ -1793,33 +1803,30 @@ body.menu-open { overflow: hidden; }
 }
 .btn--success:hover { background: #16a34a; border-color: #16a34a; transform: none; }
 
-/* ── Seção Instagram ─────────────────────────────────────── */
-.insta-section { background: var(--color-surface); }
-
-.insta-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-3);
-  margin-bottom: var(--space-10);
+/* ── Faixa Instagram (minimalista) ───────────────────────── */
+.insta-strip {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-5) 0;
 }
-
-.insta-item {
-  aspect-ratio: 1 / 1;
-  background-size: cover;
-  background-position: center;
-  background-color: var(--color-border);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-}
-
-.insta-actions {
+.insta-strip__inner {
   display: flex;
-  justify-content: center;
-  gap: var(--space-4);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
 }
-
-@media (max-width: 640px) {
-  .insta-grid { grid-template-columns: repeat(2, 1fr); }
+.insta-strip__text {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-base);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+}
+@media (max-width: 580px) {
+  .insta-strip__inner { justify-content: center; text-align: center; }
 }
 
 /* ══════════════════════════════════════════════════════════════
