@@ -2,7 +2,7 @@
 
 /* ─── Carrossel infinito de seguradoras ──────────────── */
 (function () {
-  const SPEED_PX_PER_SEC = 60;
+  const SPEED_PX_PER_SEC = 11;
 
   const setupMarquee = (slider) => {
     const section = slider.closest('.seguradoras');
