@@ -619,12 +619,10 @@ strong { font-weight: var(--font-semibold); }
   justify-content: center;
   height: 52px;
   flex-shrink: 0;
-  filter: grayscale(1) brightness(2) contrast(0.55);
   opacity: 0.65;
-  transition: filter 0.3s ease, opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 .seguradoras-logo:hover {
-  filter: grayscale(0) brightness(1) contrast(1);
   opacity: 1;
 }
 .seguradoras-logo img {
@@ -633,6 +631,13 @@ strong { font-weight: var(--font-semibold); }
   max-width: 170px;
   object-fit: contain;
   display: block;
+  filter: grayscale(1) brightness(2) contrast(0.55);
+  mix-blend-mode: multiply;
+  transition: filter 0.3s ease;
+}
+.seguradoras-logo:hover img {
+  filter: grayscale(0) brightness(1) contrast(1);
+  mix-blend-mode: normal;
 }
 
 /* ── Sobre ──────────────────────────────────────────────── */
