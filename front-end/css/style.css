@@ -284,6 +284,15 @@ strong { font-weight: var(--font-semibold); }
   height: 40px;
   flex-shrink: 0;
 }
+.header__logo-img {
+  height: 40px;
+  width: auto;
+  flex-shrink: 0;
+}
+.footer__logo-img {
+  height: 32px;
+  width: auto;
+}
 .header__logo-text {
   display: flex;
   flex-direction: column;
