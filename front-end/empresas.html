@@ -131,28 +131,6 @@
       </div>
     </section>
 
-    <!-- ── Seguradoras ───────────────────────────────────── -->
-    <section class="seguradoras" aria-label="Principais operadoras parceiras">
-      <!-- Lista acessível para leitores de tela -->
-      <p class="visually-hidden">Cotamos nas principais operadoras do Brasil: SulAmérica, Bradesco Saúde, Porto Seguro e Hapvida.</p>
-
-      <h2 class="seguradoras__label" data-editable="emp-seguradoras-label">Cotamos nas maiores operadoras do Brasil</h2>
-
-      <div class="seguradoras-track" aria-hidden="true">
-        <div class="seguradoras-slider">
-          <!-- Grupo 1 -->
-          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/sulamerica.png" alt="SulAmérica Seguros" loading="lazy"></div>
-          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/bradesco-saude.svg" alt="Bradesco Saúde" loading="lazy"></div>
-          <div class="seguradoras-logo"><img src="images/logos-seguradoras/porto-seguro.svg" alt="Porto Seguro" loading="lazy"></div>
-          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/hapvida.png" alt="Hapvida" loading="lazy"></div>
-          <!-- Grupo 2 — duplicado para loop infinito -->
-          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/sulamerica.png" alt="" loading="lazy"></div>
-          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/bradesco-saude.svg" alt="" loading="lazy"></div>
-          <div class="seguradoras-logo"><img src="images/logos-seguradoras/porto-seguro.svg" alt="" loading="lazy"></div>
-          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/hapvida.png" alt="" loading="lazy"></div>
-        </div>
-      </div>
-    </section>
 
     <!-- ── Problema / Agitação ───────────────────────────── -->
     <section class="section-dor" aria-labelledby="dor-heading">
@@ -204,6 +182,26 @@
       </div>
     </section>
 
+    <!-- ── Seguradoras ───────────────────────────────────── -->
+    <section class="seguradoras" aria-label="Principais operadoras parceiras">
+      <p class="visually-hidden">Cotamos nas principais operadoras do Brasil: SulAmérica, Bradesco Saúde, Porto Seguro e Hapvida.</p>
+
+      <h2 class="seguradoras__label" data-editable="emp-seguradoras-label">Cotamos nas maiores operadoras do Brasil</h2>
+
+      <div class="seguradoras-track" aria-hidden="true">
+        <div class="seguradoras-slider">
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/sulamerica.png" alt="SulAmérica Seguros" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/bradesco-saude.svg" alt="Bradesco Saúde" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/porto-seguro.svg" alt="Porto Seguro" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/hapvida.png" alt="Hapvida" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/sulamerica.png" alt="" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/bradesco-saude.svg" alt="" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/porto-seguro.svg" alt="" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/hapvida.png" alt="" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ── Serviços para Empresas ────────────────────────── -->
     <section class="section servicos" aria-labelledby="servicos-heading">
       <div class="container">
@@ -223,12 +221,15 @@
               <li data-editable="emp-saude-emp-feat-3">Acomodação enfermaria e apartamento</li>
               <li data-editable="emp-saude-emp-feat-4">Inclusão de dependentes</li>
             </ul>
-            <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20plano%20de%20sa%C3%BAde%20empresarial"
-               class="btn btn--accent"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Cotar plano de saúde empresarial pelo WhatsApp">
-              Cotar plano de saúde
-            </a>
+            <div class="servico-card__actions">
+              <a href="empresas/plano-saude-empresarial.html" class="btn btn--outline">Saiba mais</a>
+              <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20plano%20de%20sa%C3%BAde%20empresarial"
+                 class="btn btn--accent"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Cotar plano de saúde empresarial pelo WhatsApp">
+                Cotar agora
+              </a>
+            </div>
           </article>
 
           <article class="servico-card" aria-labelledby="vida-emp-title">
@@ -243,12 +244,15 @@
               <li data-editable="emp-vida-emp-feat-3">Auxílio funeral</li>
               <li data-editable="emp-vida-emp-feat-4">Diárias por incapacidade</li>
             </ul>
-            <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20seguro%20de%20vida%20em%20grupo"
-               class="btn btn--outline"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Cotar seguro de vida em grupo pelo WhatsApp">
-              Cotar seguro de vida
-            </a>
+            <div class="servico-card__actions">
+              <a href="empresas/seguro-vida-grupo.html" class="btn btn--outline">Saiba mais</a>
+              <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20seguro%20de%20vida%20em%20grupo"
+                 class="btn btn--accent"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Cotar seguro de vida em grupo pelo WhatsApp">
+                Cotar agora
+              </a>
+            </div>
           </article>
 
           <article class="servico-card" aria-labelledby="dental-title">
@@ -263,12 +267,15 @@
               <li data-editable="emp-dental-feat-3">Ortodontia (conforme plano)</li>
               <li data-editable="emp-dental-feat-4">Rede nacional de credenciados</li>
             </ul>
-            <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20plano%20odontol%C3%B3gico%20para%20minha%20empresa"
-               class="btn btn--outline"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Cotar plano odontológico empresarial pelo WhatsApp">
-              Cotar plano dental
-            </a>
+            <div class="servico-card__actions">
+              <a href="empresas/plano-odontologico.html" class="btn btn--outline">Saiba mais</a>
+              <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20plano%20odontol%C3%B3gico%20para%20minha%20empresa"
+                 class="btn btn--accent"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Cotar plano odontológico empresarial pelo WhatsApp">
+                Cotar agora
+              </a>
+            </div>
           </article>
 
           <article class="servico-card" aria-labelledby="responsabilidade-title">
@@ -283,12 +290,15 @@
               <li data-editable="emp-outros-feat-3">Patrimonial empresarial</li>
               <li data-editable="emp-outros-feat-4">Outros conforme necessidade</li>
             </ul>
-            <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20seguros%20para%20minha%20empresa"
-               class="btn btn--outline"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Falar sobre seguros empresariais pelo WhatsApp">
-              Falar com consultor
-            </a>
+            <div class="servico-card__actions">
+              <a href="empresas/outros-seguros.html" class="btn btn--outline">Saiba mais</a>
+              <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20saber%20sobre%20seguros%20para%20minha%20empresa"
+                 class="btn btn--accent"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Falar sobre seguros empresariais pelo WhatsApp">
+                Cotar agora
+              </a>
+            </div>
           </article>
 
         </div>
@@ -621,19 +631,19 @@
         <nav class="footer__nav" aria-label="Para empresas">
           <h3 class="footer__nav-title">Para Empresas</h3>
           <ul role="list">
-            <li><a href="empresas.html">Plano de Saúde Empresarial</a></li>
-            <li><a href="empresas.html">Seguro de Vida em Grupo</a></li>
-            <li><a href="empresas.html">Plano Odontológico</a></li>
-            <li><a href="empresas.html">Outros Seguros</a></li>
+            <li><a href="empresas/plano-saude-empresarial.html">Plano de Saúde Empresarial</a></li>
+            <li><a href="empresas/seguro-vida-grupo.html">Seguro de Vida em Grupo</a></li>
+            <li><a href="empresas/plano-odontologico.html">Plano Odontológico</a></li>
+            <li><a href="empresas/outros-seguros.html">Outros Seguros</a></li>
           </ul>
         </nav>
         <nav class="footer__nav" aria-label="Para você">
           <h3 class="footer__nav-title">Para Você</h3>
           <ul role="list">
-            <li><a href="para-voce.html">Seguro Auto</a></li>
-            <li><a href="para-voce.html">Plano de Saúde Individual</a></li>
-            <li><a href="para-voce.html">Seguro de Vida</a></li>
-            <li><a href="para-voce.html">Consórcio</a></li>
+            <li><a href="para-voce/seguro-auto.html">Seguro Auto</a></li>
+            <li><a href="para-voce/plano-saude-individual.html">Plano de Saúde Individual</a></li>
+            <li><a href="para-voce/seguro-vida.html">Seguro de Vida</a></li>
+            <li><a href="para-voce/consorcio.html">Consórcio</a></li>
           </ul>
         </nav>
         <div class="footer__contact">

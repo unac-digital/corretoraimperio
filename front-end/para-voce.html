@@ -131,20 +131,6 @@
       </div>
     </section>
 
-    <!-- ── Seguradoras ───────────────────────────────────── -->
-    <section class="seguradoras" aria-label="Principais seguradoras parceiras">
-      <div class="container">
-        <p class="seguradoras__label" data-editable="pf-seguradoras-label">Cotamos nas maiores seguradoras do Brasil</p>
-        <ul class="seguradoras__list" role="list">
-          <li class="seguradoras__item" data-editable="pf-seguradora-1">SulAmérica</li>
-          <li class="seguradoras__item" data-editable="pf-seguradora-2">Bradesco</li>
-          <li class="seguradoras__item" data-editable="pf-seguradora-3">Porto Seguro</li>
-          <li class="seguradoras__item" data-editable="pf-seguradora-4">Hapvida</li>
-          <li class="seguradoras__item" data-editable="pf-seguradora-5">+ outras</li>
-        </ul>
-      </div>
-    </section>
-
     <!-- ── Por que ter um corretor ───────────────────────── -->
     <section class="section-dor" aria-labelledby="corretor-heading">
       <div class="container">
@@ -187,6 +173,61 @@
       </div>
     </section>
 
+    <!-- ── Seguradoras ───────────────────────────────────── -->
+    <section class="seguradoras seguradoras--auto" aria-label="Seguradoras parceiras">
+      <p class="visually-hidden">Seguradoras parceiras: Porto Seguro, Azul Seguros, Tokio Marine, Yelum, Mapfre, Allianz, Suhai e Zurich.</p>
+
+      <h2 class="seguradoras__label" data-editable="pf-seguradoras-label">Seguradoras parceiras</h2>
+      <div class="seguradoras-track" aria-hidden="true">
+        <div class="seguradoras-slider" data-marquee>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/porto-seguro.svg" alt="Porto Seguro" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/azul-seguros.svg" alt="Azul Seguros" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/tokio-marine.svg" alt="Tokio Marine" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/yelum.svg" alt="Yelum Seguradora" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/mapfre.svg" alt="Mapfre" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/allianz.svg" alt="Allianz" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/bradesco-saude.svg" alt="Bradesco Seguros" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/suhai.png" alt="Suhai Seguradora" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/zurich.svg" alt="Zurich" loading="lazy"></div>
+        </div>
+      </div>
+
+      <div class="seguradoras__pause-wrap">
+        <button type="button" class="seguradoras__pause" aria-pressed="false" aria-label="Pausar animação dos logos">
+          <svg class="seguradoras__pause-icon icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="seguradoras__pause-icon icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span class="seguradoras__pause-label">Pausar</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Operadoras de saúde parceiras ──────────────────── -->
+    <section class="seguradoras seguradoras--saude seguradoras--auto" aria-label="Operadoras de saúde parceiras">
+      <p class="visually-hidden">Operadoras de saúde parceiras: Porto Saúde, Bradesco Saúde, SulAmérica, Amil, Hapvida, São Miguel Saúde, Unihosp e Unimed.</p>
+
+      <h2 class="seguradoras__label">Operadoras de saúde parceiras</h2>
+      <div class="seguradoras-track" aria-hidden="true">
+        <div class="seguradoras-slider seguradoras-slider--reverse" data-marquee>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/porto-seguro.svg" alt="Porto Saúde" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/bradesco-saude.svg" alt="Bradesco Saúde" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/sulamerica.svg" alt="SulAmérica" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/amil.svg" alt="Amil" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/hapvida.png" alt="Hapvida" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/sao-miguel-saude.png" alt="São Miguel Saúde" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/unihosp.webp" alt="Unihosp" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/unimed.svg" alt="Unimed" loading="lazy"></div>
+        </div>
+      </div>
+
+      <div class="seguradoras__pause-wrap">
+        <button type="button" class="seguradoras__pause" aria-pressed="false" aria-label="Pausar animação dos logos">
+          <svg class="seguradoras__pause-icon icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="seguradoras__pause-icon icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span class="seguradoras__pause-label">Pausar</span>
+        </button>
+      </div>
+    </section>
+
     <!-- ── Serviços para Pessoa Física ──────────────────── -->
     <section class="section servicos" id="servicos" aria-labelledby="servicos-heading">
       <div class="container">
@@ -206,12 +247,15 @@
               <li data-editable="pf-auto-feat-3">Danos a terceiros (RCF)</li>
               <li data-editable="pf-auto-feat-4">Assistência 24h e carro reserva</li>
             </ul>
-            <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20seguro%20auto"
-               class="btn btn--accent"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Cotar seguro auto pelo WhatsApp">
-              Cotar seguro auto
-            </a>
+            <div class="servico-card__actions">
+              <a href="para-voce/seguro-auto.html" class="btn btn--outline">Saiba mais</a>
+              <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20seguro%20auto"
+                 class="btn btn--accent"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Cotar seguro auto pelo WhatsApp">
+                Cotar agora
+              </a>
+            </div>
           </article>
 
           <article class="servico-card" aria-labelledby="saude-pf-title">
@@ -226,12 +270,15 @@
               <li data-editable="pf-saude-feat-3">Planos com e sem coparticipação</li>
               <li data-editable="pf-saude-feat-4">Inclusão de cônjuge e filhos</li>
             </ul>
-            <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20plano%20de%20sa%C3%BAde%20individual"
-               class="btn btn--outline"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Cotar plano de saúde individual pelo WhatsApp">
-              Cotar plano de saúde
-            </a>
+            <div class="servico-card__actions">
+              <a href="para-voce/plano-saude-individual.html" class="btn btn--outline">Saiba mais</a>
+              <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20plano%20de%20sa%C3%BAde%20individual"
+                 class="btn btn--accent"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Cotar plano de saúde individual pelo WhatsApp">
+                Cotar agora
+              </a>
+            </div>
           </article>
 
           <article class="servico-card" aria-labelledby="vida-pf-title">
@@ -246,12 +293,15 @@
               <li data-editable="pf-vida-feat-3">Auxílio funeral</li>
               <li data-editable="pf-vida-feat-4">Assistências e coberturas adicionais</li>
             </ul>
-            <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20seguro%20de%20vida"
-               class="btn btn--outline"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Cotar seguro de vida pelo WhatsApp">
-              Cotar seguro de vida
-            </a>
+            <div class="servico-card__actions">
+              <a href="para-voce/seguro-vida.html" class="btn btn--outline">Saiba mais</a>
+              <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20cotar%20seguro%20de%20vida"
+                 class="btn btn--accent"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Cotar seguro de vida pelo WhatsApp">
+                Cotar agora
+              </a>
+            </div>
           </article>
 
           <article class="servico-card" aria-labelledby="consorcio-title">
@@ -266,12 +316,15 @@
               <li data-editable="pf-consorcio-feat-3">Sem juros — só taxa administrativa</li>
               <li data-editable="pf-consorcio-feat-4">Possibilidade de dar lance</li>
             </ul>
-            <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20cons%C3%B3rcio"
-               class="btn btn--outline"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Saber mais sobre consórcio pelo WhatsApp">
-              Saber sobre consórcio
-            </a>
+            <div class="servico-card__actions">
+              <a href="para-voce/consorcio.html" class="btn btn--outline">Saiba mais</a>
+              <a href="https://wa.me/5511964978014?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20cons%C3%B3rcio"
+                 class="btn btn--accent"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Saber mais sobre consórcio pelo WhatsApp">
+                Cotar agora
+              </a>
+            </div>
           </article>
 
         </div>
@@ -472,19 +525,19 @@
         <nav class="footer__nav" aria-label="Para empresas">
           <h3 class="footer__nav-title">Para Empresas</h3>
           <ul role="list">
-            <li><a href="empresas.html">Plano de Saúde Empresarial</a></li>
-            <li><a href="empresas.html">Seguro de Vida em Grupo</a></li>
-            <li><a href="empresas.html">Plano Odontológico</a></li>
-            <li><a href="empresas.html">Outros Seguros</a></li>
+            <li><a href="empresas/plano-saude-empresarial.html">Plano de Saúde Empresarial</a></li>
+            <li><a href="empresas/seguro-vida-grupo.html">Seguro de Vida em Grupo</a></li>
+            <li><a href="empresas/plano-odontologico.html">Plano Odontológico</a></li>
+            <li><a href="empresas/outros-seguros.html">Outros Seguros</a></li>
           </ul>
         </nav>
         <nav class="footer__nav" aria-label="Para você">
           <h3 class="footer__nav-title">Para Você</h3>
           <ul role="list">
-            <li><a href="para-voce.html">Seguro Auto</a></li>
-            <li><a href="para-voce.html">Plano de Saúde Individual</a></li>
-            <li><a href="para-voce.html">Seguro de Vida</a></li>
-            <li><a href="para-voce.html">Consórcio</a></li>
+            <li><a href="para-voce/seguro-auto.html">Seguro Auto</a></li>
+            <li><a href="para-voce/plano-saude-individual.html">Plano de Saúde Individual</a></li>
+            <li><a href="para-voce/seguro-vida.html">Seguro de Vida</a></li>
+            <li><a href="para-voce/consorcio.html">Consórcio</a></li>
           </ul>
         </nav>
         <div class="footer__contact">
