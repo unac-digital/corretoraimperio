@@ -174,16 +174,57 @@
     </section>
 
     <!-- ── Seguradoras ───────────────────────────────────── -->
-    <section class="seguradoras" aria-label="Principais seguradoras parceiras">
-      <div class="container">
-        <p class="seguradoras__label" data-editable="pf-seguradoras-label">Cotamos nas maiores seguradoras do Brasil</p>
-        <ul class="seguradoras__list" role="list">
-          <li class="seguradoras__item" data-editable="pf-seguradora-1">SulAmérica</li>
-          <li class="seguradoras__item" data-editable="pf-seguradora-2">Bradesco</li>
-          <li class="seguradoras__item" data-editable="pf-seguradora-3">Porto Seguro</li>
-          <li class="seguradoras__item" data-editable="pf-seguradora-4">Hapvida</li>
-          <li class="seguradoras__item" data-editable="pf-seguradora-5">+ outras</li>
-        </ul>
+    <section class="seguradoras seguradoras--auto" aria-label="Seguradoras parceiras">
+      <p class="visually-hidden">Seguradoras parceiras: Porto Seguro, Azul Seguros, Tokio Marine, Yelum, Mapfre, Allianz, Suhai e Zurich.</p>
+
+      <h2 class="seguradoras__label" data-editable="pf-seguradoras-label">Seguradoras parceiras</h2>
+      <div class="seguradoras-track" aria-hidden="true">
+        <div class="seguradoras-slider" data-marquee>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/porto-seguro.svg" alt="Porto Seguro" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/azul-seguros.svg" alt="Azul Seguros" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/tokio-marine.svg" alt="Tokio Marine" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/yelum.svg" alt="Yelum Seguradora" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/mapfre.svg" alt="Mapfre" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/allianz.svg" alt="Allianz" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/bradesco-saude.svg" alt="Bradesco Seguros" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/suhai.png" alt="Suhai Seguradora" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/zurich.svg" alt="Zurich" loading="lazy"></div>
+        </div>
+      </div>
+
+      <div class="seguradoras__pause-wrap">
+        <button type="button" class="seguradoras__pause" aria-pressed="false" aria-label="Pausar animação dos logos">
+          <svg class="seguradoras__pause-icon icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="seguradoras__pause-icon icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span class="seguradoras__pause-label">Pausar</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Operadoras de saúde parceiras ──────────────────── -->
+    <section class="seguradoras seguradoras--saude seguradoras--auto" aria-label="Operadoras de saúde parceiras">
+      <p class="visually-hidden">Operadoras de saúde parceiras: Porto Saúde, Bradesco Saúde, SulAmérica, Amil, Hapvida, São Miguel Saúde, Unihosp e Unimed.</p>
+
+      <h2 class="seguradoras__label">Operadoras de saúde parceiras</h2>
+      <div class="seguradoras-track" aria-hidden="true">
+        <div class="seguradoras-slider seguradoras-slider--reverse" data-marquee>
+          <div class="seguradoras-logo"><img src="images/logos-seguradoras/porto-seguro.svg" alt="Porto Saúde" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/bradesco-saude.svg" alt="Bradesco Saúde" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/sulamerica.svg" alt="SulAmérica" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/amil.svg" alt="Amil" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/hapvida.png" alt="Hapvida" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/sao-miguel-saude.png" alt="São Miguel Saúde" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/unihosp.webp" alt="Unihosp" loading="lazy"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/unimed.svg" alt="Unimed" loading="lazy"></div>
+        </div>
+      </div>
+
+      <div class="seguradoras__pause-wrap">
+        <button type="button" class="seguradoras__pause" aria-pressed="false" aria-label="Pausar animação dos logos">
+          <svg class="seguradoras__pause-icon icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="seguradoras__pause-icon icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span class="seguradoras__pause-label">Pausar</span>
+        </button>
       </div>
     </section>
 
