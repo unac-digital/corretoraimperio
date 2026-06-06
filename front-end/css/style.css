@@ -1336,6 +1336,8 @@ strong { font-weight: var(--font-semibold); }
   color: var(--color-text);
 }
 .servico-card__feature svg { color: var(--color-accent); flex-shrink: 0; }
+.servico-card__actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: auto; padding-top: 1.25rem; }
+.servico-card__actions .btn { flex: 1; min-width: 0; text-align: center; }
 @media (max-width: 900px) { .servicos__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 580px) { .servicos__grid { grid-template-columns: minmax(0, 1fr); } }
 
