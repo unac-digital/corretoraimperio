@@ -14,7 +14,7 @@ define('ADMIN_PASSWORD_HASH', '$2y$10$cTPorrbRbTbOUCcYtJe2mefP20kGPBmOVHpQRFpbu6
 // Duração da sessão autenticada: 8 horas
 define('SESSION_DURATION', 8 * 3600);
 
-// Raiz do projeto (pasta que contém front-end/ e back-end/)
+// Raiz do projeto (pasta que contém os arquivos do site e back-end/)
 define('SITE_ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR);
 
 // Pasta e URL pública de uploads
@@ -26,7 +26,7 @@ define('MAX_UPLOAD_BYTES', 8 * 1024 * 1024);
 
 // Arquivos HTML que o editor pode atualizar
 define('HTML_FILES', [
-    SITE_ROOT . 'front-end' . DIRECTORY_SEPARATOR . 'index.html',
-    SITE_ROOT . 'front-end' . DIRECTORY_SEPARATOR . 'empresas.html',
-    SITE_ROOT . 'front-end' . DIRECTORY_SEPARATOR . 'para-voce.html',
+    SITE_ROOT . 'index.html',
+    SITE_ROOT . 'empresas.html',
+    SITE_ROOT . 'para-voce.html',
 ]);
