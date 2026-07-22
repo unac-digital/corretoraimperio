@@ -18,7 +18,7 @@
   --color-accent-l:    #e0c06a;
   --color-accent-rgb:  201, 168, 76;
   --color-text:        #1a1a1a;
-  --color-muted:       #7a7a7a;
+  --color-muted:       #6a6a6a;
   --color-border:      #e0e0e0;
   --color-white:       #ffffff;
 
@@ -161,7 +161,7 @@ ul, ol { list-style: none; }
   font-weight: var(--font-semibold);
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: #7e6410;
   margin-bottom: var(--space-4);
 }
 .section--dark .section__eyebrow { color: var(--color-accent-l); }
@@ -1144,9 +1144,9 @@ strong { font-weight: var(--font-semibold); }
   flex-wrap: wrap;
   gap: var(--space-4);
 }
-.footer__copyright { font-size: var(--font-xs); color: rgba(255,255,255,0.4); }
+.footer__copyright { font-size: var(--font-xs); color: rgba(255,255,255,0.6); }
 .footer__legal { display: flex; gap: var(--space-6); }
-.footer__legal a { font-size: var(--font-xs); color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s ease; }
+.footer__legal a { font-size: var(--font-xs); color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s ease; }
 .footer__legal a:hover { color: rgba(255,255,255,0.7); }
 @media (max-width: 900px) {
   .footer__inner { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
