@@ -554,12 +554,16 @@ strong { font-weight: var(--font-semibold); }
   width: max-content;
   padding: var(--space-2) 0;
   animation: seguradoras-marquee var(--marquee-duration, 40s) linear infinite;
+  /* Fica parada até o JS medir a fita e marcar a seção como is-ready.
+     Se a animação começasse antes, a duração mudaria com ela em curso —
+     o navegador remapeia o tempo decorrido e a fita dá um salto. */
+  animation-play-state: paused;
   will-change: transform;
 }
 .seguradoras-slider > .seguradoras-logo { margin-right: var(--space-12); }
-.seguradoras-slider:hover { animation-play-state: paused; }
 .seguradoras-slider--reverse { animation-direction: reverse; }
-.seguradoras.is-paused .seguradoras-slider { animation-play-state: paused; }
+.seguradoras.is-ready .seguradoras-slider { animation-play-state: running; }
+.seguradoras.is-ready .seguradoras-slider:hover { animation-play-state: paused; }
 .seguradoras--saude {
   background: var(--color-bg);
   border-top: 0;
