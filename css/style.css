@@ -580,24 +580,34 @@ strong { font-weight: var(--font-semibold); }
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 52px;
+  height: 80px;
   flex-shrink: 0;
-  opacity: 0.65;
+  opacity: 0.6;
   transition: opacity 0.3s ease;
 }
 .seguradoras-logo:hover {
   opacity: 1;
 }
 .seguradoras-logo img {
-  height: 42px;
+  /* Altura definida, não `auto`: tokio-marine.svg e unimed.svg não declaram
+     width/height próprios e, sem uma dimensão definida, colapsam para zero. */
+  height: 58px;
   width: auto;
-  max-width: 170px;
+  max-width: 150px;
   object-fit: contain;
   display: block;
-  filter: grayscale(1) brightness(2) contrast(0.55);
+  /* Sem clarear demais: brightness(2) apagava arte branca vazada sobre fundo
+     colorido — o Porto Seguro virava um quadrado cinza chapado. */
+  filter: grayscale(1) contrast(0.9) brightness(1.1);
   mix-blend-mode: multiply;
   transition: filter 0.3s ease;
 }
+/* Equilíbrio óptico. Só pela altura, a área renderizada varia 5x entre o logo
+   mais estreito e o mais largo; com estes três ajustes a variação cai para 1,6x.
+   --alto: retrato · --largo: muito horizontal · --compacto: pesado demais. */
+.seguradoras-logo.seguradoras-logo--alto img     { height: 78px; }
+.seguradoras-logo.seguradoras-logo--largo img    { max-width: 168px; }
+.seguradoras-logo.seguradoras-logo--compacto img { max-width: 138px; }
 .seguradoras-logo:hover img {
   filter: grayscale(0) brightness(1) contrast(1);
   mix-blend-mode: normal;

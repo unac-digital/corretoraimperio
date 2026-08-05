@@ -8,6 +8,104 @@ O texto foi escrito para ser lido em voz alta por leitor de tela. Não há tabel
 
 ---
 
+## Alteração 3 — Troca de seis logos e novo padrão de tamanho das faixas
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Seis logos das faixas foram substituídos por versões novas, enviadas pelo cliente. Além disso, todos os logos das faixas ficaram maiores e passaram a ter tamanhos visualmente equivalentes entre si.
+
+Antes, alguns logos apareciam muito grandes e outros quase ilegíveis. Agora todos ocupam aproximadamente o mesmo peso visual na tela.
+
+### Os seis logos trocados
+
+O logo da Mapfre passou a ser um arquivo em formato WebP.
+
+O logo da Porto Seguro passou a ser a versão vertical, com o símbolo em cima e o nome embaixo. Essa troca vale tanto onde o logo aparece identificado como Porto Seguro quanto onde aparece como Porto Saúde, já que é a mesma marca e o site sempre usou o mesmo arquivo nos dois lugares.
+
+O logo da Suhai passou de imagem PNG para vetor SVG.
+
+O logo da Hapvida passou de imagem PNG para vetor SVG.
+
+O logo do Bradesco Saúde passou a ser um vetor novo. Vale tanto onde aparece como Bradesco Seguros quanto como Bradesco Saúde.
+
+O logo da Yelum passou a ser um vetor novo.
+
+Na página Para Empresas, o logo da SulAmérica passou de imagem PNG para o vetor SVG que as outras páginas já usavam.
+
+### Problemas encontrados nos arquivos recebidos
+
+Três arquivos chegaram com defeitos que os deixavam praticamente invisíveis nas faixas. Todos foram corrigidos.
+
+O arquivo da Suhai tinha uma área de desenho quadrada de setecentos por setecentos unidades, mas a arte ocupava apenas dezessete por cento desse espaço. O restante era margem vazia. Como a faixa dimensiona pelo tamanho declarado do arquivo, o logo aparecia reduzido a quase nada. A área de desenho foi recortada até os limites reais da arte.
+
+O arquivo do Bradesco tinha um problema mais grave: a arte se estendia por mais de duas mil unidades de largura, mas a área de desenho declarada cortava em setecentas. O arquivo continha duas versões do logo lado a lado, e a área declarada exibia apenas parte da primeira. A área foi recortada para enquadrar exatamente uma versão completa.
+
+O arquivo da Yelum tinha cerca de trinta e sete por cento de margem vazia em volta da arte. Também foi recortado.
+
+O arquivo da Porto Seguro, que eu mesmo havia separado anteriormente, teve a margem residual removida para ficar no mesmo padrão dos demais.
+
+### O novo padrão de tamanho
+
+A altura de cada logo subiu de quarenta e dois para cinquenta e oito pontos, e a altura da célula que o contém subiu de cinquenta e dois para oitenta pontos. Os logos ficaram visivelmente maiores.
+
+Logos com formatos muito diferentes não podem ser dimensionados apenas pela altura. Um logo alto e estreito, dimensionado pela altura, fica com uma área minúscula; um logo largo e baixo fica enorme. Medindo a área que cada logo ocupava na tela, a diferença entre o menor e o maior era de cinco vezes.
+
+Foram criados três ajustes, aplicados conforme o formato de cada logo. O primeiro, para logos em formato retrato, permite altura maior. O segundo, para logos muito horizontais, permite largura maior. O terceiro, para logos que ficavam pesados demais, reduz a largura máxima.
+
+Com esses três ajustes, a diferença entre o menor e o maior logo caiu de cinco vezes para uma vez e meia.
+
+### Correção no efeito de cor cinza
+
+As faixas exibem os logos em cinza e revelam a cor original quando o cursor passa por cima. O efeito de cinza usava um aumento forte de brilho.
+
+Esse aumento de brilho destruía logos formados por arte branca vazada sobre fundo colorido. O caso mais visível era o da Porto Seguro: o símbolo, que é uma onda branca sobre um quadrado azul, virava um quadrado cinza completamente liso, sem nenhum desenho reconhecível.
+
+O aumento de brilho foi reduzido e o contraste ajustado. Agora a onda da Porto Seguro aparece normalmente, e os demais logos mantêm o mesmo aspecto suave de antes.
+
+### Correção de dois logos antigos que sumiram
+
+Ao aplicar o novo dimensionamento, os logos da Tokio Marine e da Unimed passaram a não aparecer.
+
+O motivo: esses dois arquivos não declaram largura nem altura próprios, apenas a área de desenho. Quando o dimensionamento depende inteiramente do tamanho natural do arquivo, esses dois colapsam para tamanho zero.
+
+A solução foi manter uma altura definida na folha de estilo, em vez de deixá-la automática. Assim o navegador tem sempre uma dimensão concreta de onde partir, e nenhum logo depende do arquivo declarar seu próprio tamanho.
+
+### Página Para Empresas equiparada às demais
+
+A faixa da página Para Empresas exibe quatro logos: SulAmérica, Bradesco Saúde, Porto Seguro e Hapvida. Ela recebeu exatamente o mesmo tratamento das outras páginas — os mesmos arquivos novos, o mesmo tamanho, o mesmo espaçamento e os mesmos ajustes de equilíbrio. Nenhum logo foi acrescentado a essa faixa.
+
+### Correção de texto para leitor de tela
+
+Na página Para Você, o parágrafo oculto que descreve as seguradoras parceiras não mencionava o Bradesco, embora o logo estivesse na faixa. O nome foi acrescentado para a descrição corresponder ao que é exibido.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": novo tamanho das células e dos logos, três ajustes de equilíbrio por formato, e correção do efeito de cinza.
+
+Arquivo "index.html": trocas de Mapfre, Suhai e Hapvida, e ajustes de equilíbrio aplicados aos logos das duas faixas.
+
+Arquivo "para-voce.html": as mesmas trocas e ajustes, mais a correção do texto para leitor de tela.
+
+Arquivo "empresas.html": troca de SulAmérica e Hapvida, e ajustes de equilíbrio nos quatro logos.
+
+Foram adicionados os arquivos de imagem novos e recortados nas pastas "images/logos-seguradoras" e "images/logos-operadoras-saude".
+
+### Como foi verificado
+
+As três páginas foram medidas diretamente no navegador.
+
+Nenhuma imagem falhou ao carregar. Nenhum logo ficou com tamanho zero. A diferença de área entre o menor e o maior logo ficou em uma vez e meia.
+
+As faixas continuam girando de forma infinita: erro na emenda do ciclo igual a zero pixel, velocidade de onze pixels por segundo, e a primeira metade sempre mais larga que a área visível.
+
+O efeito de revelar a cor ao passar o cursor foi confirmado visualmente desta vez, e não apenas por análise das regras de estilo.
+
+Em largura de tela de trezentos e setenta e cinco pontos, confirmou-se que as faixas maiores não provocam rolagem horizontal na página.
+
+---
+
 ## Alteração 2 — Faixas de logos giram de forma realmente infinita
 
 Data: 5 de agosto de 2026.
