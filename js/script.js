@@ -73,17 +73,6 @@
     resizeTimer = setTimeout(runAll, 200);
   });
 
-  document.querySelectorAll('.seguradoras').forEach((section) => {
-    const btn = section.querySelector('.seguradoras__pause');
-    if (!btn) return;
-    const label = btn.querySelector('.seguradoras__pause-label');
-    btn.addEventListener('click', () => {
-      const paused = section.classList.toggle('is-paused');
-      btn.setAttribute('aria-pressed', String(paused));
-      btn.setAttribute('aria-label', paused ? 'Retomar animação dos logos' : 'Pausar animação dos logos');
-      if (label) label.textContent = paused ? 'Retomar' : 'Pausar';
-    });
-  });
 })();
 
 /* ─── Mobile menu ─────────────────────────────────────── */
