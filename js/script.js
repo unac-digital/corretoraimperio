@@ -3,87 +3,134 @@
 /* ─── Carrossel infinito de seguradoras ──────────────── */
 (function () {
   const SPEED_PX_PER_SEC = 11;
+  const builtFor = new WeakMap();
+  let forcado = false;
 
-  const setupMarquee = (slider) => {
-    const section = slider.closest('.seguradoras');
-    if (!section) return;
+  const cloneItem = (el, kind) => {
+    const clone = el.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.setAttribute('data-clone', kind);
+    return clone;
+  };
+
+  const build = (slider) => {
     const track = slider.parentElement;
-    const originals = Array.from(slider.children);
-    if (!originals.length) return;
 
+    /* Os clones saem ANTES de ler os originais: lendo depois, os clones da
+       montagem anterior entrariam na lista de originais e a fita cresceria
+       a cada remontagem. */
     slider.querySelectorAll('[data-clone]').forEach((n) => n.remove());
 
-    const trackWidth = () => track.getBoundingClientRect().width;
-    const sliderWidth = () => slider.scrollWidth;
+    const originals = Array.from(slider.children);
+    if (!originals.length) return false;
 
-    let safety = 0;
-    while (sliderWidth() < trackWidth() * 1.2 && safety < 6) {
-      originals.forEach((el) => {
-        const clone = el.cloneNode(true);
-        clone.setAttribute('aria-hidden', 'true');
-        clone.setAttribute('data-clone', 'pad');
-        slider.appendChild(clone);
-      });
-      safety++;
+    const trackWidth = track.getBoundingClientRect().width;
+    const baseWidth = slider.getBoundingClientRect().width;
+    if (!trackWidth || !baseWidth) return false;
+
+    /* Repete o conjunto até a fita ficar mais larga que a área visível,
+       senão sobraria espaço vazio no fim de cada volta. */
+    let copies = 1;
+    while (baseWidth * copies < trackWidth * 1.2 && copies < 12) copies++;
+    for (let i = 1; i < copies; i++) {
+      originals.forEach((el) => slider.appendChild(cloneItem(el, 'pad')));
     }
 
-    const halfChildren = Array.from(slider.children);
-    halfChildren.forEach((el) => {
-      const clone = el.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      clone.setAttribute('data-clone', 'half');
-      slider.appendChild(clone);
-    });
+    /* Duplica a fita inteira: a segunda metade é cópia exata da primeira,
+       então o translateX(-50%) do keyframe termina num ponto idêntico ao
+       início e a emenda do ciclo não aparece. */
+    Array.from(slider.children).forEach((el) => slider.appendChild(cloneItem(el, 'half')));
 
-    const halfWidth = sliderWidth() / 2;
+    /* A metade é medida por aritmética, não relendo o DOM: as <img> clonadas
+       recarregam de forma assíncrona e teriam largura zero neste instante,
+       o que faria a fita andar mais rápido que os SPEED_PX_PER_SEC. Como
+       cada cópia é idêntica ao conjunto original, a conta é exata. */
+    const halfWidth = baseWidth * copies;
     const duration = Math.max(20, halfWidth / SPEED_PX_PER_SEC);
     slider.style.setProperty('--marquee-duration', duration.toFixed(1) + 's');
-
-    section.classList.add('is-ready');
+    return true;
   };
 
-  const runAll = () => {
-    document.querySelectorAll('.seguradoras-slider[data-marquee]').forEach(setupMarquee);
-  };
+  const buildAll = (imagensProntas) => {
+    document.querySelectorAll('.seguradoras-slider[data-marquee]').forEach((slider) => {
+      const section = slider.closest('.seguradoras');
+      if (!section) return;
 
-  const onReady = () => {
-    const imgs = document.querySelectorAll('.seguradoras-slider img');
-    let pending = imgs.length;
-    if (!pending) { runAll(); return; }
-    imgs.forEach((img) => {
-      if (img.complete) {
-        if (--pending === 0) runAll();
-      } else {
-        img.addEventListener('load', () => { if (--pending === 0) runAll(); }, { once: true });
-        img.addEventListener('error', () => { if (--pending === 0) runAll(); }, { once: true });
-      }
+      /* Sem layout ainda (container escondido): medir agora daria zero. Sai
+         sem marcar nada, para tentar de novo quando a faixa ganhar largura. */
+      const largura = Math.round(slider.parentElement.getBoundingClientRect().width);
+      if (!largura) return;
+
+      /* A chave carrega a largura e se as imagens já estavam carregadas, então
+         uma montagem provisória é refeita quando elas chegam, e chamadas
+         repetidas na mesma condição não fazem nada. */
+      const chave = largura + (imagensProntas ? ':ok' : ':parcial');
+      if (builtFor.get(slider) === chave) return;
+
+      /* Só memoriza depois do sucesso: marcar antes deixaria a fita presa
+         para sempre num build que falhou. */
+      if (!build(slider)) return;
+      builtFor.set(slider, chave);
+
+      /* Reinicia a animação para ela já nascer com a duração nova: trocar a
+         duração com a animação rodando faz a fita saltar. */
+      slider.style.animation = 'none';
+      void slider.offsetWidth;
+      slider.style.animation = '';
+
+      section.classList.add('is-ready');
     });
-    setTimeout(runAll, 2500);
+  };
+
+  /* Medir antes das imagens carregarem daria largura zero, e a fita sairia com
+     o número de cópias e a velocidade errados — por isso espera. Se alguma
+     imagem nunca resolver, `forcado` monta assim mesmo em vez de deixar a fita
+     parada, e a montagem correta acontece quando ela chegar. */
+  const tentar = () => {
+    const imgs = Array.from(document.querySelectorAll('.seguradoras-slider img'));
+    const prontas = imgs.every((img) => img.complete);
+    if (!prontas && !forcado) return;
+    buildAll(prontas);
+  };
+
+  /* Observar a faixa cobre a primeira vez que ela ganha largura e qualquer
+     mudança depois. Observamos a faixa, não a fita — a fita muda de largura
+     quando clonamos, e isso realimentaria o observer. */
+  let resizeTimer;
+  const agendarRemontagem = () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(tentar, 200);
+  };
+
+  const init = () => {
+    if (typeof ResizeObserver === 'function') {
+      const ro = new ResizeObserver(agendarRemontagem);
+      document.querySelectorAll('.seguradoras-track').forEach((t) => ro.observe(t));
+    } else {
+      window.addEventListener('resize', agendarRemontagem);
+    }
+
+    document.querySelectorAll('.seguradoras-slider img').forEach((img) => {
+      if (img.complete) return;
+      img.addEventListener('load', tentar, { once: true });
+      img.addEventListener('error', tentar, { once: true });
+    });
+
+    /* Aba aberta em segundo plano: o navegador segura timers e eventos até ela
+       aparecer, então tentamos de novo quando o usuário chega nela. */
+    document.addEventListener('visibilitychange', tentar);
+    window.addEventListener('load', tentar);
+    setTimeout(() => { forcado = true; tentar(); }, 5000);
+
+    tentar();
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', onReady, { once: true });
+    document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
-    onReady();
+    init();
   }
 
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(runAll, 200);
-  });
-
-  document.querySelectorAll('.seguradoras').forEach((section) => {
-    const btn = section.querySelector('.seguradoras__pause');
-    if (!btn) return;
-    const label = btn.querySelector('.seguradoras__pause-label');
-    btn.addEventListener('click', () => {
-      const paused = section.classList.toggle('is-paused');
-      btn.setAttribute('aria-pressed', String(paused));
-      btn.setAttribute('aria-label', paused ? 'Retomar animação dos logos' : 'Pausar animação dos logos');
-      if (label) label.textContent = paused ? 'Retomar' : 'Pausar';
-    });
-  });
 })();
 
 /* ─── Mobile menu ─────────────────────────────────────── */
