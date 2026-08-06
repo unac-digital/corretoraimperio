@@ -451,7 +451,7 @@
 
 /* ─── Atualiza ano no rodapé ─────────────────────────── */
 (function () {
-  document.querySelectorAll('.footer-year').forEach((el) => {
+  document.querySelectorAll('#ano-footer, .footer-year').forEach((el) => {
     el.textContent = new Date().getFullYear();
   });
 })();

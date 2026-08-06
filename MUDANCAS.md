@@ -8,6 +8,104 @@ O texto foi escrito para ser lido em voz alta por leitor de tela. Não há tabel
 
 ---
 
+## Alteração 5 — Rodapé padronizado em todo o site e cards de serviço reorganizados
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Dois ajustes nesta entrada.
+
+Primeiro: até esta alteração, apenas a página inicial tinha o rodapé completo e bem organizado, com as informações divididas em colunas claras: marca, Soluções, Empresa, Grupo Império e Contato. Todas as outras dez páginas do site, incluindo a página Para Empresas, a página Para Você, e as oito páginas de produtos específicos, usavam um modelo de rodapé mais antigo, que não tinha o mesmo visual. O ano exibido no direito autoral, nessas páginas antigas, também estava escrito à mão e desatualizado, mostrando 2025. Agora todas as onze páginas do site compartilham exatamente o mesmo rodapé, com o mesmo visual, a mesma organização em colunas, e o ano atualizado automaticamente em todas elas.
+
+Segundo: na seção de serviços da página Para Empresas e da página Para Você, os quatro cartões de serviço apareciam três numa fileira de cima e um sozinho embaixo, deixando um espaço vazio grande ao lado dele. Agora os quatro cartões aparecem organizados em duas fileiras de dois, como pedido.
+
+### Por que cada mudança foi feita
+
+O rodapé: o usuário percebeu que o rodapé de uma página de produto estava visualmente diferente do rodapé da página inicial e pediu para que todas seguissem o mesmo padrão. A investigação revelou a causa: aquele modelo de rodapé mais antigo usava um nome de classe de estilo que não tinha mais nenhuma regra correspondente na folha de estilos do site. Na prática, ele estava sendo exibido sem nenhuma formatação de colunas, espaçamento ou destaque — o oposto do rodapé moderno e organizado da página inicial. Ao mesmo tempo, foi encontrado que o campo do ano no rodapé novo (o da página inicial) também tinha um pequeno defeito: o código que deveria preencher o ano atual procurava por um nome de campo que não existia mais ali, então esse campo específico ficava sempre vazio. Os dois problemas foram corrigidos juntos.
+
+Os cartões de serviço: pedido direto do usuário.
+
+### Arquivos alterados
+
+Dez páginas tiveram o rodapé inteiro substituído pelo modelo padrão, ajustando apenas os endereços dos links de acordo com a localização de cada página dentro das pastas do site: a página Para Empresas, a página Para Você, e as oito páginas de produtos específicos dentro das pastas de empresas e de pessoa física.
+
+Arquivo "js/script.js": o trecho que preenche o ano no rodapé passou a reconhecer também o novo campo de ano, além do antigo, corrigindo o campo que ficava vazio.
+
+Arquivo "css/style.css": a organização dos cartões de serviço passou de três colunas para duas colunas nas telas grandes, o que afeta igualmente a página Para Empresas e a página Para Você, já que as duas têm exatamente quatro cartões cada.
+
+### Como foi verificado
+
+O novo rodapé foi conferido numa das páginas de produto mais profundas do site, dentro da pasta de empresas: a imagem da marca carregou corretamente, o ano apareceu preenchido com o ano atual, e todos os links de navegação apontaram para os endereços corretos, considerando que a página está uma pasta abaixo da página inicial. As larguras das cinco colunas do rodapé, medidas nessa página de produto, ficaram idênticas às larguras já validadas na página inicial.
+
+A reorganização dos cartões de serviço foi conferida tanto na página Para Empresas quanto na página Para Você: em ambas, os quatro cartões apareceram distribuídos em duas fileiras de dois, sem nenhum cartão sozinho.
+
+### Um ponto que vale a atenção do cliente
+
+Ao replicar o rodapé padrão, três links de navegação foram copiados exatamente como estavam na página inicial: "Sobre nós", "Contato" e "Perguntas frequentes", que apontam para pontos específicos dentro da página inicial. Durante a verificação, foi constatado que a página inicial, na sua versão atual, não tem mais nenhuma seção marcada com esses três nomes internos — ela foi reestruturada em algum momento anterior e essas marcações de destino não foram recriadas. Isso significa que, ao clicar nesses três links específicos em qualquer página do site, incluindo a própria página inicial, o visitante é levado para o topo da página inicial, em vez de ser levado direto até a seção correspondente. Essa falha já existia antes desta alteração e não foi criada por ela; ela apenas se tornou visível em mais lugares porque o rodapé padrão, que já tinha essa falha, passou a ser usado em todo o site. Como não foi pedido para corrigir esse ponto, ele foi deixado como estava, apenas registrado aqui para conhecimento.
+
+---
+
+## Alteração 4 — Cabeçalho com cor fixa, ícone corrigido, botão do WhatsApp removido, rodapé reequilibrado e textos justificados
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Seis ajustes independentes nesta entrada.
+
+Primeiro: o cabeçalho do site, que antes nascia branco no topo da página e virava preto de repente assim que o visitante rolava cinquenta pixels, agora tem uma única cor fixa, o mesmo preto usado no rodapé. Não existe mais essa troca abrupta de cor durante a rolagem.
+
+Segundo: um pequeno ícone que aparecia quebrado (faltando partes do desenho) ao lado do texto "Para Empresas", na página inicial, foi corrigido para ficar completo, igual ao ícone maior usado no card ao lado.
+
+Terceiro: a seção "Em números", que mostra a contagem de clientes, empresas, seguradoras e anos de experiência, tinha exatamente a mesma cor de fundo do rodapé, o que fazia as duas parecerem uma coisa só. Agora ela tem um tom de cinza mais claro, diferente do rodapé, mas ainda dentro da paleta de cores do site.
+
+Quarto: o botão redondo do WhatsApp que ficava sempre visível, flutuando no canto inferior direito da tela em todas as páginas, foi removido. Os outros botões de WhatsApp do site, os que ficam dentro do conteúdo normal da página, continuam no lugar e funcionando.
+
+Quinto: a organização das informações no rodapé ficou mais equilibrada. Antes, a coluna "Grupo Império", que tem só dois links, ocupava a mesma largura que a coluna "Soluções", que tem cinco links — sobrava muito espaço vazio de um lado. Ao mesmo tempo, o endereço de e-mail no bloco de contato, por ser um texto sem espaços, empurrava aquela coluna para ficar mais larga do que deveria, espremendo as colunas do meio. Em telas de notebook comum, isso chegava a quebrar o texto "Perguntas frequentes" de um jeito feio. Agora cada coluna tem uma largura proporcional à quantidade real de informação que ela carrega, e o e-mail quebra em duas linhas de forma organizada dentro do espaço da própria coluna, em vez de empurrar as colunas vizinhas.
+
+Sexto: quatro tipos de texto do site passaram a ficar alinhados nas duas margens, esquerda e direita, em vez de só na esquerda. São eles: os parágrafos de apresentação para empresas e para pessoas físicas na página inicial, a descrição dos cards de serviço, o texto dos depoimentos de clientes, e as respostas do "Perguntas frequentes".
+
+### Por que cada mudança foi feita
+
+O cabeçalho: o usuário relatou que a cor branca do topo destoava da identidade visual escura do restante do site, e que a troca súbita para preto ao rolar também incomodava. A solução foi fixar uma única cor, eliminando as duas reclamações de uma vez.
+
+O ícone: ele estava com apenas dois traços do desenho original de cinco, resultando numa forma incompleta.
+
+A cor da seção "Em números": o usuário identificou que ela estava com a mesma cor do rodapé logo abaixo.
+
+O botão flutuante do WhatsApp: pedido direto do usuário para removê-lo do site inteiro.
+
+O rodapé: pedido direto do usuário para reorganizar as informações de forma mais harmoniosa. A investigação encontrou a causa técnica exata do desequilíbrio, descrita no parágrafo anterior.
+
+Os textos justificados: pedido direto do usuário.
+
+### Uma observação sobre acessibilidade
+
+Alinhar texto nas duas margens pode, em alguns casos, criar espaçamentos irregulares entre palavras, o que dificulta um pouco a leitura para pessoas com dislexia. É uma prática desaconselhada pelas diretrizes de acessibilidade no nível mais rigoroso, mas não constitui uma falha grave, e a mudança foi aplicada exatamente como solicitada. Se o usuário perceber espaçamento estranho em algum parágrafo curto específico, é possível reverter só aquele trecho sem afetar os demais.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": nove blocos de estilo alterados. A cor do cabeçalho passou a ser fixa e as regras que trocavam essa cor durante a rolagem foram removidas por não fazerem mais efeito nenhum. A cor de fundo da seção "Em números" foi trocada. O bloco inteiro de estilo do botão flutuante do WhatsApp foi apagado, por não ter mais utilidade. As larguras das colunas do rodapé foram recalculadas, e foi adicionada uma regra que permite ao endereço de e-mail quebrar linha dentro da própria coluna. Foi adicionado alinhamento justificado em quatro tipos de texto.
+
+Arquivo "index.html": o ícone quebrado foi completado com as partes que faltavam.
+
+Onze páginas tiveram o botão flutuante do WhatsApp removido: a página inicial, a página Para Empresas, a página Para Você, e as oito páginas de produtos específicos dentro das pastas de empresas e de pessoa física.
+
+### Como foi verificado
+
+O cabeçalho foi conferido antes e depois de simular a rolagem da página: a cor de fundo permaneceu idêntica nos dois momentos, confirmando que a troca de cor não acontece mais. Foi conferido também que o link da página em que o visitante está aparece destacado em dourado, tanto na página inicial quanto nas páginas internas.
+
+O ícone corrigido foi conferido: agora ele tem os cinco traços completos, os mesmos do ícone maior ao lado.
+
+A ausência do botão flutuante do WhatsApp foi conferida nas onze páginas. Nenhum estilo órfão relacionado a ele restou na folha de estilos.
+
+O rodapé foi conferido em três larguras de tela diferentes, simulando um monitor grande, um notebook comum, e a largura logo antes de a página reorganizar as colunas em duas linhas. Em nenhuma dessas larguras algum link de navegação quebrou linha de forma inesperada, e o endereço de e-mail passou a quebrar corretamente dentro do espaço da própria coluna.
+
+Os quatro tipos de texto justificado foram conferidos visualmente, mostrando as margens retas dos dois lados dos parágrafos.
+
+---
+
 ## Alteração 3 — Troca de seis logos e novo padrão de tamanho das faixas
 
 Data: 5 de agosto de 2026.
