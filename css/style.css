@@ -761,15 +761,27 @@ strong { font-weight: var(--font-semibold); }
 }
 .audience-block {
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  /* Contorno dourado suave em vez do cinza neutro (--color-border): puro
+     branco+cinza sobre o fundo cinza-claro da página (--color-bg) quase não
+     se distinguia, e o card ficava sem presença ao lado do irmão escuro
+     (.audience-block--primary). O tom dourado ecoa a etiqueta "Para Você"
+     e os ícones da lista, que já usam essa cor. */
+  border: 1px solid rgba(var(--color-accent-rgb), 0.22);
   border-radius: var(--radius-lg);
   padding: var(--space-12);
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  /* Sombra já em repouso, não só no hover: sem ela o card não "descolava"
+     do fundo da página. */
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
-.audience-block:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.audience-block:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: rgba(var(--color-accent-rgb), 0.45);
+}
 .audience-block--primary { background: var(--color-primary); border-color: var(--color-primary); }
 .audience-block__tag {
   display: inline-flex;
@@ -811,9 +823,12 @@ strong { font-weight: var(--font-semibold); }
   font-size: var(--font-base);
   color: var(--color-text);
   padding: var(--space-3) var(--space-4);
-  background: var(--color-bg);
+  /* Cinza neutro (--color-bg) sobre um cartão branco que já ficava fraco
+     não dava nenhuma definição ao "chip". Um toque do dourado do ícone ao
+     lado cria contraste sem introduzir uma cor nova na paleta. */
+  background: rgba(var(--color-accent-rgb), 0.05);
   border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.16);
 }
 .audience-block--primary .service-item {
   background: rgba(255,255,255,0.07);

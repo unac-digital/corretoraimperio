@@ -8,6 +8,48 @@ O texto foi escrito para ser lido em voz alta por leitor de tela. Não há tabel
 
 ---
 
+## Alteração 9 — Sombra e contorno dourado no cartão "Para Você"
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Na página inicial, o cartão claro "Para Você" — que fica ao lado do cartão escuro "Para Empresas" — ganhou uma sombra suave e um contorno com um leve tom dourado, em vez do contorno cinza neutro que tinha antes. Os pequenos blocos de serviço dentro dele ("Seguro Auto", "Seguro Saúde Individual e Familiar", "Seguro de Vida e Consórcio") também ganharam esse mesmo tom dourado sutil no fundo e na borda.
+
+### Por que a mudança foi feita
+
+O usuário apontou que as cores daquele cartão não estavam boas e sugeriu experimentar uma sombra ou uma troca de cores.
+
+A causa raiz: o cartão tem fundo branco, e a página ao redor dele tem fundo cinza muito claro. A diferença entre os dois tons é pequena. O contorno do cartão, por sua vez, era um cinza ainda mais próximo do fundo da página do que do próprio branco do cartão. Sem nenhuma sombra em repouso — só ao passar o cursor — o resultado era um cartão que quase não se distinguia da página, especialmente ao lado do cartão escuro vizinho, que tem muita presença visual por si só. Os blocos de serviço dentro do cartão tinham o mesmo problema: um cinza muito parecido com o fundo da página, deixando-os com pouca definição.
+
+### Como foi resolvido
+
+Foi adicionada uma sombra leve ao cartão, presente o tempo todo e não apenas ao passar o cursor, para que ele se destaque do fundo da página desde o primeiro momento.
+
+O contorno cinza foi trocado por um contorno com um toque sutil da cor dourada que já era usada em outros elementos daquele mesmo cartão: a etiqueta "Para Você" e os ícones da lista de serviços. Isso cria uma conexão visual entre as partes do cartão, em vez de introduzir uma cor nova que não existisse já na paleta do site.
+
+Os pequenos blocos de serviço dentro do cartão receberam o mesmo tratamento: um toque de dourado no fundo e na borda, no lugar do cinza neutro anterior.
+
+O cartão escuro "Para Empresas", ao lado, não foi alterado.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": três regras de estilo ajustadas — a aparência do cartão claro em repouso e ao passar o cursor, e a aparência dos pequenos blocos de serviço dentro dele.
+
+Nenhum arquivo de página foi alterado.
+
+### Como foi verificado
+
+Foi confirmado que a cor de fundo do cartão (branco) e a cor de fundo da página ao redor (cinza muito claro) são, agora, visivelmente diferentes.
+
+Foi confirmado que o cartão tem sombra mesmo sem o cursor em cima, e que uma sombra mais forte continua aparecendo ao passar o cursor, como já acontecia antes.
+
+Foi confirmado que o cartão escuro "Para Empresas" manteve exatamente a mesma aparência de antes, sem nenhuma alteração.
+
+Foi confirmado que essas duas classes de estilo alteradas só existem na página inicial, então nenhuma outra página do site foi afetada.
+
+---
+
 ## Alteração 8 — Título da seção "Proteção sob medida para cada perfil" em uma linha só
 
 Data: 5 de agosto de 2026.
