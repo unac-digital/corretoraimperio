@@ -8,6 +8,36 @@ O texto foi escrito para ser lido em voz alta por leitor de tela. Não há tabel
 
 ---
 
+## Alteração 10 — Contorno dourado no cartão escuro "Para Empresas"
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Na página inicial, o cartão escuro "Para Empresas" — irmão do cartão claro "Para Você" ajustado na alteração anterior — ganhou um contorno dourado sutil, visível o tempo todo, e não apenas quando o cursor passa por cima dele.
+
+### Por que a mudança foi feita
+
+Pedido direto do usuário: aplicar nesse cartão o mesmo tipo de contorno colorido que havia sido aplicado ao cartão claro ao lado.
+
+A investigação mostrou que o cartão escuro já tinha uma regra de contorno, mas ela definia a cor do contorno como sendo exatamente a mesma cor do próprio fundo do cartão. Na prática, isso equivale a não ter contorno nenhum em repouso — as duas cores se sobrepõem e o traço desaparece. Só ao passar o cursor por cima é que um contorno dourado aparecia rapidamente, herdado de uma regra genérica compartilhada com o cartão claro.
+
+### Como foi resolvido
+
+A cor do contorno em repouso foi trocada para o mesmo tom dourado usado no cartão claro vizinho, calibrado numa intensidade um pouco mais forte — de vinte e dois para trinta e cinco por cento de opacidade — porque uma cor clara como o dourado precisa de mais intensidade para se destacar sobre um fundo escuro do que sobre um fundo claro.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": uma regra de estilo ajustada, referente à cor do contorno do cartão escuro em repouso.
+
+Nenhum arquivo de página foi alterado.
+
+### Como foi verificado
+
+Foi confirmado que a cor do contorno do cartão escuro agora é diferente da cor do fundo dele, o que significa que o contorno passou a ser visível de fato, e não apenas sobreposto ao fundo.
+
+---
+
 ## Alteração 9 — Sombra e contorno dourado no cartão "Para Você"
 
 Data: 5 de agosto de 2026.

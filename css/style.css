@@ -782,7 +782,15 @@ strong { font-weight: var(--font-semibold); }
   transform: translateY(-3px);
   border-color: rgba(var(--color-accent-rgb), 0.45);
 }
-.audience-block--primary { background: var(--color-primary); border-color: var(--color-primary); }
+.audience-block--primary {
+  background: var(--color-primary);
+  /* Mesmo tom dourado do card claro ao lado, calibrado mais forte (35% em
+     vez de 22%) porque precisa aparecer sobre o fundo escuro, não só o
+     claro. Antes era var(--color-primary), igual ao próprio fundo — ou
+     seja, sem nenhum contorno visível em repouso (só o :hover genérico de
+     .audience-block já deixava o contorno dourado aparecer). */
+  border-color: rgba(var(--color-accent-rgb), 0.35);
+}
 .audience-block__tag {
   display: inline-flex;
   align-items: center;
