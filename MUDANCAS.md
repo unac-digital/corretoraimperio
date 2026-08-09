@@ -8,6 +8,62 @@ O texto foi escrito para ser lido em voz alta por leitor de tela. Não há tabel
 
 ---
 
+## Alteração 12 — Logo do cabeçalho bem maior, com o arquivo recortado
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+A imagem da marca no cabeçalho ficou consideravelmente maior. A parte visível dela passou de trinta e seis para setenta e seis pontos de altura, ou seja, mais que dobrou de tamanho. O cabeçalho ficou um pouco mais alto para acomodá-la.
+
+### A causa real do problema
+
+Nas duas tentativas anteriores de ajustar essa logo, o valor da altura foi aumentado e diminuído, mas o problema de fundo passou despercebido: o arquivo de imagem tinha uma enorme margem transparente em volta do desenho.
+
+O arquivo media mil trezentos e sessenta e seis por setecentos e vinte e cinco pontos, mas o desenho da marca ocupava apenas oitocentos e onze por quatrocentos e nove no meio dele. Ou seja, cerca de dois terços do arquivo era espaço vazio.
+
+Como a altura definida no estilo se aplica ao arquivo inteiro, e não ao desenho, o efeito era este: com a altura configurada em sessenta e quatro pontos, o desenho visível tinha apenas trinta e seis. O resto era margem invisível ocupando espaço. Era impossível deixar a logo grande mexendo só no número da altura, porque boa parte do espaço reservado estava sendo gasto com transparência.
+
+### Como foi resolvido
+
+O arquivo da logo foi recortado exatamente nos limites do desenho, passando de mil trezentos e sessenta e seis por setecentos e vinte e cinco para oitocentos e onze por quatrocentos e nove pontos. Nenhuma parte do desenho foi perdida — apenas a margem transparente foi removida. A partir de agora, a altura definida no estilo corresponde à altura real do que aparece na tela.
+
+Só esse recorte já tornou a logo setenta e sete por cento maior, sem alterar nada no layout.
+
+Além disso, a altura do cabeçalho passou de setenta e dois para oitenta e quatro pontos, e a altura da logo foi definida em setenta e seis pontos, deixando quatro pontos de folga acima e abaixo. Somando o recorte e o aumento, a parte visível da marca ficou cerca de cento e onze por cento maior que antes.
+
+### Dois efeitos colaterais que precisaram de ajuste
+
+O primeiro: a mesma imagem é usada no rodapé. Com o recorte, ela também ficaria maior lá. A altura da logo do rodapé foi reduzida de cento e trinta para oitenta e oito pontos, o que deixa o desenho visível ligeiramente maior do que era antes, sem estourar a coluna onde fica.
+
+O segundo: a primeira seção de cada página calcula sua altura descontando a altura do cabeçalho, para ocupar exatamente uma tela. Como o cabeçalho cresceu doze pontos, esse valor de referência foi atualizado junto, de setenta e três para oitenta e cinco pontos.
+
+### Arquivos alterados
+
+Arquivo de imagem "images/logo-imperio/logo-imperio.png": recortado nos limites do desenho.
+
+Arquivo "css/style.css": a altura do cabeçalho, a altura da logo do cabeçalho, a altura da logo do rodapé e o valor de referência da altura do cabeçalho.
+
+Nenhum arquivo de página foi alterado — as onze páginas usam a mesma imagem e os mesmos estilos.
+
+### Como foi verificado
+
+Foi confirmado que o arquivo recortado tem o desenho ocupando cem por cento da sua área, sem nenhuma margem transparente sobrando.
+
+A logo do cabeçalho foi medida em cento e cinquenta e um por setenta e seis pontos, cabendo inteira dentro do cabeçalho, com quatro pontos de folga iguais acima e abaixo.
+
+Foi confirmado que os cinco links de navegação continuam em uma linha cada, sem quebrar, e que não se sobrepõem ao botão do WhatsApp — testado em telas de mil duzentos e oitenta e de novecentos e vinte pontos de largura, esta última já bem perto do ponto em que o menu vira o botão de sanduíche.
+
+No celular, foi confirmado que a logo não encosta no botão do menu, com cento e cinquenta e três pontos de folga entre eles, e que a página não passou a ter rolagem horizontal.
+
+Foi confirmado que a primeira seção continua fechando exatamente uma tela, com o novo valor de altura do cabeçalho, e que a seção seguinte continua não aparecendo na primeira tela.
+
+A logo do rodapé foi medida em cento e setenta e quatro por oitenta e oito pontos, cabendo dentro da sua coluna.
+
+Tudo foi verificado também numa página de produto, dentro de uma pasta, confirmando que o caminho da imagem com "dois pontos e barra" continua carregando corretamente.
+
+---
+
 ## Alteração 11 — Logo do cabeçalho maior
 
 Data: 5 de agosto de 2026.

@@ -67,9 +67,9 @@
   --space-24: 6rem;
   --space-32: 8rem;
 
-  /* Altura do header: 72px do .header__inner + 1px da borda de baixo.
+  /* Altura do header: 84px do .header__inner + 1px da borda de baixo.
      Usada para o hero ocupar exatamente o resto da tela. */
-  --header-h: 73px;
+  --header-h: 85px;
 
   /* Bordas */
   --radius-sm: 6px;
@@ -289,7 +289,10 @@ strong { font-weight: var(--font-semibold); }
   align-items: center;
   justify-content: space-between;
   gap: var(--space-8);
-  height: 72px;
+  /* 84px, não 72px: o logo agora é recortado (sem margem transparente) e
+     precisa de mais espaço vertical para aparecer grande de verdade.
+     Ao mudar aqui, atualizar também --header-h, que o hero usa. */
+  height: 84px;
 }
 .header__logo {
   display: flex;
@@ -304,16 +307,20 @@ strong { font-weight: var(--font-semibold); }
   flex-shrink: 0;
 }
 .header__logo-img {
-  /* O header tem 72px de altura; a 130px a logo estourava e aparecia cortada.
-     52px resolveu o corte mas ficou pequena demais. 64px deixa a logo com
-     mais presença, com só 4px de respiro em cima e embaixo — o máximo que
-     cabe sem tocar as bordas do header (a logo é 1366x725). */
-  height: 64px;
+  /* O arquivo tinha 66,5% de margem transparente (arte de 811x409 num canvas
+     de 1366x725): a 64px de altura, a arte visível tinha só 36px — daí a
+     impressão de logo pequena. O PNG foi recortado no tamanho da arte, então
+     agora esta altura é a altura real do que aparece.
+     76px dentro de um header de 84px: 4px de folga em cima e embaixo. */
+  height: 76px;
   width: auto;
   flex-shrink: 0;
 }
 .footer__logo-img {
-  height: 130px;
+  /* Compensa o recorte do PNG: antes, a 130px de caixa, a arte visível tinha
+     ~73px por causa da margem transparente. Com o arquivo recortado, 88px de
+     caixa = 88px de arte — um pouco maior que antes, sem estourar a coluna. */
+  height: 88px;
   width: auto;
 }
 .header__logo-text {
