@@ -8,6 +8,32 @@ O texto foi escrito para ser lido em voz alta por leitor de tela. Não há tabel
 
 ---
 
+## Alteração 11 — Logo do cabeçalho maior
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+A imagem da marca no cabeçalho, que havia sido reduzida numa alteração anterior para parar de aparecer cortada, ficou pequena demais. Ela foi aumentada, ganhando mais presença, sem voltar a ser cortada.
+
+### Por que a mudança foi feita
+
+O usuário apontou que, depois do ajuste anterior, a logo ficou muito pequena.
+
+### Como foi resolvido
+
+A altura da logo passou de cinquenta e dois para sessenta e quatro pontos — um aumento de cerca de vinte e três por cento. Isso deixa apenas quatro pontos de folga acima e abaixo dela dentro do cabeçalho, que tem setenta e dois pontos de altura. É essencialmente o maior tamanho possível sem a logo tocar as bordas do cabeçalho.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": a altura da logo do cabeçalho foi ajustada.
+
+### Como foi verificado
+
+Foi confirmado que a logo, agora com cento e vinte e um por sessenta e quatro pontos, continua cabendo inteira dentro do cabeçalho, com quatro pontos de folga iguais acima e abaixo.
+
+---
+
 ## Alteração 10 — Contorno dourado no cartão escuro "Para Empresas"
 
 Data: 5 de agosto de 2026.

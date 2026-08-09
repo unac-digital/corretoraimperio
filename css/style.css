@@ -305,8 +305,10 @@ strong { font-weight: var(--font-semibold); }
 }
 .header__logo-img {
   /* O header tem 72px de altura; a 130px a logo estourava e aparecia cortada.
-     52px deixa ~10px de respiro em cima e embaixo (a logo é 1366x725). */
-  height: 52px;
+     52px resolveu o corte mas ficou pequena demais. 64px deixa a logo com
+     mais presença, com só 4px de respiro em cima e embaixo — o máximo que
+     cabe sem tocar as bordas do header (a logo é 1366x725). */
+  height: 64px;
   width: auto;
   flex-shrink: 0;
 }
