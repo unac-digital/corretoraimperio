@@ -8,6 +8,58 @@ O texto foi escrito para ser lido em voz alta por leitor de tela. Não há tabel
 
 ---
 
+## Alteração 7 — Primeira seção ocupando a tela inteira em todas as páginas
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Ao abrir qualquer página do site, a primeira seção agora ocupa exatamente toda a altura da tela, do fim do cabeçalho até a borda de baixo. Antes, sobrava uma faixa da seção seguinte aparecendo no rodapé da primeira tela, que era clara e destoava do fundo escuro. Essa faixa não aparece mais.
+
+O comportamento vale para as onze páginas do site e para qualquer tamanho de tela, incluindo celulares. As demais seções da página continuam como estavam.
+
+### Por que a mudança foi feita
+
+Pedido direto do usuário, que descreveu a faixa clara da seção seguinte aparecendo no fim da primeira tela.
+
+A causa era simples: a primeira seção estava configurada para ocupar oitenta e oito por cento da altura da tela na página inicial, e setenta e dois por cento nas páginas internas. Os doze por cento (ou vinte e oito por cento) restantes eram justamente a faixa da seção seguinte que aparecia.
+
+### Como foi resolvido
+
+A altura passou a ser calculada como a altura total da tela menos a altura do cabeçalho. Como o cabeçalho acompanha a rolagem mas ocupa espaço no fluxo da página, descontá-lo faz cabeçalho e primeira seção somarem exatamente uma tela cheia.
+
+Três detalhes cuidaram dos casos difíceis:
+
+Primeiro, a altura da tela é medida com uma unidade que desconta as barras do navegador no celular. Navegadores antigos, que não entendem essa unidade, continuam usando a medida tradicional, sem quebrar nada.
+
+Segundo, havia uma regra específica para telas de até quatrocentos e oitenta pontos de largura que desativava completamente a altura mínima da primeira seção. Era exatamente ela que impedia o comportamento nos aparelhos menores. Foi removida.
+
+Terceiro, o espaçamento interno da primeira seção era fixo em noventa e seis pontos em cima e embaixo. Em monitores de pouca altura, esse valor sozinho já estourava a tela. Ele passou a ser proporcional à altura da tela, variando entre trinta e dois e noventa e seis pontos.
+
+### Uma observação sobre telas muito baixas
+
+Em telas de altura bem reduzida, o conteúdo da primeira seção pode, naturalmente, ser mais alto do que a tela disponível. Nesses casos a seção cresce para caber o conteúdo, em vez de cortá-lo. Mesmo aí, o objetivo principal continua garantido: a seção seguinte não aparece na primeira tela.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": foi criada uma variável guardando a altura do cabeçalho; a altura da primeira seção passou a ser calculada a partir dela; o espaçamento interno virou proporcional; o limite de setenta e dois por cento das páginas internas foi removido; e a regra que desativava a altura mínima nos celulares menores foi removida.
+
+Nenhum arquivo de página precisou ser alterado, porque todas as onze páginas já usavam a mesma classe de estilo na primeira seção.
+
+### Como foi verificado
+
+Foi confirmado que as onze páginas usam a mesma classe na primeira seção, o que faz a regra valer para todas.
+
+As medições foram feitas em cinco tamanhos de tela: um monitor grande, um notebook comum, um monitor de pouca altura, uma tela intermediária e um celular.
+
+Em monitores de proporção comum, a soma da altura do cabeçalho com a da primeira seção fechou exatamente a altura da tela, com diferença menor que dois pontos.
+
+Em todos os tamanhos testados, sem exceção, e tanto na página inicial quanto numa página interna e numa página de produto, confirmou-se que a seção seguinte não aparece na primeira tela.
+
+No celular, confirmou-se ainda que a página não passou a ter rolagem horizontal.
+
+---
+
 ## Alteração 6 — Link de início no cabeçalho, logo redimensionada, linha divisória e e-mail do rodapé em uma linha
 
 Data: 5 de agosto de 2026.
