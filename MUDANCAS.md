@@ -8,6 +8,54 @@ O texto foi escrito para ser lido em voz alta por leitor de tela. Não há tabel
 
 ---
 
+## Alteração 6 — Link de início no cabeçalho, logo redimensionada, linha divisória e e-mail do rodapé em uma linha
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Quatro ajustes nesta entrada.
+
+Primeiro: o cabeçalho ganhou um link chamado "Início", que leva à página inicial. Antes, a única forma de voltar ao começo do site era clicar na imagem da marca no canto superior esquerdo, o que não é evidente para todo mundo. O link aparece em todas as onze páginas do site, e na própria página inicial ele fica destacado em dourado, indicando ao visitante onde ele está.
+
+Segundo: a imagem da marca no cabeçalho estava grande demais e aparecia cortada. Ela foi reduzida para caber por inteiro, com uma folga equilibrada em cima e embaixo.
+
+Terceiro: foi acrescentada uma linha vertical fina e discreta separando a imagem da marca das opções de navegação. Além disso, as opções de navegação passaram a ficar alinhadas à esquerda, logo depois dessa linha, em vez de ficarem agrupadas do lado direito. O botão verde do WhatsApp continua exatamente onde estava, no canto direito.
+
+Quarto: no rodapé, o endereço de e-mail estava sendo exibido quebrado em duas linhas, o que ficava desalinhado. Agora ele aparece sempre em uma linha só.
+
+### Por que cada mudança foi feita
+
+O link "Início": pedido direto do usuário, que apontou que depender apenas da imagem da marca para voltar ao começo é ruim.
+
+A imagem da marca: ela estava definida com cento e trinta pontos de altura dentro de um cabeçalho de setenta e dois pontos. Ou seja, era quase o dobro do espaço disponível, e por isso aparecia cortada. Foi reduzida para cinquenta e dois pontos, o que deixa cerca de dez pontos de folga acima e abaixo.
+
+A linha divisória e o alinhamento à esquerda: pedido direto do usuário.
+
+O e-mail em uma linha: na alteração anterior, o e-mail havia sido configurado para quebrar linha dentro da própria coluna, como forma de impedir que ele empurrasse e espremesse as colunas vizinhas do rodapé. A solução resolvia o problema do espremimento, mas criava o problema da quebra, que o usuário apontou agora. A nova solução resolve os dois ao mesmo tempo: a coluna de contato passou a ser dimensionada pelo tamanho do próprio conteúdo, garantindo espaço para o e-mail inteiro, e as demais colunas dividem o que sobra.
+
+### Um ajuste adicional que essa correção exigiu
+
+Como a coluna de contato agora reserva uma largura fixa para o e-mail, em telas de tamanho intermediário sobrava pouco espaço para as outras quatro colunas, e alguns links de navegação voltavam a quebrar linha. Por isso, o ponto em que o rodapé se reorganiza de cinco colunas para duas colunas foi antecipado: antes isso acontecia em telas menores que novecentos pontos, agora acontece em telas menores que mil e oitenta pontos. Na prática, em notebooks de tela menor o rodapé passa a exibir duas colunas largas e confortáveis em vez de cinco colunas apertadas.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": a altura da imagem da marca no cabeçalho foi reduzida; a área de navegação passou a ocupar o espaço restante com os links alinhados à esquerda e o botão do WhatsApp empurrado para a direita; foi criada a linha divisória, que fica escondida quando o menu do celular está aberto, já que ali a navegação vira uma lista vertical; o e-mail do rodapé voltou a ficar em linha única e a coluna de contato passou a ser dimensionada pelo conteúdo; o ponto de reorganização do rodapé foi antecipado.
+
+Onze páginas receberam o novo link "Início" no cabeçalho, com o endereço ajustado conforme a localização de cada página dentro das pastas do site.
+
+### Como foi verificado
+
+No cabeçalho: a imagem da marca foi medida e confirmou-se que ela cabe inteira dentro da altura do cabeçalho, com folga igual em cima e embaixo. A linha divisória foi confirmada com um ponto de largura e vinte e quatro pontos de altura. Confirmou-se que os links começam logo após a linha divisória, à esquerda, e que o botão do WhatsApp permanece encostado na margem direita. Na página inicial, o link "Início" aparece destacado em dourado; nas páginas internas, quem fica destacada é a página correspondente, como antes.
+
+O menu do celular foi aberto e fechado: o link "Início" aparece na lista, e a linha divisória fica corretamente escondida.
+
+No rodapé: o e-mail foi medido em quatro larguras de tela diferentes, de um monitor grande até a largura de um celular, e em todas ele apareceu em uma linha só. Nenhum link de navegação do rodapé quebrou linha, e em nenhuma das larguras a página passou a ter rolagem horizontal.
+
+Numa página de produto, dentro de uma pasta, confirmou-se que o link "Início" aponta corretamente para a página inicial um nível acima.
+
+---
+
 ## Alteração 5 — Rodapé padronizado em todo o site e cards de serviço reorganizados
 
 Data: 5 de agosto de 2026.

@@ -288,7 +288,9 @@ strong { font-weight: var(--font-semibold); }
   flex-shrink: 0;
 }
 .header__logo-img {
-  height: 130px;
+  /* O header tem 72px de altura; a 130px a logo estourava e aparecia cortada.
+     52px deixa ~10px de respiro em cima e embaixo (a logo é 1366x725). */
+  height: 52px;
   width: auto;
   flex-shrink: 0;
 }
@@ -321,7 +323,18 @@ strong { font-weight: var(--font-semibold); }
 .header__nav {
   display: flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--space-6);
+  /* Ocupa o espaço que sobra depois da logo, para os links começarem logo
+     após a linha divisória em vez de ficarem colados no WhatsApp. */
+  flex: 1;
+}
+/* Linha discreta separando a logo das opções de navegação. */
+.header__nav::before {
+  content: "";
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
 }
 .header__nav a {
   font-size: var(--font-sm);
@@ -1082,9 +1095,11 @@ strong { font-weight: var(--font-semibold); }
      ser todas iguais: Grupo Império tem só 2 links (não precisa da mesma
      largura de Soluções, que tem 5) e Contato precisa de mais espaço que
      um link solto por causa do e-mail e do endereço em duas linhas. */
+  /* A última trilha (Contato) é dimensionada pelo conteúdo, para o e-mail
+     caber numa linha só; as demais dividem o que sobra. */
   grid-template-columns:
     minmax(0, 1.9fr) minmax(0, 1.05fr) minmax(0, 1.1fr)
-    minmax(0, 0.7fr) minmax(0, 1.25fr);
+    minmax(0, 0.7fr) auto;
   gap: var(--space-8);
   margin-bottom: var(--space-12);
 }
@@ -1128,9 +1143,10 @@ strong { font-weight: var(--font-semibold); }
   color: rgba(255,255,255,0.6);
   text-decoration: none;
   transition: color 0.2s ease;
-  /* O e-mail é uma string sem espaços: sem isso, ele empurra a coluna
-     inteira mais larga em vez de quebrar linha dentro do espaço dela. */
-  overflow-wrap: anywhere;
+  /* O e-mail fica numa linha só. Quem garante o espaço para isso é a última
+     trilha do grid, dimensionada por conteúdo (ver .footer__inner). O <br>
+     do endereço continua quebrando normalmente. */
+  white-space: nowrap;
 }
 .footer__contact-item:hover { color: rgba(255,255,255,0.9); }
 .footer__contact-item svg { color: var(--color-accent); flex-shrink: 0; margin-top: 2px; }
@@ -1147,7 +1163,10 @@ strong { font-weight: var(--font-semibold); }
 .footer__legal { display: flex; gap: var(--space-6); }
 .footer__legal a { font-size: var(--font-xs); color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s ease; }
 .footer__legal a:hover { color: rgba(255,255,255,0.7); }
-@media (max-width: 900px) {
+/* Abaixo de ~1080px as 5 colunas ficam estreitas demais (a de contato tem
+   largura fixa por causa do e-mail) e os links começam a quebrar linha;
+   antes disso o rodapé passa para duas colunas, que respiram melhor. */
+@media (max-width: 1080px) {
   .footer__inner { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
   .footer__brand { grid-column: 1 / -1; }
 }
@@ -1482,6 +1501,9 @@ strong { font-weight: var(--font-semibold); }
   gap: var(--space-3);
   overflow-y: auto;
 }
+/* No menu mobile aberto a nav vira coluna: a linha divisória vertical não
+   faz sentido ali e apareceria como um risco solto. */
+.header__nav.header__nav--open::before { display: none; }
 .header__nav.header__nav--open .header__nav-list {
   display: flex;
   flex-direction: column;
@@ -1515,6 +1537,9 @@ body.menu-open { overflow: hidden; }
   list-style: none;
   margin: 0;
   padding: 0;
+  /* Recolhe a folga toda depois dos links: eles ficam à esquerda, junto da
+     linha divisória, e só o botão do WhatsApp é empurrado para a direita. */
+  margin-right: auto;
 }
 .header__nav-link {
   font-size: var(--font-sm);
