@@ -155,7 +155,11 @@ ul, ol { list-style: none; }
 .section--alt   { padding: var(--space-20) 0; background: var(--color-surface); }
 .section--dark  { padding: var(--space-20) 0; background: var(--color-primary); color: var(--color-white); }
 .section__header {
-  max-width: 680px;
+  /* 760px, não 680px: o título "Proteção sob medida para cada perfil" precisa
+     de 694px numa linha só e ficava 14px maior que o bloco, jogando "perfil"
+     sozinho para a linha de baixo. O parágrafo continua limitado a 680px
+     (ver .section__desc), que é a largura boa de leitura. */
+  max-width: 760px;
   margin: 0 auto var(--space-16);
   text-align: center;
 }
@@ -176,12 +180,20 @@ ul, ol { list-style: none; }
   letter-spacing: var(--tracking-tight);
   color: var(--color-text);
   margin-bottom: var(--space-4);
+  /* Quando o título realmente não couber numa linha (telas menores), reparte
+     as linhas de forma equilibrada em vez de deixar uma palavra órfã. */
+  text-wrap: balance;
 }
 .section--dark .section__title { color: var(--color-white); }
 .section__desc {
   font-size: var(--font-md);
   line-height: var(--leading-relaxed);
   color: var(--color-muted);
+  /* Segura o parágrafo na largura de leitura mesmo com o cabeçalho mais
+     largo, que existe só para o título caber numa linha. */
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .section--dark .section__desc { color: rgba(255,255,255,0.72); }
 @media (min-width: 768px) {

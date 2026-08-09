@@ -8,6 +8,46 @@ O texto foi escrito para ser lido em voz alta por leitor de tela. Não há tabel
 
 ---
 
+## Alteração 8 — Título da seção "Proteção sob medida para cada perfil" em uma linha só
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Na página inicial, o título "Proteção sob medida para cada perfil" era exibido em duas linhas, com a palavra "perfil" sozinha na segunda linha. Agora ele aparece inteiro em uma única linha.
+
+### Por que acontecia
+
+O bloco que agrupa o título e o parágrafo abaixo dele tinha largura máxima de seiscentos e oitenta pontos. Esse título, no tamanho de fonte usado em telas grandes, precisa de seiscentos e noventa e quatro pontos para caber em uma linha.
+
+Ou seja: faltavam apenas catorze pontos, cerca de dois por cento. Como o texto não cabia por essa margem mínima, a última palavra era empurrada para a linha seguinte.
+
+### Como foi resolvido
+
+A largura máxima daquele bloco passou de seiscentos e oitenta para setecentos e sessenta pontos, o que dá folga suficiente para o título.
+
+O parágrafo que fica logo abaixo do título, porém, foi mantido na largura anterior de seiscentos e oitenta pontos, e continua centralizado. Isso é importante porque seiscentos e oitenta pontos é uma boa largura de leitura para um texto corrido: linhas muito longas cansam a vista. Em outras palavras, só o título ganhou espaço; o parágrafo continua exatamente como estava.
+
+Também foi acrescentada uma regra que, quando um título realmente não couber em uma linha (em telas menores, por exemplo), reparte o texto em linhas de tamanho parecido, em vez de deixar uma palavra solta na última linha. É o mesmo tipo de problema visual que motivou este ajuste, resolvido de forma geral. Navegadores que ainda não entendem essa regra simplesmente a ignoram, sem quebrar nada.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": três regras ajustadas — a largura máxima do bloco de cabeçalho de seção, o equilíbrio de quebra de linha dos títulos de seção, e a largura máxima do parágrafo descritivo.
+
+Nenhum arquivo de página foi alterado.
+
+### Como foi verificado
+
+Foi medido que o título ocupa seiscentos e noventa e quatro pontos em uma linha, contra os seiscentos e oitenta pontos disponíveis antes — confirmando a diferença de catorze pontos como causa exata.
+
+Depois do ajuste, confirmou-se que o título passou a ocupar uma linha só, e que o parágrafo abaixo dele continua com exatamente seiscentos e oitenta pontos de largura e o mesmo número de linhas de antes.
+
+Em uma tela estreita, de celular, confirmou-se que o título se reparte em duas linhas de tamanhos próximos (duzentos e oitenta e quatro e duzentos e quinze pontos), em vez de deixar uma palavra órfã, e que a página não passou a ter rolagem horizontal.
+
+Confirmou-se ainda que esse bloco de cabeçalho de seção só é usado na página inicial, então a alteração não afeta nenhuma outra página do site. O outro título que usa o mesmo estilo, "Resultados que falam por si", continua em uma linha como antes.
+
+---
+
 ## Alteração 7 — Primeira seção ocupando a tela inteira em todas as páginas
 
 Data: 5 de agosto de 2026.
