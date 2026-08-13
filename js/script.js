@@ -324,111 +324,120 @@
   const form = document.getElementById('contact-form');
   if (!form) return;
 
+  const WHATSAPP = '5511964978014';
   const statusEl = document.getElementById('form-status');
-  const errorGlobal = document.getElementById('form-error-global');
+  const resumoErros = document.getElementById('form-resumo-erros');
+  const sucessoEl = document.getElementById('form-success');
+  const btn = document.getElementById('form-submit-btn');
+  const rotuloBtn = btn ? btn.innerHTML : '';
 
-  const fields = {
-    name: { el: form.querySelector('#name'), errorId: 'name-error', validate: (v) => v.trim().length >= 2, msg: 'Informe seu nome completo.' },
-    email: { el: form.querySelector('#email'), errorId: 'email-error', validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), msg: 'Informe um e-mail válido.' },
-    phone: { el: form.querySelector('#phone'), errorId: 'phone-error', validate: (v) => v.replace(/\D/g, '').length >= 10, msg: 'Informe um telefone válido com DDD.' },
-    message: { el: form.querySelector('#message'), errorId: 'message-error', validate: (v) => v.trim().length >= 10, msg: 'Escreva uma mensagem com pelo menos 10 caracteres.' },
-  };
+  /* Os ids são os do HTML (em português) — o handler anterior procurava
+     #name/#phone/#message, que não existem neste formulário. */
+  const campos = [
+    { id: 'nome',      erro: 'nome-erro',      rotulo: 'Nome',      valida: (v) => v.trim().length >= 2,                        msg: 'Informe seu nome completo.' },
+    { id: 'telefone',  erro: 'telefone-erro',  rotulo: 'WhatsApp',  valida: (v) => v.replace(/\D/g, '').length >= 10,           msg: 'Informe um telefone válido com DDD.' },
+    { id: 'email',     erro: 'email-erro',     rotulo: 'E-mail',    valida: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), msg: 'Informe um e-mail válido.' },
+    { id: 'interesse', erro: 'interesse-erro', rotulo: 'Interesse', valida: (v) => v.trim() !== '',                             msg: 'Selecione o que você precisa.' },
+  ];
+  campos.forEach((c) => { c.el = form.querySelector('#' + c.id); });
+  const mensagemEl = form.querySelector('#mensagem');
 
-  // máscara de telefone
-  const phoneEl = form.querySelector('#phone');
-  if (phoneEl) {
-    phoneEl.addEventListener('input', () => {
-      let v = phoneEl.value.replace(/\D/g, '').slice(0, 11);
-      if (v.length <= 10) {
-        v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
-      } else {
-        v = v.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+  const telefoneEl = form.querySelector('#telefone');
+  if (telefoneEl) {
+    telefoneEl.addEventListener('input', () => {
+      let v = telefoneEl.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length > 6) {
+        v = v.length <= 10
+          ? v.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3')
+          : v.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+      } else if (v.length > 2) {
+        v = v.replace(/(\d{2})(\d*)/, '($1) $2');
       }
-      phoneEl.value = v;
+      telefoneEl.value = v;
     });
   }
 
-  const setError = (field, show) => {
-    if (!field.el) return;
-    const errorEl = document.getElementById(field.errorId);
-    if (show) {
-      field.el.setAttribute('aria-invalid', 'true');
-      if (errorEl) {
-        errorEl.textContent = field.msg;
-        errorEl.removeAttribute('hidden');
-      }
+  /* O CSS esconde .form__error e .form__success por padrão e revela com
+     .is-visible — o handler anterior usava o atributo hidden, que estes
+     estilos ignoram. */
+  const marcarErro = (campo, mostrar) => {
+    if (!campo.el) return;
+    const erroEl = document.getElementById(campo.erro);
+    if (mostrar) {
+      campo.el.setAttribute('aria-invalid', 'true');
+      if (erroEl) { erroEl.textContent = campo.msg; erroEl.classList.add('is-visible'); }
     } else {
-      field.el.removeAttribute('aria-invalid');
-      if (errorEl) {
-        errorEl.textContent = '';
-        errorEl.setAttribute('hidden', '');
-      }
+      campo.el.removeAttribute('aria-invalid');
+      if (erroEl) { erroEl.textContent = ''; erroEl.classList.remove('is-visible'); }
     }
   };
 
-  // validação em tempo real (após primeiro submit)
-  let submitted = false;
-  Object.values(fields).forEach(({ el, ...rest }) => {
-    if (!el) return;
-    el.addEventListener('blur', () => {
-      if (submitted) setError({ el, ...rest }, !rest.validate(el.value));
-    });
-    el.addEventListener('input', () => {
-      if (submitted) setError({ el, ...rest }, !rest.validate(el.value));
-    });
+  let enviado = false;
+  campos.forEach((campo) => {
+    if (!campo.el) return;
+    const revalidar = () => { if (enviado) marcarErro(campo, !campo.valida(campo.el.value)); };
+    campo.el.addEventListener('blur', revalidar);
+    campo.el.addEventListener('input', revalidar);
+    campo.el.addEventListener('change', revalidar);
   });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    submitted = true;
+    enviado = true;
 
-    let hasError = false;
-    Object.values(fields).forEach((field) => {
-      if (!field.el) return;
-      const invalid = !field.validate(field.el.value);
-      setError(field, invalid);
-      if (invalid) hasError = true;
+    const invalidos = campos.filter((campo) => {
+      const ruim = campo.el ? !campo.valida(campo.el.value) : false;
+      marcarErro(campo, ruim);
+      return ruim;
     });
 
-    if (hasError) {
-      if (errorGlobal) {
-        errorGlobal.textContent = 'Por favor, corrija os campos indicados antes de enviar.';
-        setTimeout(() => { errorGlobal.textContent = ''; }, 5000);
+    if (invalidos.length) {
+      if (resumoErros) {
+        resumoErros.textContent = invalidos.length === 1
+          ? 'Corrija 1 campo antes de enviar: ' + invalidos[0].rotulo + '.'
+          : 'Corrija ' + invalidos.length + ' campos antes de enviar: ' + invalidos.map((c) => c.rotulo).join(', ') + '.';
       }
-      const firstInvalid = form.querySelector('[aria-invalid="true"]');
-      if (firstInvalid) firstInvalid.focus();
+      if (invalidos[0].el) invalidos[0].el.focus();
       return;
     }
+    if (resumoErros) resumoErros.textContent = '';
 
-    // simula envio — substitua por fetch() para integração real
-    const btn = form.querySelector('[type="submit"]');
-    if (btn) {
-      btn.disabled = true;
-      btn.setAttribute('aria-busy', 'true');
-      btn.textContent = 'Enviando…';
+    /* O site é estático (GitHub Pages): não há servidor para receber o
+       formulário. Em vez de fingir um envio, abrimos o WhatsApp já com os
+       dados preenchidos — a mensagem chega de verdade na corretora. */
+    const interesseEl = form.querySelector('#interesse');
+    const interesseTexto = interesseEl && interesseEl.selectedIndex > -1
+      ? interesseEl.options[interesseEl.selectedIndex].text
+      : '';
+    const linhas = [
+      'Olá! Gostaria de uma cotação.',
+      '',
+      'Nome: ' + form.querySelector('#nome').value.trim(),
+      'WhatsApp: ' + form.querySelector('#telefone').value.trim(),
+      'E-mail: ' + form.querySelector('#email').value.trim(),
+      'Interesse: ' + interesseTexto,
+    ];
+    const obs = mensagemEl ? mensagemEl.value.trim() : '';
+    if (obs) linhas.push('Mensagem: ' + obs);
+
+    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(linhas.join('\n')), '_blank', 'noopener');
+
+    if (sucessoEl) {
+      sucessoEl.classList.add('is-visible');
+      sucessoEl.setAttribute('aria-hidden', 'false');
     }
+    if (statusEl) statusEl.textContent = 'Dados enviados para o WhatsApp da corretora. Se a janela não abrir, chame no (11) 96497-8014.';
+    form.reset();
+    enviado = false;
 
     setTimeout(() => {
-      if (btn) {
-        btn.disabled = false;
-        btn.removeAttribute('aria-busy');
-        btn.innerHTML = '<span class="checkmark" aria-hidden="true">✓</span> Mensagem enviada!';
-        btn.classList.add('btn--success');
+      if (sucessoEl) {
+        sucessoEl.classList.remove('is-visible');
+        sucessoEl.setAttribute('aria-hidden', 'true');
       }
-      if (statusEl) {
-        statusEl.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
-      }
-      form.reset();
-      submitted = false;
-
-      setTimeout(() => {
-        if (btn) {
-          btn.textContent = 'Enviar mensagem';
-          btn.classList.remove('btn--success');
-        }
-        if (statusEl) statusEl.textContent = '';
-      }, 5000);
-    }, 1200);
+      if (statusEl) statusEl.textContent = '';
+      if (btn) btn.innerHTML = rotuloBtn;
+    }, 8000);
   });
 })();
 

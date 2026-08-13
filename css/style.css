@@ -1131,6 +1131,34 @@ strong { font-weight: var(--font-semibold); }
   align-items: center;
 }
 .form__success.is-visible { display: flex; }
+/* Ícone de confirmação do formulário — as únicas classes que faltavam
+   quando a seção de contato foi restaurada. */
+.checkmark-svg { width: 56px; height: 56px; flex-shrink: 0; }
+.checkmark-circle {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 3;
+}
+.checkmark-tick {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .form__success.is-visible .checkmark-circle {
+    stroke-dasharray: 151;
+    stroke-dashoffset: 151;
+    animation: checkmarkDraw 0.5s ease forwards;
+  }
+  .form__success.is-visible .checkmark-tick {
+    stroke-dasharray: 36;
+    stroke-dashoffset: 36;
+    animation: checkmarkDraw 0.3s ease 0.4s forwards;
+  }
+}
+@keyframes checkmarkDraw { to { stroke-dashoffset: 0; } }
 .form__success-text { font-size: var(--font-md); font-weight: var(--font-semibold); color: var(--color-primary); }
 .form__success-sub { font-size: var(--font-sm); color: var(--color-muted); }
 .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
