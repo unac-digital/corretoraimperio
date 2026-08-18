@@ -142,6 +142,9 @@
         </button>
 
         <nav class="header__nav" id="main-nav" role="navigation" aria-label="Navegação principal">
+          <button class="header__nav-close" aria-label="Fechar menu de navegação">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
           <ul class="header__nav-list" role="list">
             <li><a href="index.html" class="header__nav-link header__nav-link--active" aria-current="page">Início</a></li>
             <li><a href="empresas.html" class="header__nav-link">Para Empresas</a></li>
@@ -434,21 +437,21 @@
             </div>
           </div>
           <div class="sobre__visual" aria-hidden="true">
-            <!-- [CLIENTE: substituir por foto real da equipe ou da sede] -->
-            <div style="text-align:center; display:flex; flex-direction:column; gap:1.5rem; align-items:center;">
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-                <rect width="80" height="80" rx="16" fill="rgba(201,168,76,0.12)"/>
-                <path d="M16 56 L24 28 L40 44 L56 28 L64 56" stroke="#c9a84c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                <circle cx="40" cy="24" r="6" fill="#c9a84c"/>
-              </svg>
-              <p style="font-family:'DM Serif Display',serif; font-size:1.5rem; color:#c9a84c; line-height:1.3; max-width:240px; text-align:center;">
-                "Seu consultor de seguros de confiança em Arujá"
-              </p>
-              <p style="font-size:0.875rem; color:rgba(255,255,255,0.55); text-align:center;">
-                <!-- [CLIENTE: adicionar foto real da equipe aqui] -->
-                Espaço reservado para foto da equipe
-              </p>
-            </div>
+            <!-- Ilustração decorativa. Quando houver foto real da equipe ou da
+                 sede, troque este <svg> por <img>; a legenda abaixo já é
+                 editável e pode continuar como está. -->
+            <svg class="sobre__visual-badge" width="220" height="220" viewBox="0 0 240 240">
+              <circle cx="120" cy="120" r="118" fill="none" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+              <circle cx="120" cy="120" r="95" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1" stroke-dasharray="3 7"/>
+              <circle cx="120" cy="2" r="3" fill="#c9a84c"/>
+              <circle cx="222" cy="179" r="3" fill="#c9a84c"/>
+              <circle cx="18" cy="179" r="3" fill="#c9a84c"/>
+              <g transform="translate(77,77) scale(3.6)">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(201,168,76,0.14)" stroke="#c9a84c" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.5 12.5l2.4 2.4 4.6-5.4" fill="none" stroke="#c9a84c" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </svg>
+            <p class="sobre__visual-quote" data-editable="sobre-visual-quote">"Seu consultor de seguros de confiança em Arujá"</p>
           </div>
         </div>
       </div>

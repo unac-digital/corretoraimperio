@@ -67,9 +67,9 @@
   --space-24: 6rem;
   --space-32: 8rem;
 
-  /* Altura do header: 84px do .header__inner + 1px da borda de baixo.
+  /* Altura do header: 72px do .header__inner + 1px da borda de baixo.
      Usada para o hero ocupar exatamente o resto da tela. */
-  --header-h: 85px;
+  --header-h: 73px;
 
   /* Bordas */
   --radius-sm: 6px;
@@ -289,10 +289,7 @@ strong { font-weight: var(--font-semibold); }
   align-items: center;
   justify-content: space-between;
   gap: var(--space-8);
-  /* 84px, não 72px: o logo agora é recortado (sem margem transparente) e
-     precisa de mais espaço vertical para aparecer grande de verdade.
-     Ao mudar aqui, atualizar também --header-h, que o hero usa. */
-  height: 84px;
+  height: 72px;
 }
 .header__logo {
   display: flex;
@@ -307,19 +304,20 @@ strong { font-weight: var(--font-semibold); }
   flex-shrink: 0;
 }
 .header__logo-img {
-  /* O arquivo tinha 66,5% de margem transparente (arte de 811x409 num canvas
-     de 1366x725): a 64px de altura, a arte visível tinha só 36px — daí a
-     impressão de logo pequena. O PNG foi recortado no tamanho da arte, então
-     agora esta altura é a altura real do que aparece.
-     76px dentro de um header de 84px: 4px de folga em cima e embaixo. */
-  height: 76px;
+  /* Estes 54px valem 54px de logo visível porque o PNG é recortado no tamanho
+     da arte. O arquivo original era um canvas de 1366x725 com a arte de 811x409
+     no meio — 56% da altura era margem transparente, então a mesma regra
+     mostrava só ~30px e a logo parecia minúscula.
+     54px dentro do header de 72px: 9px de folga em cima e embaixo. */
+  height: 54px;
   width: auto;
   flex-shrink: 0;
 }
 .footer__logo-img {
-  /* Compensa o recorte do PNG: antes, a 130px de caixa, a arte visível tinha
-     ~73px por causa da margem transparente. Com o arquivo recortado, 88px de
-     caixa = 88px de arte — um pouco maior que antes, sem estourar a coluna. */
+  /* Acompanha o recorte do PNG: a 130px de caixa a arte visível dava ~73px por
+     causa da margem transparente. Com o arquivo recortado, manter 130px faria
+     a logo do rodapé quase dobrar de tamanho — 88px repõe o tamanho de antes
+     com uma folga, sem estourar a coluna. */
   height: 88px;
   width: auto;
 }
@@ -478,6 +476,7 @@ strong { font-weight: var(--font-semibold); }
   color: rgba(255,255,255,0.75);
   margin-bottom: var(--space-10);
   max-width: 520px;
+  text-align: justify;
 }
 .hero__ctas {
   display: flex;
@@ -553,6 +552,7 @@ strong { font-weight: var(--font-semibold); }
   font-size: var(--font-sm);
   color: rgba(255,255,255,0.6);
   line-height: var(--leading-normal);
+  text-align: justify;
 }
 .audience-card__arrow {
   color: var(--color-accent);
@@ -665,6 +665,39 @@ strong { font-weight: var(--font-semibold); }
 }
 
 /* ── Sobre ──────────────────────────────────────────────── */
+/* Ocupa a tela inteira menos o header (sticky, fica no fluxo), mesma conta
+   do .hero — para o clique no menu sentir como entrar numa página nova, não
+   como rolar até um pedaço de página. A segunda declaração usa dvh, que
+   desconta as barras do navegador no celular; sem suporte, fica na primeira. */
+/* Seções que o menu abre como se fossem página própria (#sobre e #contato).
+   Repete a fórmula do .hero de propósito: é o comportamento que o usuário
+   usa como referência ("igual quando clico em Início"). */
+#sobre,
+#contato {
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100dvh - var(--header-h));
+  display: flex;
+  align-items: center;
+
+  /* Padding proporcional à altura da tela, não os 80px fixos do .section:
+     fixo, o conteúdo + 160px estourava a primeira tela em monitores baixos.
+     Mesmo clamp do .hero. */
+  padding: clamp(var(--space-8), 8vh, var(--space-24)) 0;
+
+  /* O header é sticky e cobre os primeiros 73px da tela. Sem isto, o salto
+     alinha o topo da seção em y=0, o header tapa essa faixa e o que aparece
+     abaixo dele é o fim da seção anterior. Reserva a altura do header antes
+     de parar de rolar — e vale também para quem chega de outra página
+     (empresas.html → index.html#sobre), porque quem aplica é o navegador,
+     não o JS do clique. */
+  scroll-margin-top: var(--header-h);
+}
+/* Filho direto vira item flex: sem isto o .container perde a largura total
+   e o conteúdo encolhe para o tamanho do texto. */
+#sobre > .container,
+#contato > .container {
+  width: 100%;
+}
 .sobre__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -678,6 +711,7 @@ strong { font-weight: var(--font-semibold); }
   color: var(--color-muted);
   line-height: var(--leading-relaxed);
   margin-bottom: var(--space-6);
+  text-align: justify;
 }
 .sobre__text + .sobre__text { margin-top: calc(var(--space-4) * -1); }
 .sobre__highlights {
@@ -712,7 +746,22 @@ strong { font-weight: var(--font-semibold); }
   padding: var(--space-12);
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  text-align: center;
+  /* Acompanha a altura da coluna de texto ao lado (a mais alta das duas,
+     já que .sobre__inner as centraliza) — sem isto, com pouco texto a coluna
+     desse painel ficaria baixa e o emblema pareceria pequeno demais nela. */
+  min-height: 360px;
+}
+.sobre__visual-badge { flex-shrink: 0; }
+.sobre__visual-quote {
+  font-family: var(--font-display);
+  font-size: var(--font-xl);
+  color: var(--color-accent);
+  line-height: var(--leading-snug);
+  max-width: 260px;
 }
 @media (max-width: 900px) {
   .sobre__inner { grid-template-columns: minmax(0, 1fr); }
@@ -972,6 +1021,16 @@ strong { font-weight: var(--font-semibold); }
   font-family: Georgia, serif;
   margin-bottom: calc(var(--space-4) * -1);
 }
+
+/* Variante escura: só depoimentos de para-voce.html (#depoimentos) — a
+   mesma classe aparece em empresas.html sobre fundo claro e ficaria
+   ilegível se herdasse isto. Estrelas, aspas e avatar já são douradas/
+   escuras e funcionam em qualquer fundo, por isso ficam de fora. */
+#depoimentos .depoimento-card { background: var(--color-primary); border-color: rgba(255,255,255,0.12); }
+#depoimentos .depoimento-card__text { color: rgba(255,255,255,0.85); }
+#depoimentos .depoimento-card__author { border-top-color: rgba(255,255,255,0.12); }
+#depoimentos .depoimento-card__name { color: var(--color-white); }
+#depoimentos .depoimento-card__role { color: rgba(255,255,255,0.6); }
 @media (max-width: 900px) {
   .depoimentos__grid { grid-template-columns: 1fr 1fr; }
 }
@@ -1305,65 +1364,6 @@ strong { font-weight: var(--font-semibold); }
   .page-hero__title { font-size: var(--font-3xl); }
 }
 
-/* ── Como funciona ──────────────────────────────────────── */
-.como-funciona__steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-4);
-  position: relative;
-}
-.como-funciona__steps::before {
-  content: '';
-  position: absolute;
-  top: 32px;
-  left: calc(12.5% + 16px);
-  right: calc(12.5% + 16px);
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-border) 100%);
-  z-index: 0;
-}
-.step-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-4);
-  padding: var(--space-6) var(--space-4);
-  position: relative;
-  z-index: 1;
-}
-.step-card__number {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  color: var(--color-accent);
-  font-family: var(--font-display);
-  font-size: var(--font-2xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  border: 3px solid var(--color-accent);
-}
-.step-card__title {
-  font-family: var(--font-display);
-  font-size: var(--font-lg);
-  color: var(--color-text);
-}
-.step-card__desc {
-  font-size: var(--font-sm);
-  color: var(--color-muted);
-  line-height: var(--leading-relaxed);
-}
-@media (max-width: 768px) {
-  .como-funciona__steps { grid-template-columns: 1fr 1fr; }
-  .como-funciona__steps::before { display: none; }
-}
-@media (max-width: 480px) {
-  .como-funciona__steps { grid-template-columns: minmax(0, 1fr); }
-}
-
 /* ── Serviços página interna ────────────────────────────── */
 .servicos__grid {
   display: grid;
@@ -1425,9 +1425,136 @@ strong { font-weight: var(--font-semibold); }
 }
 .servico-card__feature svg { color: var(--color-accent); flex-shrink: 0; }
 .servico-card__actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: auto; padding-top: 1.25rem; }
-.servico-card__actions .btn { flex: 1; min-width: 0; text-align: center; }
+.servico-card__actions .btn {
+  flex: 1;
+  min-width: 0;
+  /* .btn é inline-flex: quem centraliza o texto dentro dele é justify-content,
+     não text-align — text-align não tem efeito sobre um item de flexbox. */
+  justify-content: center;
+}
 @media (max-width: 900px) { .servicos__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 580px) { .servicos__grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ── Benefícios (VR) ────────────────────────────────────── */
+/* A seção existe no HTML mas não tinha nenhuma regra: os .beneficio-card
+   renderizavam como <li> cru (display:list-item, sem caixa) e o ícone esticava
+   na largura inteira da página — daí destoarem do resto do site. */
+.beneficios__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  /* Estreita a grade: em 1280px, dois cards de ~600px ficariam largos demais
+     para o pouco texto que carregam. */
+  max-width: 940px;
+  margin: var(--space-12) auto 0;
+}
+.beneficio-card {
+  /* Grid, não flex: o ícone é irmão do título e da descrição no HTML, e o
+     grid põe ele na coluna da esquerda ocupando as duas linhas — ícone ao
+     lado do título, sem precisar de um <div> extra em volta do texto. */
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  column-gap: var(--space-4);
+  row-gap: var(--space-1);
+  align-items: start;
+  padding: var(--space-5);
+  /* Cinza sobre a seção branca: fosse branco, o card sumiria no fundo. */
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.beneficio-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+.beneficio-card__icon {
+  grid-row: 1 / span 2;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 168, 76, 0.12);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+}
+.beneficio-card__title {
+  font-family: var(--font-display);
+  font-size: var(--font-md);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  align-self: center;
+}
+.beneficio-card__desc {
+  font-size: var(--font-sm);
+  color: var(--color-muted);
+  line-height: var(--leading-normal);
+  text-align: justify;
+}
+.beneficios__coverage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  max-width: 940px;
+  margin: var(--space-10) auto 0;
+  padding: var(--space-8);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.beneficios__coverage-item { text-align: center; }
+.beneficios__coverage-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--font-2xl);
+  color: var(--color-accent);
+  line-height: 1.15;
+}
+.beneficios__coverage-label {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--font-sm);
+  color: var(--color-muted);
+}
+.beneficios__coverage-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--color-border);
+}
+@media (max-width: 768px) {
+  .beneficios__grid { grid-template-columns: minmax(0, 1fr); }
+  /* A divisória é vertical: empilhado, viraria um risco solto no meio. */
+  .beneficios__coverage-divider { display: none; }
+}
+
+/* Variante escura: só quando #beneficios está dentro de .section--dark.
+   .beneficio-card também é usado em 4 páginas de para-você/ sobre fundo claro
+   (herdam as cores normais acima) — por isso a sobrescrita é escopada, não
+   direto na classe base, senão o texto ficaria ilegível lá. Mesma paleta do
+   .audience-card do header: branco translúcido faz as vezes de "cinza" sobre
+   o fundo escuro, título branco, descrição branca semi-transparente. */
+.section--dark .section-title { color: var(--color-white); }
+.section--dark .beneficio-card {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+}
+.section--dark .beneficio-card:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: var(--color-accent);
+}
+.section--dark .beneficio-card__title { color: var(--color-white); }
+.section--dark .beneficio-card__desc { color: rgba(255,255,255,0.65); }
+.section--dark .beneficios__coverage {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+}
+.section--dark .beneficios__coverage-label { color: rgba(255,255,255,0.65); }
+.section--dark .beneficios__coverage-divider { background: rgba(255,255,255,0.15); }
 
 /* ── FAQ ────────────────────────────────────────────────── */
 .faq__list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-3); }
@@ -1436,6 +1563,12 @@ strong { font-weight: var(--font-semibold); }
   border-radius: var(--radius-md);
   background: var(--color-surface);
   overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.faq__item:hover,
+.faq__item--open {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-sm);
 }
 .faq__btn {
   width: 100%;
@@ -1462,14 +1595,37 @@ strong { font-weight: var(--font-semibold); }
 }
 .faq__btn[aria-expanded="true"] .faq__icon { transform: rotate(45deg); }
 .faq__answer {
-  display: none;
+  /* max-height, não display:none: display não é animável, e a abertura por
+     hover precisa deslizar suavemente. O padding fica sempre declarado (fora
+     da transição) para que o scrollHeight que o JS mede já inclua ele — sem
+     isso a resposta abriria com a última linha cortada. */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
   padding: 0 var(--space-8) var(--space-6);
   font-size: var(--font-base);
   color: var(--color-muted);
   line-height: var(--leading-relaxed);
   text-align: justify;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
 }
-.faq__answer.is-open { display: block; }
+.faq__answer.is-open { opacity: 1; }
+
+/* Variante escura: só o FAQ da home (#faq), como cards escuros destacados
+   sobre a seção clara — não a base .faq__item, que também aparece em 10
+   outras páginas sobre fundo claro e ficaria ilegível se herdasse isto. */
+#faq .faq__item {
+  background: var(--color-primary);
+  border-color: rgba(255,255,255,0.12);
+}
+#faq .faq__item:hover,
+#faq .faq__item--open {
+  border-color: var(--color-accent);
+}
+#faq .faq__btn { color: var(--color-white); }
+#faq .faq__btn:hover,
+#faq .faq__btn[aria-expanded="true"] { color: var(--color-accent); }
+#faq .faq__answer { color: rgba(255,255,255,0.65); }
 
 /* ── Badge placeholder ──────────────────────────────────── */
 .placeholder-note {
@@ -1590,9 +1746,36 @@ strong { font-weight: var(--font-semibold); }
 /* No menu mobile aberto a nav vira coluna: a linha divisória vertical não
    faz sentido ali e apareceria como um risco solto. */
 .header__nav.header__nav--open::before { display: none; }
+/* O botão hambúrguer fica fora de #main-nav, atrás do painel de tela cheia
+   (mesmo z-index do header, mas o painel pinta por cima por vir depois no
+   DOM) — sem este botão, fechar o menu no toque é impossível: Escape não
+   existe no celular e não há "fora" para tocar, já que o painel cobre tudo. */
+.header__nav-close {
+  display: none;
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.85);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.header__nav-close:hover { background: rgba(255,255,255,0.08); color: var(--color-accent); }
+.header__nav.header__nav--open .header__nav-close { display: flex; }
 .header__nav.header__nav--open .header__nav-list {
   display: flex;
   flex-direction: column;
+  /* A regra base (.header__nav-list) tem align-items:center, pensada para o
+     menu horizontal do desktop — nele, "center" só afeta a altura da linha.
+     Em coluna esse mesmo align-items passa a agir no eixo horizontal e
+     centralizava cada link. stretch: 100% de largura, alinhado à esquerda. */
+  align-items: stretch;
   gap: var(--space-2);
 }
 .header__nav.header__nav--open .header__nav-list a,
@@ -1699,22 +1882,53 @@ body.menu-open { overflow: hidden; }
   flex-shrink: 0;
 }
 
-/* ── Como funciona — versão lista (páginas internas) ─────── */
+/* ── Como funciona ──────────────────────────────────────── */
+/* Havia duas definições disputando esta seção: uma em grade de 4 colunas com
+   linha conectora (escrita para `.step-card`, classe que nenhum HTML usa — era
+   código morto) e esta, em lista vertical de 680px, que vencia por vir depois.
+   O resultado era uma lista estreita com 600px de vazio nas laterais e sem
+   caixa nenhuma, destoando de todas as outras seções, que usam cards.
+   Consolidado num bloco só, com o card padrão do site. */
 .como-funciona__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+  position: relative;
+}
+/* Fio ligando os passos: fica atrás dos cards (z-index 0) e aparece só nos
+   vãos entre eles, sugerindo a sequência sem poluir. Começa e termina no
+   centro da primeira e da última coluna — 12.5% é meia coluna de quatro.
+   O topo alinha com o centro do círculo: 1px de borda + 32px de padding +
+   32px de raio do círculo. */
+.como-funciona__steps::before {
+  content: '';
+  position: absolute;
+  top: 65px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-border) 100%);
+  z-index: 0;
+}
+.como-funciona__step {
   display: flex;
   flex-direction: column;
-  position: static;
-  gap: var(--space-8);
-  max-width: 680px;
-  margin: 0 auto var(--space-12);
-  counter-reset: steps;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
-.como-funciona__steps::before { display: none !important; }
-.como-funciona__step {
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: var(--space-6);
-  align-items: flex-start;
+.como-funciona__step:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
 }
 .como-funciona__num {
   width: 64px;
@@ -1738,14 +1952,18 @@ body.menu-open { overflow: hidden; }
   margin-bottom: var(--space-2);
 }
 .como-funciona__desc {
-  font-size: var(--font-base);
+  font-size: var(--font-sm);
   color: var(--color-muted);
   line-height: var(--leading-relaxed);
 }
 .como-funciona__cta { text-align: center; }
-@media (max-width: 480px) {
-  .como-funciona__step { grid-template-columns: 48px 1fr; gap: var(--space-4); }
-  .como-funciona__num { width: 48px; height: 48px; font-size: var(--font-lg); }
+@media (max-width: 900px) {
+  .como-funciona__steps { grid-template-columns: 1fr 1fr; }
+  /* Em duas linhas o fio horizontal não liga mais nada. */
+  .como-funciona__steps::before { display: none; }
+}
+@media (max-width: 580px) {
+  .como-funciona__steps { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ── Seção dor / solução ─────────────────────────────────── */

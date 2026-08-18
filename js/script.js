@@ -2,7 +2,11 @@
 
 /* ─── Carrossel infinito de seguradoras ──────────────── */
 (function () {
-  const SPEED_PX_PER_SEC = 11;
+  /* 11px/s andava de verdade, mas uma logo levava ~115s para cruzar a faixa:
+     em 3 segundos de olhar ela se deslocava 33px, abaixo do que o olho registra
+     como movimento sem referência fixa ao lado — daí a impressão de fita parada.
+     40px/s cruza a mesma faixa em ~32s, que é o ritmo legível para logos. */
+  const SPEED_PX_PER_SEC = 40;
   const builtFor = new WeakMap();
   let forcado = false;
 
@@ -137,40 +141,68 @@
 (function () {
   const btn = document.querySelector('.header__menu-btn');
   const nav = document.getElementById('main-nav');
+  const closeBtn = document.querySelector('.header__nav-close');
   if (!btn || !nav) return;
+
+  const abrir = () => {
+    btn.setAttribute('aria-expanded', 'true');
+    nav.classList.add('header__nav--open');
+    document.body.classList.add('menu-open');
+  };
+
+  const fechar = () => {
+    btn.setAttribute('aria-expanded', 'false');
+    nav.classList.remove('header__nav--open');
+    document.body.classList.remove('menu-open');
+  };
 
   btn.addEventListener('click', () => {
     const isOpen = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!isOpen));
-    nav.classList.toggle('header__nav--open', !isOpen);
-    document.body.classList.toggle('menu-open', !isOpen);
+    if (isOpen) fechar(); else abrir();
   });
+
+  /* O X fica dentro do painel de tela cheia — sem ele, fechar no toque é
+     impossível: o hambúrguer pinta atrás do painel, e não há "fora" para
+     tocar já que o painel cobre a tela inteira. */
+  if (closeBtn) closeBtn.addEventListener('click', fechar);
 
   // fecha ao clicar fora
   document.addEventListener('click', (e) => {
-    if (!btn.contains(e.target) && !nav.contains(e.target)) {
-      btn.setAttribute('aria-expanded', 'false');
-      nav.classList.remove('header__nav--open');
-      document.body.classList.remove('menu-open');
-    }
+    if (!btn.contains(e.target) && !nav.contains(e.target)) fechar();
   });
 
   // fecha ao pressionar Escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      btn.setAttribute('aria-expanded', 'false');
-      nav.classList.remove('header__nav--open');
-      document.body.classList.remove('menu-open');
-      btn.focus();
-    }
+    if (e.key === 'Escape') { fechar(); btn.focus(); }
   });
 
   // fecha ao clicar em link dentro do menu
   nav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      btn.setAttribute('aria-expanded', 'false');
-      nav.classList.remove('header__nav--open');
-      document.body.classList.remove('menu-open');
+    link.addEventListener('click', fechar);
+  });
+})();
+
+/* ─── Salto instantâneo (seções em tela cheia) ───────── */
+/* Estas seções ocupam a tela inteira (ver #sobre,#contato no CSS) para o
+   clique no menu parecer entrada de página nova, não rolagem. Mas
+   `html { scroll-behavior: smooth }` é global e faria a página deslizar até
+   lá em ~1s, o que quebra justamente essa sensação. O `behavior:'auto'` do
+   scrollIntoView ignora o CSS e pula direto. O #faq continua rolando suave,
+   porque lá a rolagem é o comportamento desejado. */
+(function () {
+  const INSTANTANEAS = ['sobre', 'contato'];
+
+  INSTANTANEAS.forEach((id) => {
+    document.querySelectorAll('a[href="#' + id + '"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        /* scrollIntoView respeita o scroll-margin-top do CSS, que é o que
+           impede o header sticky de tapar o topo da seção. */
+        target.scrollIntoView({ behavior: 'auto', block: 'start' });
+        history.pushState(null, '', '#' + id);
+      });
     });
   });
 })();
@@ -281,42 +313,91 @@
 
 /* ─── FAQ accordion ──────────────────────────────────── */
 (function () {
-  const btns = document.querySelectorAll('.faq__btn');
+  const btns = Array.from(document.querySelectorAll('.faq__btn'));
   if (!btns.length) return;
 
+  const mouseFino = () => matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* Guarda qual pergunta foi aberta por clique/toque. Sem isso, no desktop
+     tirar o mouse para selecionar um trecho do texto fecharia a resposta na
+     hora — quem clica quer ler com calma, movendo o cursor para fora. */
+  let fixado = null;
+
+  const respostaDe = (btn) => document.getElementById(btn.getAttribute('aria-controls'));
+
+  /* As páginas marcam as respostas com `hidden`, que força display:none e
+     impediria qualquer transição. Quem esconde agora é o max-height:0 do CSS
+     (colapsa igual, mas é animável), então o atributo sai já na carga. */
+  btns.forEach((btn) => { const a = respostaDe(btn); if (a) a.hidden = false; });
+
+  const abrir = (btn) => {
+    const answer = respostaDe(btn);
+    if (!answer) return;
+    btns.forEach((outro) => { if (outro !== btn) fechar(outro); });
+    btn.setAttribute('aria-expanded', 'true');
+    answer.classList.add('is-open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+    btn.closest('.faq__item')?.classList.add('faq__item--open');
+  };
+
+  const fechar = (btn) => {
+    const answer = respostaDe(btn);
+    if (!answer) return;
+    btn.setAttribute('aria-expanded', 'false');
+    answer.classList.remove('is-open');
+    answer.style.maxHeight = null;
+    btn.closest('.faq__item')?.classList.remove('faq__item--open');
+  };
+
   btns.forEach((btn) => {
+    const item = btn.closest('.faq__item');
+
     btn.addEventListener('click', () => {
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-      const targetId = btn.getAttribute('aria-controls');
-      const answer = document.getElementById(targetId);
-      if (!answer) return;
+      const aberto = btn.getAttribute('aria-expanded') === 'true';
+      /* No celular (sem hover) o clique é o único jeito de abrir e fechar —
+         aqui ele sempre alterna. No desktop o hover já abre; um clique ali só
+         fixa a que já está aberta, e clicar de novo solta a fixação. */
+      if (mouseFino() && aberto && fixado === btn) { fechar(btn); fixado = null; return; }
+      if (mouseFino() && aberto && fixado !== btn) { fixado = btn; return; }
+      if (aberto) { fechar(btn); fixado = null; return; }
+      abrir(btn);
+      fixado = mouseFino() ? btn : null;
+    });
 
-      // fecha os outros
-      btns.forEach((otherBtn) => {
-        if (otherBtn !== btn) {
-          otherBtn.setAttribute('aria-expanded', 'false');
-          const otherId = otherBtn.getAttribute('aria-controls');
-          const otherAnswer = document.getElementById(otherId);
-          if (otherAnswer) {
-            otherAnswer.hidden = true;
-            otherAnswer.classList.remove('is-open');
-            otherAnswer.style.maxHeight = null;
-          }
-          otherBtn.closest('.faq__item')?.classList.remove('faq__item--open');
-        }
-      });
+    if (!item) return;
 
-      btn.setAttribute('aria-expanded', String(!isExpanded));
-      answer.hidden = isExpanded;
-      answer.classList.toggle('is-open', !isExpanded);
-      if (!isExpanded) {
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-      } else {
-        answer.style.maxHeight = null;
-      }
-      btn.closest('.faq__item')?.classList.toggle('faq__item--open', !isExpanded);
+    /* Só dispara em quem tem mouse de verdade: no celular o toque gera
+       mouseenter antes do clique, e a resposta abriria e fecharia sozinha a
+       cada rolagem da página. */
+    item.addEventListener('mouseenter', () => {
+      if (!mouseFino()) return;
+      abrir(btn);
+    });
+
+    item.addEventListener('mouseleave', () => {
+      if (!mouseFino()) return;
+      if (fixado === btn) return;
+      fechar(btn);
     });
   });
+
+  /* Texto justificado reflui de largura diferente: uma resposta aberta antes
+     de redimensionar a janela ficaria com altura antiga, cortando a última
+     linha (ou sobrando espaço). Só a que está aberta precisa remedir. */
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const aberto = btns.find((b) => b.getAttribute('aria-expanded') === 'true');
+      if (aberto) abrir(aberto);
+    }, 150);
+  });
+
+  /* A pergunta que já nasce aberta no HTML (id="faq5-btn" hoje) foi medida
+     pelo autor num viewport específico; remedir na carga cobre qualquer
+     outro tamanho de tela. */
+  const jaAberto = btns.find((b) => b.getAttribute('aria-expanded') === 'true');
+  if (jaAberto) abrir(jaAberto);
 })();
 
 /* ─── Formulário de contato ──────────────────────────── */
