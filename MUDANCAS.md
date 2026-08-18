@@ -8,6 +8,398 @@ O texto foi escrito para ser lido em voz alta por leitor de tela. Não há tabel
 
 ---
 
+## Alteração 12 — Logo do cabeçalho bem maior, com o arquivo recortado
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+A imagem da marca no cabeçalho ficou consideravelmente maior. A parte visível dela passou de trinta e seis para setenta e seis pontos de altura, ou seja, mais que dobrou de tamanho. O cabeçalho ficou um pouco mais alto para acomodá-la.
+
+### A causa real do problema
+
+Nas duas tentativas anteriores de ajustar essa logo, o valor da altura foi aumentado e diminuído, mas o problema de fundo passou despercebido: o arquivo de imagem tinha uma enorme margem transparente em volta do desenho.
+
+O arquivo media mil trezentos e sessenta e seis por setecentos e vinte e cinco pontos, mas o desenho da marca ocupava apenas oitocentos e onze por quatrocentos e nove no meio dele. Ou seja, cerca de dois terços do arquivo era espaço vazio.
+
+Como a altura definida no estilo se aplica ao arquivo inteiro, e não ao desenho, o efeito era este: com a altura configurada em sessenta e quatro pontos, o desenho visível tinha apenas trinta e seis. O resto era margem invisível ocupando espaço. Era impossível deixar a logo grande mexendo só no número da altura, porque boa parte do espaço reservado estava sendo gasto com transparência.
+
+### Como foi resolvido
+
+O arquivo da logo foi recortado exatamente nos limites do desenho, passando de mil trezentos e sessenta e seis por setecentos e vinte e cinco para oitocentos e onze por quatrocentos e nove pontos. Nenhuma parte do desenho foi perdida — apenas a margem transparente foi removida. A partir de agora, a altura definida no estilo corresponde à altura real do que aparece na tela.
+
+Só esse recorte já tornou a logo setenta e sete por cento maior, sem alterar nada no layout.
+
+Além disso, a altura do cabeçalho passou de setenta e dois para oitenta e quatro pontos, e a altura da logo foi definida em setenta e seis pontos, deixando quatro pontos de folga acima e abaixo. Somando o recorte e o aumento, a parte visível da marca ficou cerca de cento e onze por cento maior que antes.
+
+### Dois efeitos colaterais que precisaram de ajuste
+
+O primeiro: a mesma imagem é usada no rodapé. Com o recorte, ela também ficaria maior lá. A altura da logo do rodapé foi reduzida de cento e trinta para oitenta e oito pontos, o que deixa o desenho visível ligeiramente maior do que era antes, sem estourar a coluna onde fica.
+
+O segundo: a primeira seção de cada página calcula sua altura descontando a altura do cabeçalho, para ocupar exatamente uma tela. Como o cabeçalho cresceu doze pontos, esse valor de referência foi atualizado junto, de setenta e três para oitenta e cinco pontos.
+
+### Arquivos alterados
+
+Arquivo de imagem "images/logo-imperio/logo-imperio.png": recortado nos limites do desenho.
+
+Arquivo "css/style.css": a altura do cabeçalho, a altura da logo do cabeçalho, a altura da logo do rodapé e o valor de referência da altura do cabeçalho.
+
+Nenhum arquivo de página foi alterado — as onze páginas usam a mesma imagem e os mesmos estilos.
+
+### Como foi verificado
+
+Foi confirmado que o arquivo recortado tem o desenho ocupando cem por cento da sua área, sem nenhuma margem transparente sobrando.
+
+A logo do cabeçalho foi medida em cento e cinquenta e um por setenta e seis pontos, cabendo inteira dentro do cabeçalho, com quatro pontos de folga iguais acima e abaixo.
+
+Foi confirmado que os cinco links de navegação continuam em uma linha cada, sem quebrar, e que não se sobrepõem ao botão do WhatsApp — testado em telas de mil duzentos e oitenta e de novecentos e vinte pontos de largura, esta última já bem perto do ponto em que o menu vira o botão de sanduíche.
+
+No celular, foi confirmado que a logo não encosta no botão do menu, com cento e cinquenta e três pontos de folga entre eles, e que a página não passou a ter rolagem horizontal.
+
+Foi confirmado que a primeira seção continua fechando exatamente uma tela, com o novo valor de altura do cabeçalho, e que a seção seguinte continua não aparecendo na primeira tela.
+
+A logo do rodapé foi medida em cento e setenta e quatro por oitenta e oito pontos, cabendo dentro da sua coluna.
+
+Tudo foi verificado também numa página de produto, dentro de uma pasta, confirmando que o caminho da imagem com "dois pontos e barra" continua carregando corretamente.
+
+---
+
+## Alteração 11 — Logo do cabeçalho maior
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+A imagem da marca no cabeçalho, que havia sido reduzida numa alteração anterior para parar de aparecer cortada, ficou pequena demais. Ela foi aumentada, ganhando mais presença, sem voltar a ser cortada.
+
+### Por que a mudança foi feita
+
+O usuário apontou que, depois do ajuste anterior, a logo ficou muito pequena.
+
+### Como foi resolvido
+
+A altura da logo passou de cinquenta e dois para sessenta e quatro pontos — um aumento de cerca de vinte e três por cento. Isso deixa apenas quatro pontos de folga acima e abaixo dela dentro do cabeçalho, que tem setenta e dois pontos de altura. É essencialmente o maior tamanho possível sem a logo tocar as bordas do cabeçalho.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": a altura da logo do cabeçalho foi ajustada.
+
+### Como foi verificado
+
+Foi confirmado que a logo, agora com cento e vinte e um por sessenta e quatro pontos, continua cabendo inteira dentro do cabeçalho, com quatro pontos de folga iguais acima e abaixo.
+
+---
+
+## Alteração 10 — Contorno dourado no cartão escuro "Para Empresas"
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Na página inicial, o cartão escuro "Para Empresas" — irmão do cartão claro "Para Você" ajustado na alteração anterior — ganhou um contorno dourado sutil, visível o tempo todo, e não apenas quando o cursor passa por cima dele.
+
+### Por que a mudança foi feita
+
+Pedido direto do usuário: aplicar nesse cartão o mesmo tipo de contorno colorido que havia sido aplicado ao cartão claro ao lado.
+
+A investigação mostrou que o cartão escuro já tinha uma regra de contorno, mas ela definia a cor do contorno como sendo exatamente a mesma cor do próprio fundo do cartão. Na prática, isso equivale a não ter contorno nenhum em repouso — as duas cores se sobrepõem e o traço desaparece. Só ao passar o cursor por cima é que um contorno dourado aparecia rapidamente, herdado de uma regra genérica compartilhada com o cartão claro.
+
+### Como foi resolvido
+
+A cor do contorno em repouso foi trocada para o mesmo tom dourado usado no cartão claro vizinho, calibrado numa intensidade um pouco mais forte — de vinte e dois para trinta e cinco por cento de opacidade — porque uma cor clara como o dourado precisa de mais intensidade para se destacar sobre um fundo escuro do que sobre um fundo claro.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": uma regra de estilo ajustada, referente à cor do contorno do cartão escuro em repouso.
+
+Nenhum arquivo de página foi alterado.
+
+### Como foi verificado
+
+Foi confirmado que a cor do contorno do cartão escuro agora é diferente da cor do fundo dele, o que significa que o contorno passou a ser visível de fato, e não apenas sobreposto ao fundo.
+
+---
+
+## Alteração 9 — Sombra e contorno dourado no cartão "Para Você"
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Na página inicial, o cartão claro "Para Você" — que fica ao lado do cartão escuro "Para Empresas" — ganhou uma sombra suave e um contorno com um leve tom dourado, em vez do contorno cinza neutro que tinha antes. Os pequenos blocos de serviço dentro dele ("Seguro Auto", "Seguro Saúde Individual e Familiar", "Seguro de Vida e Consórcio") também ganharam esse mesmo tom dourado sutil no fundo e na borda.
+
+### Por que a mudança foi feita
+
+O usuário apontou que as cores daquele cartão não estavam boas e sugeriu experimentar uma sombra ou uma troca de cores.
+
+A causa raiz: o cartão tem fundo branco, e a página ao redor dele tem fundo cinza muito claro. A diferença entre os dois tons é pequena. O contorno do cartão, por sua vez, era um cinza ainda mais próximo do fundo da página do que do próprio branco do cartão. Sem nenhuma sombra em repouso — só ao passar o cursor — o resultado era um cartão que quase não se distinguia da página, especialmente ao lado do cartão escuro vizinho, que tem muita presença visual por si só. Os blocos de serviço dentro do cartão tinham o mesmo problema: um cinza muito parecido com o fundo da página, deixando-os com pouca definição.
+
+### Como foi resolvido
+
+Foi adicionada uma sombra leve ao cartão, presente o tempo todo e não apenas ao passar o cursor, para que ele se destaque do fundo da página desde o primeiro momento.
+
+O contorno cinza foi trocado por um contorno com um toque sutil da cor dourada que já era usada em outros elementos daquele mesmo cartão: a etiqueta "Para Você" e os ícones da lista de serviços. Isso cria uma conexão visual entre as partes do cartão, em vez de introduzir uma cor nova que não existisse já na paleta do site.
+
+Os pequenos blocos de serviço dentro do cartão receberam o mesmo tratamento: um toque de dourado no fundo e na borda, no lugar do cinza neutro anterior.
+
+O cartão escuro "Para Empresas", ao lado, não foi alterado.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": três regras de estilo ajustadas — a aparência do cartão claro em repouso e ao passar o cursor, e a aparência dos pequenos blocos de serviço dentro dele.
+
+Nenhum arquivo de página foi alterado.
+
+### Como foi verificado
+
+Foi confirmado que a cor de fundo do cartão (branco) e a cor de fundo da página ao redor (cinza muito claro) são, agora, visivelmente diferentes.
+
+Foi confirmado que o cartão tem sombra mesmo sem o cursor em cima, e que uma sombra mais forte continua aparecendo ao passar o cursor, como já acontecia antes.
+
+Foi confirmado que o cartão escuro "Para Empresas" manteve exatamente a mesma aparência de antes, sem nenhuma alteração.
+
+Foi confirmado que essas duas classes de estilo alteradas só existem na página inicial, então nenhuma outra página do site foi afetada.
+
+---
+
+## Alteração 8 — Título da seção "Proteção sob medida para cada perfil" em uma linha só
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Na página inicial, o título "Proteção sob medida para cada perfil" era exibido em duas linhas, com a palavra "perfil" sozinha na segunda linha. Agora ele aparece inteiro em uma única linha.
+
+### Por que acontecia
+
+O bloco que agrupa o título e o parágrafo abaixo dele tinha largura máxima de seiscentos e oitenta pontos. Esse título, no tamanho de fonte usado em telas grandes, precisa de seiscentos e noventa e quatro pontos para caber em uma linha.
+
+Ou seja: faltavam apenas catorze pontos, cerca de dois por cento. Como o texto não cabia por essa margem mínima, a última palavra era empurrada para a linha seguinte.
+
+### Como foi resolvido
+
+A largura máxima daquele bloco passou de seiscentos e oitenta para setecentos e sessenta pontos, o que dá folga suficiente para o título.
+
+O parágrafo que fica logo abaixo do título, porém, foi mantido na largura anterior de seiscentos e oitenta pontos, e continua centralizado. Isso é importante porque seiscentos e oitenta pontos é uma boa largura de leitura para um texto corrido: linhas muito longas cansam a vista. Em outras palavras, só o título ganhou espaço; o parágrafo continua exatamente como estava.
+
+Também foi acrescentada uma regra que, quando um título realmente não couber em uma linha (em telas menores, por exemplo), reparte o texto em linhas de tamanho parecido, em vez de deixar uma palavra solta na última linha. É o mesmo tipo de problema visual que motivou este ajuste, resolvido de forma geral. Navegadores que ainda não entendem essa regra simplesmente a ignoram, sem quebrar nada.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": três regras ajustadas — a largura máxima do bloco de cabeçalho de seção, o equilíbrio de quebra de linha dos títulos de seção, e a largura máxima do parágrafo descritivo.
+
+Nenhum arquivo de página foi alterado.
+
+### Como foi verificado
+
+Foi medido que o título ocupa seiscentos e noventa e quatro pontos em uma linha, contra os seiscentos e oitenta pontos disponíveis antes — confirmando a diferença de catorze pontos como causa exata.
+
+Depois do ajuste, confirmou-se que o título passou a ocupar uma linha só, e que o parágrafo abaixo dele continua com exatamente seiscentos e oitenta pontos de largura e o mesmo número de linhas de antes.
+
+Em uma tela estreita, de celular, confirmou-se que o título se reparte em duas linhas de tamanhos próximos (duzentos e oitenta e quatro e duzentos e quinze pontos), em vez de deixar uma palavra órfã, e que a página não passou a ter rolagem horizontal.
+
+Confirmou-se ainda que esse bloco de cabeçalho de seção só é usado na página inicial, então a alteração não afeta nenhuma outra página do site. O outro título que usa o mesmo estilo, "Resultados que falam por si", continua em uma linha como antes.
+
+---
+
+## Alteração 7 — Primeira seção ocupando a tela inteira em todas as páginas
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Ao abrir qualquer página do site, a primeira seção agora ocupa exatamente toda a altura da tela, do fim do cabeçalho até a borda de baixo. Antes, sobrava uma faixa da seção seguinte aparecendo no rodapé da primeira tela, que era clara e destoava do fundo escuro. Essa faixa não aparece mais.
+
+O comportamento vale para as onze páginas do site e para qualquer tamanho de tela, incluindo celulares. As demais seções da página continuam como estavam.
+
+### Por que a mudança foi feita
+
+Pedido direto do usuário, que descreveu a faixa clara da seção seguinte aparecendo no fim da primeira tela.
+
+A causa era simples: a primeira seção estava configurada para ocupar oitenta e oito por cento da altura da tela na página inicial, e setenta e dois por cento nas páginas internas. Os doze por cento (ou vinte e oito por cento) restantes eram justamente a faixa da seção seguinte que aparecia.
+
+### Como foi resolvido
+
+A altura passou a ser calculada como a altura total da tela menos a altura do cabeçalho. Como o cabeçalho acompanha a rolagem mas ocupa espaço no fluxo da página, descontá-lo faz cabeçalho e primeira seção somarem exatamente uma tela cheia.
+
+Três detalhes cuidaram dos casos difíceis:
+
+Primeiro, a altura da tela é medida com uma unidade que desconta as barras do navegador no celular. Navegadores antigos, que não entendem essa unidade, continuam usando a medida tradicional, sem quebrar nada.
+
+Segundo, havia uma regra específica para telas de até quatrocentos e oitenta pontos de largura que desativava completamente a altura mínima da primeira seção. Era exatamente ela que impedia o comportamento nos aparelhos menores. Foi removida.
+
+Terceiro, o espaçamento interno da primeira seção era fixo em noventa e seis pontos em cima e embaixo. Em monitores de pouca altura, esse valor sozinho já estourava a tela. Ele passou a ser proporcional à altura da tela, variando entre trinta e dois e noventa e seis pontos.
+
+### Uma observação sobre telas muito baixas
+
+Em telas de altura bem reduzida, o conteúdo da primeira seção pode, naturalmente, ser mais alto do que a tela disponível. Nesses casos a seção cresce para caber o conteúdo, em vez de cortá-lo. Mesmo aí, o objetivo principal continua garantido: a seção seguinte não aparece na primeira tela.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": foi criada uma variável guardando a altura do cabeçalho; a altura da primeira seção passou a ser calculada a partir dela; o espaçamento interno virou proporcional; o limite de setenta e dois por cento das páginas internas foi removido; e a regra que desativava a altura mínima nos celulares menores foi removida.
+
+Nenhum arquivo de página precisou ser alterado, porque todas as onze páginas já usavam a mesma classe de estilo na primeira seção.
+
+### Como foi verificado
+
+Foi confirmado que as onze páginas usam a mesma classe na primeira seção, o que faz a regra valer para todas.
+
+As medições foram feitas em cinco tamanhos de tela: um monitor grande, um notebook comum, um monitor de pouca altura, uma tela intermediária e um celular.
+
+Em monitores de proporção comum, a soma da altura do cabeçalho com a da primeira seção fechou exatamente a altura da tela, com diferença menor que dois pontos.
+
+Em todos os tamanhos testados, sem exceção, e tanto na página inicial quanto numa página interna e numa página de produto, confirmou-se que a seção seguinte não aparece na primeira tela.
+
+No celular, confirmou-se ainda que a página não passou a ter rolagem horizontal.
+
+---
+
+## Alteração 6 — Link de início no cabeçalho, logo redimensionada, linha divisória e e-mail do rodapé em uma linha
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Quatro ajustes nesta entrada.
+
+Primeiro: o cabeçalho ganhou um link chamado "Início", que leva à página inicial. Antes, a única forma de voltar ao começo do site era clicar na imagem da marca no canto superior esquerdo, o que não é evidente para todo mundo. O link aparece em todas as onze páginas do site, e na própria página inicial ele fica destacado em dourado, indicando ao visitante onde ele está.
+
+Segundo: a imagem da marca no cabeçalho estava grande demais e aparecia cortada. Ela foi reduzida para caber por inteiro, com uma folga equilibrada em cima e embaixo.
+
+Terceiro: foi acrescentada uma linha vertical fina e discreta separando a imagem da marca das opções de navegação. Além disso, as opções de navegação passaram a ficar alinhadas à esquerda, logo depois dessa linha, em vez de ficarem agrupadas do lado direito. O botão verde do WhatsApp continua exatamente onde estava, no canto direito.
+
+Quarto: no rodapé, o endereço de e-mail estava sendo exibido quebrado em duas linhas, o que ficava desalinhado. Agora ele aparece sempre em uma linha só.
+
+### Por que cada mudança foi feita
+
+O link "Início": pedido direto do usuário, que apontou que depender apenas da imagem da marca para voltar ao começo é ruim.
+
+A imagem da marca: ela estava definida com cento e trinta pontos de altura dentro de um cabeçalho de setenta e dois pontos. Ou seja, era quase o dobro do espaço disponível, e por isso aparecia cortada. Foi reduzida para cinquenta e dois pontos, o que deixa cerca de dez pontos de folga acima e abaixo.
+
+A linha divisória e o alinhamento à esquerda: pedido direto do usuário.
+
+O e-mail em uma linha: na alteração anterior, o e-mail havia sido configurado para quebrar linha dentro da própria coluna, como forma de impedir que ele empurrasse e espremesse as colunas vizinhas do rodapé. A solução resolvia o problema do espremimento, mas criava o problema da quebra, que o usuário apontou agora. A nova solução resolve os dois ao mesmo tempo: a coluna de contato passou a ser dimensionada pelo tamanho do próprio conteúdo, garantindo espaço para o e-mail inteiro, e as demais colunas dividem o que sobra.
+
+### Um ajuste adicional que essa correção exigiu
+
+Como a coluna de contato agora reserva uma largura fixa para o e-mail, em telas de tamanho intermediário sobrava pouco espaço para as outras quatro colunas, e alguns links de navegação voltavam a quebrar linha. Por isso, o ponto em que o rodapé se reorganiza de cinco colunas para duas colunas foi antecipado: antes isso acontecia em telas menores que novecentos pontos, agora acontece em telas menores que mil e oitenta pontos. Na prática, em notebooks de tela menor o rodapé passa a exibir duas colunas largas e confortáveis em vez de cinco colunas apertadas.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": a altura da imagem da marca no cabeçalho foi reduzida; a área de navegação passou a ocupar o espaço restante com os links alinhados à esquerda e o botão do WhatsApp empurrado para a direita; foi criada a linha divisória, que fica escondida quando o menu do celular está aberto, já que ali a navegação vira uma lista vertical; o e-mail do rodapé voltou a ficar em linha única e a coluna de contato passou a ser dimensionada pelo conteúdo; o ponto de reorganização do rodapé foi antecipado.
+
+Onze páginas receberam o novo link "Início" no cabeçalho, com o endereço ajustado conforme a localização de cada página dentro das pastas do site.
+
+### Como foi verificado
+
+No cabeçalho: a imagem da marca foi medida e confirmou-se que ela cabe inteira dentro da altura do cabeçalho, com folga igual em cima e embaixo. A linha divisória foi confirmada com um ponto de largura e vinte e quatro pontos de altura. Confirmou-se que os links começam logo após a linha divisória, à esquerda, e que o botão do WhatsApp permanece encostado na margem direita. Na página inicial, o link "Início" aparece destacado em dourado; nas páginas internas, quem fica destacada é a página correspondente, como antes.
+
+O menu do celular foi aberto e fechado: o link "Início" aparece na lista, e a linha divisória fica corretamente escondida.
+
+No rodapé: o e-mail foi medido em quatro larguras de tela diferentes, de um monitor grande até a largura de um celular, e em todas ele apareceu em uma linha só. Nenhum link de navegação do rodapé quebrou linha, e em nenhuma das larguras a página passou a ter rolagem horizontal.
+
+Numa página de produto, dentro de uma pasta, confirmou-se que o link "Início" aponta corretamente para a página inicial um nível acima.
+
+---
+
+## Alteração 5 — Rodapé padronizado em todo o site e cards de serviço reorganizados
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Dois ajustes nesta entrada.
+
+Primeiro: até esta alteração, apenas a página inicial tinha o rodapé completo e bem organizado, com as informações divididas em colunas claras: marca, Soluções, Empresa, Grupo Império e Contato. Todas as outras dez páginas do site, incluindo a página Para Empresas, a página Para Você, e as oito páginas de produtos específicos, usavam um modelo de rodapé mais antigo, que não tinha o mesmo visual. O ano exibido no direito autoral, nessas páginas antigas, também estava escrito à mão e desatualizado, mostrando 2025. Agora todas as onze páginas do site compartilham exatamente o mesmo rodapé, com o mesmo visual, a mesma organização em colunas, e o ano atualizado automaticamente em todas elas.
+
+Segundo: na seção de serviços da página Para Empresas e da página Para Você, os quatro cartões de serviço apareciam três numa fileira de cima e um sozinho embaixo, deixando um espaço vazio grande ao lado dele. Agora os quatro cartões aparecem organizados em duas fileiras de dois, como pedido.
+
+### Por que cada mudança foi feita
+
+O rodapé: o usuário percebeu que o rodapé de uma página de produto estava visualmente diferente do rodapé da página inicial e pediu para que todas seguissem o mesmo padrão. A investigação revelou a causa: aquele modelo de rodapé mais antigo usava um nome de classe de estilo que não tinha mais nenhuma regra correspondente na folha de estilos do site. Na prática, ele estava sendo exibido sem nenhuma formatação de colunas, espaçamento ou destaque — o oposto do rodapé moderno e organizado da página inicial. Ao mesmo tempo, foi encontrado que o campo do ano no rodapé novo (o da página inicial) também tinha um pequeno defeito: o código que deveria preencher o ano atual procurava por um nome de campo que não existia mais ali, então esse campo específico ficava sempre vazio. Os dois problemas foram corrigidos juntos.
+
+Os cartões de serviço: pedido direto do usuário.
+
+### Arquivos alterados
+
+Dez páginas tiveram o rodapé inteiro substituído pelo modelo padrão, ajustando apenas os endereços dos links de acordo com a localização de cada página dentro das pastas do site: a página Para Empresas, a página Para Você, e as oito páginas de produtos específicos dentro das pastas de empresas e de pessoa física.
+
+Arquivo "js/script.js": o trecho que preenche o ano no rodapé passou a reconhecer também o novo campo de ano, além do antigo, corrigindo o campo que ficava vazio.
+
+Arquivo "css/style.css": a organização dos cartões de serviço passou de três colunas para duas colunas nas telas grandes, o que afeta igualmente a página Para Empresas e a página Para Você, já que as duas têm exatamente quatro cartões cada.
+
+### Como foi verificado
+
+O novo rodapé foi conferido numa das páginas de produto mais profundas do site, dentro da pasta de empresas: a imagem da marca carregou corretamente, o ano apareceu preenchido com o ano atual, e todos os links de navegação apontaram para os endereços corretos, considerando que a página está uma pasta abaixo da página inicial. As larguras das cinco colunas do rodapé, medidas nessa página de produto, ficaram idênticas às larguras já validadas na página inicial.
+
+A reorganização dos cartões de serviço foi conferida tanto na página Para Empresas quanto na página Para Você: em ambas, os quatro cartões apareceram distribuídos em duas fileiras de dois, sem nenhum cartão sozinho.
+
+### Um ponto que vale a atenção do cliente
+
+Ao replicar o rodapé padrão, três links de navegação foram copiados exatamente como estavam na página inicial: "Sobre nós", "Contato" e "Perguntas frequentes", que apontam para pontos específicos dentro da página inicial. Durante a verificação, foi constatado que a página inicial, na sua versão atual, não tem mais nenhuma seção marcada com esses três nomes internos — ela foi reestruturada em algum momento anterior e essas marcações de destino não foram recriadas. Isso significa que, ao clicar nesses três links específicos em qualquer página do site, incluindo a própria página inicial, o visitante é levado para o topo da página inicial, em vez de ser levado direto até a seção correspondente. Essa falha já existia antes desta alteração e não foi criada por ela; ela apenas se tornou visível em mais lugares porque o rodapé padrão, que já tinha essa falha, passou a ser usado em todo o site. Como não foi pedido para corrigir esse ponto, ele foi deixado como estava, apenas registrado aqui para conhecimento.
+
+---
+
+## Alteração 4 — Cabeçalho com cor fixa, ícone corrigido, botão do WhatsApp removido, rodapé reequilibrado e textos justificados
+
+Data: 5 de agosto de 2026.
+
+### O que o visitante percebe
+
+Seis ajustes independentes nesta entrada.
+
+Primeiro: o cabeçalho do site, que antes nascia branco no topo da página e virava preto de repente assim que o visitante rolava cinquenta pixels, agora tem uma única cor fixa, o mesmo preto usado no rodapé. Não existe mais essa troca abrupta de cor durante a rolagem.
+
+Segundo: um pequeno ícone que aparecia quebrado (faltando partes do desenho) ao lado do texto "Para Empresas", na página inicial, foi corrigido para ficar completo, igual ao ícone maior usado no card ao lado.
+
+Terceiro: a seção "Em números", que mostra a contagem de clientes, empresas, seguradoras e anos de experiência, tinha exatamente a mesma cor de fundo do rodapé, o que fazia as duas parecerem uma coisa só. Agora ela tem um tom de cinza mais claro, diferente do rodapé, mas ainda dentro da paleta de cores do site.
+
+Quarto: o botão redondo do WhatsApp que ficava sempre visível, flutuando no canto inferior direito da tela em todas as páginas, foi removido. Os outros botões de WhatsApp do site, os que ficam dentro do conteúdo normal da página, continuam no lugar e funcionando.
+
+Quinto: a organização das informações no rodapé ficou mais equilibrada. Antes, a coluna "Grupo Império", que tem só dois links, ocupava a mesma largura que a coluna "Soluções", que tem cinco links — sobrava muito espaço vazio de um lado. Ao mesmo tempo, o endereço de e-mail no bloco de contato, por ser um texto sem espaços, empurrava aquela coluna para ficar mais larga do que deveria, espremendo as colunas do meio. Em telas de notebook comum, isso chegava a quebrar o texto "Perguntas frequentes" de um jeito feio. Agora cada coluna tem uma largura proporcional à quantidade real de informação que ela carrega, e o e-mail quebra em duas linhas de forma organizada dentro do espaço da própria coluna, em vez de empurrar as colunas vizinhas.
+
+Sexto: quatro tipos de texto do site passaram a ficar alinhados nas duas margens, esquerda e direita, em vez de só na esquerda. São eles: os parágrafos de apresentação para empresas e para pessoas físicas na página inicial, a descrição dos cards de serviço, o texto dos depoimentos de clientes, e as respostas do "Perguntas frequentes".
+
+### Por que cada mudança foi feita
+
+O cabeçalho: o usuário relatou que a cor branca do topo destoava da identidade visual escura do restante do site, e que a troca súbita para preto ao rolar também incomodava. A solução foi fixar uma única cor, eliminando as duas reclamações de uma vez.
+
+O ícone: ele estava com apenas dois traços do desenho original de cinco, resultando numa forma incompleta.
+
+A cor da seção "Em números": o usuário identificou que ela estava com a mesma cor do rodapé logo abaixo.
+
+O botão flutuante do WhatsApp: pedido direto do usuário para removê-lo do site inteiro.
+
+O rodapé: pedido direto do usuário para reorganizar as informações de forma mais harmoniosa. A investigação encontrou a causa técnica exata do desequilíbrio, descrita no parágrafo anterior.
+
+Os textos justificados: pedido direto do usuário.
+
+### Uma observação sobre acessibilidade
+
+Alinhar texto nas duas margens pode, em alguns casos, criar espaçamentos irregulares entre palavras, o que dificulta um pouco a leitura para pessoas com dislexia. É uma prática desaconselhada pelas diretrizes de acessibilidade no nível mais rigoroso, mas não constitui uma falha grave, e a mudança foi aplicada exatamente como solicitada. Se o usuário perceber espaçamento estranho em algum parágrafo curto específico, é possível reverter só aquele trecho sem afetar os demais.
+
+### Arquivos alterados
+
+Arquivo "css/style.css": nove blocos de estilo alterados. A cor do cabeçalho passou a ser fixa e as regras que trocavam essa cor durante a rolagem foram removidas por não fazerem mais efeito nenhum. A cor de fundo da seção "Em números" foi trocada. O bloco inteiro de estilo do botão flutuante do WhatsApp foi apagado, por não ter mais utilidade. As larguras das colunas do rodapé foram recalculadas, e foi adicionada uma regra que permite ao endereço de e-mail quebrar linha dentro da própria coluna. Foi adicionado alinhamento justificado em quatro tipos de texto.
+
+Arquivo "index.html": o ícone quebrado foi completado com as partes que faltavam.
+
+Onze páginas tiveram o botão flutuante do WhatsApp removido: a página inicial, a página Para Empresas, a página Para Você, e as oito páginas de produtos específicos dentro das pastas de empresas e de pessoa física.
+
+### Como foi verificado
+
+O cabeçalho foi conferido antes e depois de simular a rolagem da página: a cor de fundo permaneceu idêntica nos dois momentos, confirmando que a troca de cor não acontece mais. Foi conferido também que o link da página em que o visitante está aparece destacado em dourado, tanto na página inicial quanto nas páginas internas.
+
+O ícone corrigido foi conferido: agora ele tem os cinco traços completos, os mesmos do ícone maior ao lado.
+
+A ausência do botão flutuante do WhatsApp foi conferida nas onze páginas. Nenhum estilo órfão relacionado a ele restou na folha de estilos.
+
+O rodapé foi conferido em três larguras de tela diferentes, simulando um monitor grande, um notebook comum, e a largura logo antes de a página reorganizar as colunas em duas linhas. Em nenhuma dessas larguras algum link de navegação quebrou linha de forma inesperada, e o endereço de e-mail passou a quebrar corretamente dentro do espaço da própria coluna.
+
+Os quatro tipos de texto justificado foram conferidos visualmente, mostrando as margens retas dos dois lados dos parágrafos.
+
+---
+
 ## Alteração 3 — Troca de seis logos e novo padrão de tamanho das faixas
 
 Data: 5 de agosto de 2026.
