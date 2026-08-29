@@ -410,45 +410,6 @@ strong { font-weight: var(--font-semibold); }
   position: relative;
   overflow: hidden;
 }
-/* ── Vídeo de fundo do hero ─────────────────────────────── */
-/* Fica entre o fundo sólido do .hero e o conteúdo. Não usa ::before/::after
-   porque os dois já estão ocupados pelos brilhos dourados decorativos. */
-.hero__video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  /* cover recorta o excesso em vez de esticar: o vídeo é 16:9 e o hero muda
-     de proporção conforme a tela, então sem isto a imagem distorceria. */
-  object-fit: cover;
-  z-index: 0;
-  /* Enfeite: não deve interceptar cliques nem seleção. */
-  pointer-events: none;
-}
-/* Véu escuro. O vídeo tem brilho médio entre 84 e 118 (de 255) e o texto do
-   hero é branco — sem isto o contraste cairia abaixo do legível nos quadros
-   mais claros. Mais denso à esquerda, onde fica o texto, e mais leve à
-   direita, onde ficam os cards, para o vídeo ainda respirar. */
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    to right,
-    rgba(17, 17, 17, 0.88) 0%,
-    rgba(17, 17, 17, 0.74) 55%,
-    rgba(17, 17, 17, 0.62) 100%
-  );
-}
-/* Quem pediu menos movimento no sistema não vê o vídeo: sobra o fundo sólido
-   do .hero, que é exatamente o hero de antes. O véu sai junto — sozinho ele
-   escureceria o fundo sólido e mudaria a aparência original. */
-@media (prefers-reduced-motion: reduce) {
-  .hero__video,
-  .hero__overlay { display: none; }
-}
-
 .hero::before {
   content: '';
   position: absolute;
@@ -599,26 +560,6 @@ strong { font-weight: var(--font-semibold); }
   transition: transform 0.2s ease;
 }
 .audience-card:hover .audience-card__arrow { transform: translateX(4px); }
-/* Sobre o vídeo, o filme branco de 6% deixava de funcionar como painel: a
-   imagem em movimento atravessava o card e a borda se dissolvia. Aqui o card
-   ganha base escura própria e desfoca o que passa atrás, virando vidro fosco.
-   Fica dentro de no-preference porque no modo "reduzir movimento" não existe
-   vídeo — lá o hero segue exatamente como era antes. */
-@media (prefers-reduced-motion: no-preference) {
-  .audience-card {
-    background: rgba(17, 17, 17, 0.58);
-    border-color: rgba(255, 255, 255, 0.18);
-    -webkit-backdrop-filter: blur(10px) saturate(115%);
-    backdrop-filter: blur(10px) saturate(115%);
-  }
-  .audience-card:hover {
-    background: rgba(17, 17, 17, 0.72);
-    border-color: var(--color-accent);
-  }
-  /* 0.6 bastava sobre o cinza chapado; sobre o vídeo desfocado o texto de
-     apoio pedia um pouco mais de corpo. */
-  .audience-card__desc { color: rgba(255, 255, 255, 0.75); }
-}
 @media (max-width: 1024px) {
   .hero__inner { grid-template-columns: minmax(0, 1fr); gap: var(--space-12); }
   .hero__title { font-size: var(--font-3xl); }
