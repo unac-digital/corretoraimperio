@@ -137,6 +137,21 @@
 
 })();
 
+/* ─── Vídeo de fundo do hero ──────────────────────────── */
+/* O CSS já esconde o vídeo quando o sistema pede menos movimento, mas
+   escondido ele ainda baixaria os ~1,8 MB. Remover a fonte evita o download
+   de quem não vai ver nada. Sem vídeo sobra o fundo sólido do hero. */
+(function () {
+  const video = document.querySelector('.hero__video');
+  if (!video) return;
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  video.pause();
+  video.removeAttribute('autoplay');
+  video.querySelectorAll('source').forEach((s) => s.remove());
+  video.load();
+})();
+
 /* ─── Mobile menu ─────────────────────────────────────── */
 (function () {
   const btn = document.querySelector('.header__menu-btn');
