@@ -304,12 +304,10 @@ strong { font-weight: var(--font-semibold); }
   flex-shrink: 0;
 }
 .header__logo-img {
-  /* Estes 54px valem 54px de logo visível porque o PNG é recortado no tamanho
-     da arte. O arquivo original era um canvas de 1366x725 com a arte de 811x409
-     no meio — 56% da altura era margem transparente, então a mesma regra
-     mostrava só ~30px e a logo parecia minúscula.
-     54px dentro do header de 72px: 9px de folga em cima e embaixo. */
-  height: 54px;
+  /* Preenche toda a altura do .header__inner (72px) — o máximo possível sem
+     aumentar o header. PNG já vem recortado no tamanho da arte (sem margem
+     transparente), então 72px aqui corresponde a 72px de logo visível. */
+  height: 72px;
   width: auto;
   flex-shrink: 0;
 }
@@ -394,7 +392,10 @@ strong { font-weight: var(--font-semibold); }
 
 /* ── Hero ───────────────────────────────────────────────── */
 .hero {
-  background: var(--color-primary);
+  /* Cliente pediu tom mais claro que o --color-primary padrão. Usa o
+     --color-primary-l já definido na paleta (mesma escala de cinza, só mais
+     claro) em vez de um valor novo, e mantém o texto branco legível. */
+  background: var(--color-primary-l);
   /* Ocupa a tela inteira menos o header (que é sticky e fica no fluxo).
      Antes eram 88vh, e os 12% restantes deixavam aparecer uma faixa branca
      da seção seguinte no rodapé da primeira tela.
