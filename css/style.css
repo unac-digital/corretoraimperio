@@ -304,10 +304,10 @@ strong { font-weight: var(--font-semibold); }
   flex-shrink: 0;
 }
 .header__logo-img {
-  /* Preenche toda a altura do .header__inner (72px) — o máximo possível sem
-     aumentar o header. PNG já vem recortado no tamanho da arte (sem margem
-     transparente), então 72px aqui corresponde a 72px de logo visível. */
-  height: 72px;
+  /* 54px dentro do header de 72px: 9px de folga em cima e embaixo. O PNG já
+     vem recortado no tamanho da arte, então são 54px de logo visível.
+     Encher os 72px inteiros deixava a logo grande demais para o header. */
+  height: 54px;
   width: auto;
   flex-shrink: 0;
 }
@@ -392,10 +392,11 @@ strong { font-weight: var(--font-semibold); }
 
 /* ── Hero ───────────────────────────────────────────────── */
 .hero {
-  /* Cliente pediu tom mais claro que o --color-primary padrão. Usa o
-     --color-primary-l já definido na paleta (mesma escala de cinza, só mais
-     claro) em vez de um valor novo, e mantém o texto branco legível. */
-  background: var(--color-primary-l);
+  /* Cores invertidas entre a primeira e a segunda dobra: o hero assumiu o
+     cinza claro que era da seção seguinte, e ela assumiu o cinza do hero
+     (ver `.hero + .section`). Por isso todo o texto e os cards daqui
+     passaram a usar as cores escuras, não mais as brancas. */
+  background: var(--color-bg);
   /* Ocupa a tela inteira menos o header (que é sticky e fica no fluxo).
      Antes eram 88vh, e os 12% restantes deixavam aparecer uma faixa branca
      da seção seguinte no rodapé da primeira tela.
@@ -464,7 +465,7 @@ strong { font-weight: var(--font-semibold); }
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
-  color: var(--color-white);
+  color: var(--color-text);
   margin-bottom: var(--space-6);
 }
 .hero__title .highlight {
@@ -474,7 +475,7 @@ strong { font-weight: var(--font-semibold); }
 .hero__subtitle {
   font-size: var(--font-lg);
   line-height: var(--leading-relaxed);
-  color: rgba(255,255,255,0.75);
+  color: var(--color-muted);
   margin-bottom: var(--space-10);
   max-width: 520px;
   text-align: justify;
@@ -495,9 +496,25 @@ strong { font-weight: var(--font-semibold); }
   align-items: center;
   gap: var(--space-2);
   font-size: var(--font-sm);
-  color: rgba(255,255,255,0.65);
+  color: var(--color-muted);
 }
 .hero__badge svg { color: var(--color-accent); flex-shrink: 0; }
+/* Os botões secundários usam estilos de contorno branco, feitos para fundo
+   escuro — sobre o hero claro ficavam invisíveis. Escopado ao hero: as
+   mesmas classes continuam brancas nas seções que seguem escuras (o CTA
+   final, por exemplo). Vale para a home (--outline-white) e para as
+   páginas internas e suas subpáginas (--outline). */
+.hero .btn--outline-white,
+.hero .btn--outline {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.hero .btn--outline-white:hover,
+.hero .btn--outline:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
 .hero__visual {
   display: flex;
   justify-content: center;
@@ -510,20 +527,24 @@ strong { font-weight: var(--font-semibold); }
   width: 100%;
 }
 .audience-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  /* Mesmo tratamento de card claro do .audience-block (seção logo abaixo):
+     branco com contorno dourado e sombra. O branco translúcido de antes
+     dependia do hero escuro e sumiria sobre o fundo claro atual. */
+  background: var(--color-surface);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.22);
   border-radius: var(--radius-md);
   padding: var(--space-8);
   text-decoration: none;
-  color: var(--color-white);
-  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 }
 .audience-card:hover {
-  background: rgba(255,255,255,0.10);
   border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
   transform: translateY(-4px);
 }
 .audience-card__icon {
@@ -547,13 +568,22 @@ strong { font-weight: var(--font-semibold); }
   font-family: var(--font-display);
   font-size: var(--font-xl);
   line-height: var(--leading-snug);
-  color: var(--color-white);
+  color: var(--color-text);
 }
 .audience-card__desc {
   font-size: var(--font-sm);
-  color: rgba(255,255,255,0.6);
+  color: var(--color-muted);
   line-height: var(--leading-normal);
   text-align: justify;
+}
+/* A outra metade da troca: a seção logo depois do hero recebe o cinza que
+   era dele. O seletor exige a classe `.section`, então pega só o bloco
+   Empresas/Você da home — nas páginas internas a seção vizinha é
+   `.section-dor`, que continua clara e com texto escuro solto sobre ela.
+   Aqui todo o conteúdo vive dentro de cards com fundo próprio, então o
+   fundo escuro não afeta legibilidade de nada. */
+.hero + .section {
+  background: var(--color-primary-l);
 }
 .audience-card__arrow {
   color: var(--color-accent);
@@ -660,6 +690,11 @@ strong { font-weight: var(--font-semibold); }
 .seguradoras-logo.seguradoras-logo--alto img     { height: 78px; }
 .seguradoras-logo.seguradoras-logo--largo img    { max-width: 168px; }
 .seguradoras-logo.seguradoras-logo--compacto img { max-width: 138px; }
+/* Para marcas muito horizontais (a partir de ~5:1, como a Bradesco Seguros):
+   com o teto de 168px do --largo elas batem na largura máxima antes de
+   chegar perto da altura das vizinhas e ficam com metade da área visível
+   das outras. Os 196px reequilibram sem estourar o espaçamento da fita. */
+.seguradoras-logo.seguradoras-logo--extralargo img { max-width: 196px; }
 .seguradoras-logo:hover img {
   filter: grayscale(0) brightness(1) contrast(1);
   mix-blend-mode: normal;
@@ -741,31 +776,29 @@ strong { font-weight: var(--font-semibold); }
   font-weight: var(--font-medium);
   line-height: var(--leading-normal);
 }
+/* Só um contêiner de centralização: o painel escuro que existia aqui foi
+   removido a pedido, ficou apenas a logo sobre o fundo da própria seção.
+   A arte não tem nenhum pixel claro (é dourada e cinza-média), então ela
+   se lê bem sobre o cinza claro sem precisar de fundo próprio. */
 .sobre__visual {
-  background: var(--color-primary);
-  border-radius: var(--radius-lg);
-  padding: var(--space-12);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-6);
-  text-align: center;
-  /* Acompanha a altura da coluna de texto ao lado (a mais alta das duas,
-     já que .sobre__inner as centraliza) — sem isto, com pouco texto a coluna
-     desse painel ficaria baixa e o emblema pareceria pequeno demais nela. */
-  min-height: 360px;
+  /* Logo à esquerda, texto à direita. Feito por `order` e não trocando a
+     ordem no HTML porque, na versão empilhada (≤900px), o título precisa
+     vir antes — ver a reposição no media query abaixo. */
+  order: -1;
 }
-.sobre__visual-badge { flex-shrink: 0; }
-.sobre__visual-quote {
-  font-family: var(--font-display);
-  font-size: var(--font-xl);
-  color: var(--color-accent);
-  line-height: var(--leading-snug);
-  max-width: 260px;
+.sobre__visual-logo {
+  width: min(340px, 100%);
+  height: auto;
+  display: block;
 }
 @media (max-width: 900px) {
   .sobre__inner { grid-template-columns: minmax(0, 1fr); }
+  /* Empilhado, o texto volta a vir primeiro: a inversão só faz sentido
+     enquanto há duas colunas lado a lado. */
+  .sobre__visual { order: 0; }
   .sobre__highlights { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 480px) {
@@ -1846,7 +1879,9 @@ body.menu-open { overflow: hidden; }
   align-items: center;
   gap: var(--space-2);
   font-size: var(--font-sm);
-  color: rgba(255,255,255,0.55);
+  /* Mesmo cinza dos selos da home: o branco translúcido de antes dependia
+     do hero escuro e sumia sobre o fundo claro atual. */
+  color: var(--color-muted);
 }
 .hero__trust svg { color: var(--color-accent); flex-shrink: 0; }
 @media (max-width: 580px) {
