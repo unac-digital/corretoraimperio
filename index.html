@@ -170,7 +170,7 @@
   <main id="main-content" tabindex="-1">
 
     <!-- ── Hero ──────────────────────────────────────────── -->
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero hero--figura hero--figura-home" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero__inner">
           <div class="hero__content">
@@ -205,35 +205,9 @@
               </div>
             </div>
           </div>
-
-          <div class="hero__visual" aria-hidden="true">
-            <div class="hero__audience-cards">
-              <a href="empresas.html" class="audience-card" tabindex="-1">
-                <div class="audience-card__icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18"/><path d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4"/><path d="M5 21V10.85"/><path d="M19 21V10.85"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg>
-                </div>
-                <p class="audience-card__label">Para Empresas</p>
-                <h2 class="audience-card__title">Planos de saúde e seguros corporativos</h2>
-                <p class="audience-card__desc">Proteção completa para sua equipe com as melhores operadoras.</p>
-                <span class="audience-card__arrow" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </span>
-              </a>
-              <a href="para-voce.html" class="audience-card" tabindex="-1">
-                <div class="audience-card__icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                </div>
-                <p class="audience-card__label">Para Você</p>
-                <h2 class="audience-card__title">Seguro auto, saúde, vida e consórcio</h2>
-                <p class="audience-card__desc">Proteção para você e sua família com o melhor custo-benefício.</p>
-                <span class="audience-card__arrow" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
+      <div class="hero__pessoa" aria-hidden="true"></div>
     </section>
 
 
@@ -243,6 +217,15 @@
         <div class="audience-section">
           <!-- B2B -->
           <article class="audience-block audience-block--primary animate-fade-up">
+            <div class="audience-block__media">
+              <img src="images/conteudo/equipe-escritorio-768.webp"
+                   srcset="images/conteudo/equipe-escritorio-480.webp 480w,
+                           images/conteudo/equipe-escritorio-768.webp 768w,
+                           images/conteudo/equipe-escritorio-1200.webp 1200w"
+                   sizes="(min-width: 1280px) 596px, (min-width: 768px) calc((100vw - 88px) / 2), calc(100vw - 32px)"
+                   width="1200" height="675" loading="lazy" decoding="async"
+                   alt="Equipe reunida em volta de uma mesa durante uma conversa de trabalho">
+            </div>
             <p class="audience-block__tag" data-editable="audiencia-b2b-tag">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 21h18"/><path d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4"/><path d="M5 21V10.85"/><path d="M19 21V10.85"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg>
               Para Empresas
@@ -268,6 +251,15 @@
 
           <!-- B2C -->
           <article class="audience-block animate-fade-up">
+            <div class="audience-block__media">
+              <img src="images/conteudo/familia-sofa-768.webp"
+                   srcset="images/conteudo/familia-sofa-480.webp 480w,
+                           images/conteudo/familia-sofa-768.webp 768w,
+                           images/conteudo/familia-sofa-1200.webp 1200w"
+                   sizes="(min-width: 1280px) 596px, (min-width: 768px) calc((100vw - 88px) / 2), calc(100vw - 32px)"
+                   width="1200" height="675" loading="lazy" decoding="async"
+                   alt="Mãe e dois filhos sentados juntos no sofá da sala de casa">
+            </div>
             <p class="audience-block__tag" data-editable="audiencia-b2c-tag">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
               Para Você

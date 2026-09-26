@@ -434,7 +434,11 @@ strong { font-weight: var(--font-semibold); }
 }
 .hero__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* Coluna única: a figura saiu do grid e virou camada posicionada, então o
+     texto volta a ter a largura que tinha antes — botões e selos intactos.
+     O 61,8% (proporção áurea, para onde Fibonacci converge) reaparece na
+     divisão visual: o texto ocupa a faixa esquerda e a figura, a direita. */
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-16);
   align-items: center;
   position: relative;
@@ -515,66 +519,93 @@ strong { font-weight: var(--font-semibold); }
   color: var(--color-white);
   border-color: var(--color-primary);
 }
-.hero__visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Figura da consultora: camada posicionada no hero, fora do grid, para não
+   disputar espaço com o texto nem alterar a largura dos botões.
+   Entregue por background-image dentro de um media query (e não por <img>)
+   porque é decorativa e só existe no desktop — assim o celular não chega a
+   baixar o arquivo; um <img> com display:none ainda seria baixado.
+   `bottom: 0` encosta na borda inferior do hero, eliminando a faixa vazia
+   que sobrava embaixo dela. */
+@media (min-width: 1025px) {
+  /* Largura do texto por página: é ela que define onde a figura pode
+     começar. O valor de cada página é o mínimo que mantém os dois botões
+     do CTA na mesma linha — eles têm textos de tamanhos diferentes. */
+  .hero--figura { --hero-texto: 525px; }
+  .hero--figura-empresas { --hero-texto: 565px; }
+  /* Segura o texto na faixa esquerda para ele não correr por baixo da
+     figura. Escopado em .hero--figura porque as páginas internas definem
+     .hero__content com max-width: 720px mais adiante na folha, e as que
+     não têm figura devem continuar com essa largura. */
+  .hero--figura .hero__content { max-width: var(--hero-texto); }
+  /* Recuo lateral menor nos botões do hero que tem figura: com o padding
+     original eles pediam ~555px e empurravam a figura para a direita.
+     Não afeta os botões do resto do site. */
+  .hero--figura .hero__ctas .btn--lg,
+  .hero--figura .hero__actions .btn--lg { padding-left: var(--space-8); padding-right: var(--space-8); }
+  .hero__pessoa {
+    position: absolute;
+    /* A borda esquerda sai do fim do texto, não de uma porcentagem: recuo
+       do container (só existe acima de 1280px, quando ele centraliza) +
+       32px de padding + a largura do texto + 8px de respiro. Com
+       porcentagem a figura avançava 82px sobre o texto em telas de
+       1100px, porque o texto tem largura fixa e ela não. */
+    left: calc(max(0px, (100vw - 1280px) / 2) + 32px + var(--hero-texto) + 8px);
+    right: 6%;
+    bottom: 0;
+    /* Dimensionada pela altura para preencher a seção de cima a baixo; a
+       largura vem do par left/right acima. */
+    height: 92%;
+    /* A imagem em si vem de uma variável definida por página (ver as regras
+       .hero--figura-* abaixo): o comportamento é o mesmo nas três, só o
+       arquivo muda, então não se duplica o bloco inteiro. */
+    background-image: var(--hero-figura);
+    background-repeat: no-repeat;
+    /* Encostada à esquerda da própria caixa: em telas largas, onde a altura
+       é o limite e sobra espaço horizontal, é isso que a mantém próxima do
+       texto em vez de jogada contra a margem direita. */
+    background-position: bottom left;
+    background-size: contain;
+    pointer-events: none;
+  }
+  /* Arquivos grandes no desktop: uma variável por página. */
+  .hero--figura-home {
+    --hero-figura: -webkit-image-set(url('../images/conteudo/consultora-660.webp') 1x, url('../images/conteudo/consultora-980.webp') 1.5x);
+    --hero-figura: image-set(url('../images/conteudo/consultora-660.webp') 1x, url('../images/conteudo/consultora-980.webp') 1.5x);
+  }
+  .hero--figura-empresas {
+    --hero-figura: -webkit-image-set(url('../images/conteudo/executiva-660.webp') 1x, url('../images/conteudo/executiva-980.webp') 1.5x);
+    --hero-figura: image-set(url('../images/conteudo/executiva-660.webp') 1x, url('../images/conteudo/executiva-980.webp') 1.5x);
+  }
+  .hero--figura-voce {
+    --hero-figura: -webkit-image-set(url('../images/conteudo/casal-660.webp') 1x, url('../images/conteudo/casal-980.webp') 1.5x);
+    --hero-figura: image-set(url('../images/conteudo/casal-660.webp') 1x, url('../images/conteudo/casal-980.webp') 1.5x);
+  }
 }
-.hero__audience-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-  width: 100%;
-}
-.audience-card {
-  /* Mesmo tratamento de card claro do .audience-block (seção logo abaixo):
-     branco com contorno dourado e sombra. O branco translúcido de antes
-     dependia do hero escuro e sumiria sobre o fundo claro atual. */
-  background: var(--color-surface);
-  border: 1px solid rgba(var(--color-accent-rgb), 0.22);
-  border-radius: var(--radius-md);
-  padding: var(--space-8);
-  text-decoration: none;
-  color: var(--color-text);
-  box-shadow: var(--shadow-sm);
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-.audience-card:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
-}
-.audience-card__icon {
-  width: 48px;
-  height: 48px;
-  background: rgba(201,168,76,0.15);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-accent);
-}
-.audience-card__label {
-  font-size: var(--font-xs);
-  font-weight: var(--font-semibold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-accent);
-}
-.audience-card__title {
-  font-family: var(--font-display);
-  font-size: var(--font-xl);
-  line-height: var(--leading-snug);
-  color: var(--color-text);
-}
-.audience-card__desc {
-  font-size: var(--font-sm);
-  color: var(--color-muted);
-  line-height: var(--leading-normal);
-  text-align: justify;
+
+/* ── Figura do hero no celular ──────────────────────────── */
+/* Abaixo de 1025px a figura vai para a faixa inferior do hero, centralizada
+   e abaixo do texto. O padding extra no .hero reserva essa faixa, para o
+   conteúdo não ficar por cima dela.
+   Aqui usa-se o arquivo de 420px, sem versão 2x: exibida com ~200px de
+   largura, essa imagem já entrega mais que densidade retina, e puxar o
+   arquivo de 660px seria o dobro do peso sem ganho visível. */
+@media (max-width: 1024px) {
+  .hero--figura { padding-bottom: calc(clamp(var(--space-8), 8vh, var(--space-24)) + 250px); }
+  .hero--figura .hero__pessoa {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 250px;
+    background-image: var(--hero-figura-mob);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    pointer-events: none;
+  }
+  .hero--figura-home     { --hero-figura-mob: url('../images/conteudo/consultora-420.webp'); }
+  .hero--figura-empresas { --hero-figura-mob: url('../images/conteudo/executiva-420.webp'); }
+  .hero--figura-voce     { --hero-figura-mob: url('../images/conteudo/casal-420.webp'); }
 }
 /* A outra metade da troca: a seção logo depois do hero recebe o cinza que
    era dele. O seletor exige a classe `.section`, então pega só o bloco
@@ -585,23 +616,17 @@ strong { font-weight: var(--font-semibold); }
 .hero + .section {
   background: var(--color-primary-l);
 }
-.audience-card__arrow {
-  color: var(--color-accent);
-  margin-top: auto;
-  transition: transform 0.2s ease;
-}
-.audience-card:hover .audience-card__arrow { transform: translateX(4px); }
 @media (max-width: 1024px) {
-  .hero__inner { grid-template-columns: minmax(0, 1fr); gap: var(--space-12); }
+  .hero__inner { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
   .hero__title { font-size: var(--font-3xl); }
   .hero__subtitle { max-width: 100%; }
-  .hero__audience-cards { grid-template-columns: 1fr 1fr; }
+  /* Empilhado, a figura volta a caber na coluna e é centralizada; o
+     estouro de 14% só faz sentido nas duas colunas do desktop. */
 }
 @media (max-width: 480px) {
   /* O hero mantém a tela inteira também no celular — havia aqui um
      min-height: auto que era justamente o que quebrava isso nos aparelhos
      menores. O padding continua vindo do clamp da regra .hero. */
-  .hero__audience-cards { grid-template-columns: minmax(0, 1fr); }
   .hero__ctas { flex-direction: column; }
   .hero__ctas .btn { width: 100%; justify-content: center; }
 }
@@ -873,6 +898,22 @@ strong { font-weight: var(--font-semibold); }
   box-shadow: var(--shadow-md);
   transform: translateY(-3px);
   border-color: rgba(var(--color-accent-rgb), 0.45);
+}
+/* Banner sangrado até as bordas do card: as margens negativas cancelam o
+   padding de 48px, que não muda em nenhum breakpoint. O `aspect-ratio`
+   reserva a altura antes da imagem carregar — sem ele o texto abaixo dá um
+   salto quando ela chega, justamente no celular, onde a conexão é pior. */
+.audience-block__media {
+  margin: calc(var(--space-12) * -1) calc(var(--space-12) * -1) 0;
+  border-radius: calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+.audience-block__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .audience-block--primary {
   background: var(--color-primary);
@@ -1420,6 +1461,51 @@ strong { font-weight: var(--font-semibold); }
   box-shadow: var(--shadow-md);
   transform: translateY(-4px);
   border-color: var(--color-accent);
+}
+/* Mesmo banner sangrado dos cards da home, ajustado ao padding menor destes
+   (32px) e ao raio menor. O `aspect-ratio` reserva a altura antes da foto
+   chegar, então o texto do card não salta durante o carregamento. */
+.servico-card__media {
+  margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) 0;
+  border-radius: calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px) 0 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+.servico-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Movimento discreto nas fotos dos cards: um zoom lento de 4% ao passar o
+   mouse. Só a imagem se move — a moldura tem overflow: hidden, então ela
+   cresce por dentro do recorte, sem empurrar nada em volta (não recalcula
+   layout, só compõe: é transform, barato para o navegador).
+   1,2s de saída contra 0,6s de entrada dá a sensação de "assentar" em vez
+   de voltar de repente. */
+.audience-block__media img,
+.servico-card__media img {
+  transform: scale(1);
+  transition: transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+/* Só em aparelhos com mouse: no toque o :hover fica "grudado" depois do
+   tap e a foto ficaria ampliada até o usuário tocar em outro lugar. */
+@media (hover: hover) and (pointer: fine) {
+  .audience-block:hover .audience-block__media img,
+  .audience-block:focus-within .audience-block__media img,
+  .servico-card:hover .servico-card__media img,
+  .servico-card:focus-within .servico-card__media img {
+    transform: scale(1.04);
+    transition-duration: 0.6s;
+  }
+}
+/* Quem pediu menos animação no sistema não recebe o zoom. */
+@media (prefers-reduced-motion: reduce) {
+  .audience-block__media img,
+  .servico-card__media img { transition: none; }
+  .audience-block:hover .audience-block__media img,
+  .servico-card:hover .servico-card__media img { transform: none; }
 }
 .servico-card__icon {
   width: 56px;
@@ -2004,8 +2090,26 @@ body.menu-open { overflow: hidden; }
 
 /* ── Seção dor / solução ─────────────────────────────────── */
 .section-dor {
-  background: var(--color-bg);
+  /* Mesmo cinza que a seção logo abaixo do hero usa na home: as internas
+     passam a repetir o contraste claro (hero) → escuro (seção seguinte). */
+  background: var(--color-primary-l);
   padding: var(--space-20) 0;
+}
+/* Só a coluna da esquerda tem texto solto sobre o fundo escuro. A da
+   direita (.dor__col--solution) é um card branco, e as duas compartilham
+   .dor__item — por isso a cor clara é escopada com :not(), senão o texto
+   do card sumiria no branco. */
+.section-dor .section-title {
+  color: var(--color-white);
+}
+.section-dor .dor__col:not(.dor__col--solution) .dor__item {
+  color: rgba(255, 255, 255, 0.88);
+}
+/* O vermelho original (#dc2626) rende 2,5:1 sobre este cinza — abaixo do
+   mínimo de 3:1 para elemento gráfico. Este tom claro sobe para 3,6:1.
+   O verde do card branco não muda: lá o fundo continua claro. */
+.section-dor .dor__col:not(.dor__col--solution) .dor__icon--bad {
+  color: #fca5a5;
 }
 .dor__grid {
   display: grid;
