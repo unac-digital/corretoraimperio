@@ -14,6 +14,8 @@ colors:
   olive-hover: "#3f4c23"
   olive-deep: "#36421f"
   olive-tint: "#e8ebdc"
+  tint-olive: "#eceee2"
+  tint-stone: "#efeee9"
   gold: "#c9a84c"
   gold-soft: "#e2cd92"
   gold-ink: "#7d6420"
@@ -224,7 +226,9 @@ Uma paleta de dia claro: neutros quentes levemente esverdeados, um oliva decidid
 ### Neutral
 - **Papel de Escritório** (`ground`): fundo do corpo, do hero e dos campos de formulário em repouso.
 - **Branco Mesa** (`surface`): seções alternadas (`section--alt`), cards, cartão do formulário, faixa de seguradoras.
-- **Cinza Faixa** (`band`): a estrutura do site. Cabeçalho, faixa de números, faixa de chamada (`cta-band`) e rodapé. Também é o `theme-color` do navegador.
+- **Oliva Claro** (`tint-olive`): fundo de seção discreto. Na home, Empresas/Você + "Por que escolher" (as duas dividem o mesmo fundo) e depoimentos; nas internas, a seção dor/solução, os depoimentos e a primeira seção depois do hero das páginas de produto. Existe para os cards brancos saltarem do fundo.
+- **Pedra** (`tint-stone`): o segundo fundo discreto, cinza levemente quente. História na home e grade de serviços nas internas.
+- **Cinza Faixa** (`band`): a estrutura do site. Cabeçalho, faixa de números (também nas páginas internas), faixa de chamada (`cta-band`) e rodapé. Também é o `theme-color` do navegador.
 - **Fio** (`line`) e **Fio Suave** (`line-soft`): bordas de 1px de cards, divisórias de FAQ, bordas de campo (1,5px) e separadores de faixa.
 - **Chumbo** (`ink`): títulos e texto principal (14,7:1 sobre `ground`).
 - **Chumbo Médio** (`ink-2`): links de navegação, itens de lista, rótulos de formulário.
@@ -237,7 +241,9 @@ Uma paleta de dia claro: neutros quentes levemente esverdeados, um oliva decidid
 
 **A Regra do Fio Dourado.** O dourado aparece como linha (2px ou 1px), marcador de 6px, aspas ou ícone sobre escuro. Em fundo claro, ícone dourado usa `gold-ink`; texto dourado sobre claro não existe.
 
-**A Regra do Escuro Oliva.** Quando uma seção precisa escurecer, ela usa `olive-deep`, não chumbo nem preto. O escuro é reservado para decisão e prova: contato, chamada final, painéis de destaque.
+**A Regra do Escuro Oliva.** Quando uma seção precisa escurecer, ela usa `olive-deep`, não chumbo nem preto. O escuro é reservado para decisão e prova: contato, chamada final, painéis de destaque e a faixa de benefícios da página Empresas (`section--dark`). Duas faixas escuras nunca ficam seguidas: por isso a faixa de números interna é clara.
+
+**A Regra do Ritmo de Fundos.** Seções vizinhas nunca repetem o mesmo fundo. A sequência alterna branco, `tint-olive`, `tint-stone` e `band`, com `olive-deep` como pontuação forte. O tom é discreto de propósito: a cor da seção é atmosfera; quem chama atenção continua sendo o oliva dos botões.
 
 ## Typography
 

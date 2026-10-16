@@ -4,65 +4,441 @@
   "title": "Design System: Império Corretora de Seguros",
   "extensions": {
     "colorMeta": {
-      "olive":        { "role": "primary",   "displayName": "Oliva Decisão",      "canonical": "oklch(44.3% 0.072 124)", "tonalRamp": ["#070e00", "#1e2a00", "#3a4819", "#596839", "#798a59", "#9bad7b", "#bfd29e", "#e4f7c2"] },
-      "olive-hover":  { "role": "primary",   "displayName": "Oliva Pressionado",  "canonical": "oklch(39.4% 0.065 124)", "tonalRamp": ["#070e00", "#1f2a00", "#3b481f", "#5a683e", "#7a895e", "#9cac80", "#c0d1a3", "#e5f7c7"] },
-      "olive-deep":   { "role": "primary",   "displayName": "Oliva Profundo",     "canonical": "oklch(35.9% 0.057 125)", "tonalRamp": ["#070e00", "#1f2a06", "#3b4724", "#5a6743", "#7a8963", "#9dac84", "#c1d0a8", "#e6f6cc"] },
-      "olive-tint":   { "role": "primary",   "displayName": "Oliva Véu",          "canonical": "oklch(93.4% 0.020 116)", "tonalRamp": ["#0b0c04", "#24261b", "#414337", "#606356", "#818476", "#a4a799", "#c8cbbc", "#edf0e1"] },
-      "gold":         { "role": "secondary", "displayName": "Dourado da Logo",    "canonical": "oklch(74.3% 0.117 90)",  "tonalRamp": ["#120a00", "#312300", "#543f00", "#795d00", "#9e7e18", "#c2a145", "#e7c66a", "#ffeb90"] },
-      "gold-soft":    { "role": "secondary", "displayName": "Dourado Claro",      "canonical": "oklch(85.2% 0.080 91)",  "tonalRamp": ["#110a00", "#302300", "#524000", "#725f26", "#948148", "#b8a36a", "#ddc88d", "#ffedb1"] },
-      "gold-ink":     { "role": "secondary", "displayName": "Dourado Tinta",      "canonical": "oklch(51.5% 0.090 88)",  "tonalRamp": ["#120a00", "#312300", "#543f00", "#765e18", "#997f3e", "#bda261", "#e2c684", "#ffeca8"] },
-      "ground":       { "role": "neutral",   "displayName": "Papel de Escritório", "canonical": "oklch(97.6% 0.003 106)", "tonalRamp": ["#0b0b0a", "#252524", "#424240", "#616160", "#828281", "#a5a5a3", "#c9c9c7", "#eeeeec"] },
-      "surface":      { "role": "neutral",   "displayName": "Branco Mesa",        "canonical": "oklch(100% 0 0)",        "tonalRamp": ["#0b0b0b", "#252525", "#424242", "#616161", "#828282", "#a5a5a5", "#c9c9c9", "#eeeeee"] },
-      "band":         { "role": "neutral",   "displayName": "Cinza Faixa",        "canonical": "oklch(93.3% 0.004 106)", "tonalRamp": ["#0b0b09", "#252523", "#424240", "#61615f", "#828280", "#a5a5a2", "#c9c9c6", "#efefec"] },
-      "line":         { "role": "neutral",   "displayName": "Fio",                "canonical": "oklch(88.4% 0.008 107)", "tonalRamp": ["#0b0b08", "#252521", "#42423d", "#62625c", "#83837d", "#a5a5a0", "#c9c9c4", "#efefe9"] },
-      "line-soft":    { "role": "neutral",   "displayName": "Fio Suave",          "canonical": "oklch(92.4% 0.007 107)", "tonalRamp": ["#0b0b08", "#252522", "#42423e", "#61615d", "#83837e", "#a5a5a1", "#c9c9c5", "#efefea"] },
-      "ink":          { "role": "neutral",   "displayName": "Chumbo",             "canonical": "oklch(25.4% 0.007 118)", "tonalRamp": ["#0b0c08", "#252622", "#41433e", "#61625d", "#82837e", "#a4a6a0", "#c8cac4", "#eeefea"] },
-      "ink-2":        { "role": "neutral",   "displayName": "Chumbo Médio",       "canonical": "oklch(39.1% 0.012 114)", "tonalRamp": ["#0b0c07", "#25261f", "#42433c", "#61625b", "#82837b", "#a5a69e", "#c9cac2", "#eeefe7"] },
-      "muted":        { "role": "neutral",   "displayName": "Cinza Nota",         "canonical": "oklch(47.5% 0.011 113)", "tonalRamp": ["#0b0c07", "#252620", "#42433c", "#61625b", "#82837c", "#a5a69e", "#c9cac2", "#eeefe7"] },
-      "on-dark-2":    { "role": "neutral",   "displayName": "Branco 80%",         "canonical": "rgba(255, 255, 255, 0.80)" },
-      "on-dark-line": { "role": "neutral",   "displayName": "Fio Branco 16%",     "canonical": "rgba(255, 255, 255, 0.16)" },
-      "error":        { "role": "error",     "displayName": "Tijolo de Erro",     "canonical": "oklch(49.5% 0.140 32)",  "tonalRamp": ["#220000", "#4f0000", "#7c1404", "#a13a29", "#c85d4b", "#f0816c", "#ffb0a0", "#ffe6de"] }
+      "olive": {
+        "role": "primary",
+        "displayName": "Oliva Decisão",
+        "canonical": "oklch(44.3% 0.072 124)",
+        "tonalRamp": [
+          "#070e00",
+          "#1e2a00",
+          "#3a4819",
+          "#596839",
+          "#798a59",
+          "#9bad7b",
+          "#bfd29e",
+          "#e4f7c2"
+        ]
+      },
+      "olive-hover": {
+        "role": "primary",
+        "displayName": "Oliva Pressionado",
+        "canonical": "oklch(39.4% 0.065 124)",
+        "tonalRamp": [
+          "#070e00",
+          "#1f2a00",
+          "#3b481f",
+          "#5a683e",
+          "#7a895e",
+          "#9cac80",
+          "#c0d1a3",
+          "#e5f7c7"
+        ]
+      },
+      "olive-deep": {
+        "role": "primary",
+        "displayName": "Oliva Profundo",
+        "canonical": "oklch(35.9% 0.057 125)",
+        "tonalRamp": [
+          "#070e00",
+          "#1f2a06",
+          "#3b4724",
+          "#5a6743",
+          "#7a8963",
+          "#9dac84",
+          "#c1d0a8",
+          "#e6f6cc"
+        ]
+      },
+      "olive-tint": {
+        "role": "primary",
+        "displayName": "Oliva Véu",
+        "canonical": "oklch(93.4% 0.020 116)",
+        "tonalRamp": [
+          "#0b0c04",
+          "#24261b",
+          "#414337",
+          "#606356",
+          "#818476",
+          "#a4a799",
+          "#c8cbbc",
+          "#edf0e1"
+        ]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Dourado da Logo",
+        "canonical": "oklch(74.3% 0.117 90)",
+        "tonalRamp": [
+          "#120a00",
+          "#312300",
+          "#543f00",
+          "#795d00",
+          "#9e7e18",
+          "#c2a145",
+          "#e7c66a",
+          "#ffeb90"
+        ]
+      },
+      "gold-soft": {
+        "role": "secondary",
+        "displayName": "Dourado Claro",
+        "canonical": "oklch(85.2% 0.080 91)",
+        "tonalRamp": [
+          "#110a00",
+          "#302300",
+          "#524000",
+          "#725f26",
+          "#948148",
+          "#b8a36a",
+          "#ddc88d",
+          "#ffedb1"
+        ]
+      },
+      "gold-ink": {
+        "role": "secondary",
+        "displayName": "Dourado Tinta",
+        "canonical": "oklch(51.5% 0.090 88)",
+        "tonalRamp": [
+          "#120a00",
+          "#312300",
+          "#543f00",
+          "#765e18",
+          "#997f3e",
+          "#bda261",
+          "#e2c684",
+          "#ffeca8"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Papel de Escritório",
+        "canonical": "oklch(97.6% 0.003 106)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#252524",
+          "#424240",
+          "#616160",
+          "#828281",
+          "#a5a5a3",
+          "#c9c9c7",
+          "#eeeeec"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Branco Mesa",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "band": {
+        "role": "neutral",
+        "displayName": "Cinza Faixa",
+        "canonical": "oklch(93.3% 0.004 106)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#252523",
+          "#424240",
+          "#61615f",
+          "#828280",
+          "#a5a5a2",
+          "#c9c9c6",
+          "#efefec"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Fio",
+        "canonical": "oklch(88.4% 0.008 107)",
+        "tonalRamp": [
+          "#0b0b08",
+          "#252521",
+          "#42423d",
+          "#62625c",
+          "#83837d",
+          "#a5a5a0",
+          "#c9c9c4",
+          "#efefe9"
+        ]
+      },
+      "line-soft": {
+        "role": "neutral",
+        "displayName": "Fio Suave",
+        "canonical": "oklch(92.4% 0.007 107)",
+        "tonalRamp": [
+          "#0b0b08",
+          "#252522",
+          "#42423e",
+          "#61615d",
+          "#83837e",
+          "#a5a5a1",
+          "#c9c9c5",
+          "#efefea"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Chumbo",
+        "canonical": "oklch(25.4% 0.007 118)",
+        "tonalRamp": [
+          "#0b0c08",
+          "#252622",
+          "#41433e",
+          "#61625d",
+          "#82837e",
+          "#a4a6a0",
+          "#c8cac4",
+          "#eeefea"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Chumbo Médio",
+        "canonical": "oklch(39.1% 0.012 114)",
+        "tonalRamp": [
+          "#0b0c07",
+          "#25261f",
+          "#42433c",
+          "#61625b",
+          "#82837b",
+          "#a5a69e",
+          "#c9cac2",
+          "#eeefe7"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Cinza Nota",
+        "canonical": "oklch(47.5% 0.011 113)",
+        "tonalRamp": [
+          "#0b0c07",
+          "#252620",
+          "#42433c",
+          "#61625b",
+          "#82837c",
+          "#a5a69e",
+          "#c9cac2",
+          "#eeefe7"
+        ]
+      },
+      "on-dark-2": {
+        "role": "neutral",
+        "displayName": "Branco 80%",
+        "canonical": "rgba(255, 255, 255, 0.80)"
+      },
+      "on-dark-line": {
+        "role": "neutral",
+        "displayName": "Fio Branco 16%",
+        "canonical": "rgba(255, 255, 255, 0.16)"
+      },
+      "error": {
+        "role": "error",
+        "displayName": "Tijolo de Erro",
+        "canonical": "oklch(49.5% 0.140 32)",
+        "tonalRamp": [
+          "#220000",
+          "#4f0000",
+          "#7c1404",
+          "#a13a29",
+          "#c85d4b",
+          "#f0816c",
+          "#ffb0a0",
+          "#ffe6de"
+        ]
+      },
+      "tint-olive": {
+        "role": "neutral",
+        "displayName": "Oliva Claro",
+        "canonical": "oklch(94.5% 0.013 113)",
+        "tonalRamp": [
+          "#0b0c04",
+          "#24261b",
+          "#414337",
+          "#606356",
+          "#818476",
+          "#a4a799",
+          "#c8cbbc",
+          "#edf0e1"
+        ]
+      },
+      "tint-stone": {
+        "role": "neutral",
+        "displayName": "Pedra",
+        "canonical": "oklch(94.7% 0.006 98)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#252524",
+          "#424240",
+          "#616160",
+          "#828281",
+          "#a5a5a3",
+          "#c9c9c7",
+          "#eeeeec"
+        ]
+      }
     },
     "typographyMeta": {
-      "display":       { "displayName": "Display", "purpose": "Só o título do hero da home; palavras-chave em oliva." },
-      "display-inner": { "displayName": "Display interno", "purpose": "Título do hero das páginas internas." },
-      "headline":      { "displayName": "Headline", "purpose": "Títulos de seção, sempre abertos pelo fio dourado." },
-      "title":         { "displayName": "Title", "purpose": "Títulos de card de porta, faixa de chamada e colunas dor/solução." },
-      "title-sm":      { "displayName": "Title pequeno", "purpose": "Título do formulário, cards de serviço, rótulo da faixa de seguradoras." },
-      "numeral":       { "displayName": "Numeral", "purpose": "Valores da faixa de números, com algarismos tabulares e alinhados." },
-      "lead":          { "displayName": "Lead", "purpose": "Subtítulo do hero e descrições de seção, até 34em." },
-      "body":          { "displayName": "Body", "purpose": "Texto corrido, medida de 60–68ch." },
-      "body-sm":       { "displayName": "Body pequeno", "purpose": "Descrições de card, listas, links de navegação e rodapé." },
-      "button":        { "displayName": "Button", "purpose": "Todos os botões, sem caixa-alta." },
-      "label":         { "displayName": "Label", "purpose": "Rótulos de campo e legendas de canal de contato." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Só o título do hero da home; palavras-chave em oliva."
+      },
+      "display-inner": {
+        "displayName": "Display interno",
+        "purpose": "Título do hero das páginas internas."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de seção, sempre abertos pelo fio dourado."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Títulos de card de porta, faixa de chamada e colunas dor/solução."
+      },
+      "title-sm": {
+        "displayName": "Title pequeno",
+        "purpose": "Título do formulário, cards de serviço, rótulo da faixa de seguradoras."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Valores da faixa de números, com algarismos tabulares e alinhados."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Subtítulo do hero e descrições de seção, até 34em."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido, medida de 60–68ch."
+      },
+      "body-sm": {
+        "displayName": "Body pequeno",
+        "purpose": "Descrições de card, listas, links de navegação e rodapé."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Todos os botões, sem caixa-alta."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Rótulos de campo e legendas de canal de contato."
+      }
     },
     "shadows": [
-      { "name": "shadow-1", "value": "0 1px 2px rgba(34, 35, 31, 0.06), 0 2px 8px rgba(34, 35, 31, 0.05)", "purpose": "Repouso de cards e da faixa de motivos." },
-      { "name": "shadow-2", "value": "0 2px 4px rgba(34, 35, 31, 0.05), 0 10px 28px rgba(34, 35, 31, 0.09)", "purpose": "Coluna de solução oliva nas páginas internas." },
-      { "name": "shadow-3", "value": "0 4px 10px rgba(34, 35, 31, 0.06), 0 20px 48px rgba(34, 35, 31, 0.14)", "purpose": "Hover de cards; em repouso só no cartão de citação sobre a foto e no cartão do formulário." },
-      { "name": "button-rest", "value": "0 1px 2px rgba(54, 66, 31, 0.25)", "purpose": "Botão primário em repouso." },
-      { "name": "button-hover", "value": "0 6px 18px rgba(54, 66, 31, 0.28)", "purpose": "Botão primário no hover." },
-      { "name": "header-scrolled", "value": "0 6px 24px rgba(34, 35, 31, 0.08)", "purpose": "Cabeçalho fixo depois de rolar 50px." },
-      { "name": "input-focus-ring", "value": "0 0 0 3px rgba(75, 90, 43, 0.18)", "purpose": "Anel de foco dos campos de formulário, junto com a borda oliva." },
-      { "name": "focus-visible", "value": "outline: 3px solid #c9a84c; outline-offset: 3px", "purpose": "Foco de teclado em todo elemento interativo." }
+      {
+        "name": "shadow-1",
+        "value": "0 1px 2px rgba(34, 35, 31, 0.06), 0 2px 8px rgba(34, 35, 31, 0.05)",
+        "purpose": "Repouso de cards e da faixa de motivos."
+      },
+      {
+        "name": "shadow-2",
+        "value": "0 2px 4px rgba(34, 35, 31, 0.05), 0 10px 28px rgba(34, 35, 31, 0.09)",
+        "purpose": "Coluna de solução oliva nas páginas internas."
+      },
+      {
+        "name": "shadow-3",
+        "value": "0 4px 10px rgba(34, 35, 31, 0.06), 0 20px 48px rgba(34, 35, 31, 0.14)",
+        "purpose": "Hover de cards; em repouso só no cartão de citação sobre a foto e no cartão do formulário."
+      },
+      {
+        "name": "button-rest",
+        "value": "0 1px 2px rgba(54, 66, 31, 0.25)",
+        "purpose": "Botão primário em repouso."
+      },
+      {
+        "name": "button-hover",
+        "value": "0 6px 18px rgba(54, 66, 31, 0.28)",
+        "purpose": "Botão primário no hover."
+      },
+      {
+        "name": "header-scrolled",
+        "value": "0 6px 24px rgba(34, 35, 31, 0.08)",
+        "purpose": "Cabeçalho fixo depois de rolar 50px."
+      },
+      {
+        "name": "input-focus-ring",
+        "value": "0 0 0 3px rgba(75, 90, 43, 0.18)",
+        "purpose": "Anel de foco dos campos de formulário, junto com a borda oliva."
+      },
+      {
+        "name": "focus-visible",
+        "value": "outline: 3px solid #c9a84c; outline-offset: 3px",
+        "purpose": "Foco de teclado em todo elemento interativo."
+      }
     ],
     "motion": [
-      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Curva única de todas as transições." },
-      { "name": "duration-state", "value": "0.18s", "purpose": "Cor, fundo, borda e sombra de botões, links e campos; seta desliza 3px." },
-      { "name": "duration-underline", "value": "0.25s", "purpose": "Fio dourado do link ativo crescendo da esquerda; círculo de seta deslizando." },
-      { "name": "duration-lift", "value": "0.3s", "purpose": "Card sobe 4px e passa a shadow-3 no hover; sombra do cabeçalho." },
-      { "name": "duration-disclosure", "value": "0.35s", "purpose": "Abertura de resposta do FAQ." },
-      { "name": "counter-on-enter", "value": "IntersectionObserver", "purpose": "Valores da faixa de números contam uma vez ao entrar na tela; o valor final já está no HTML." },
-      { "name": "marquee-exception", "value": "40s linear infinite", "purpose": "Exceção pedida pelo cliente: só a fita de seguradoras. Não reutilizar." }
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Curva única de todas as transições."
+      },
+      {
+        "name": "duration-state",
+        "value": "0.18s",
+        "purpose": "Cor, fundo, borda e sombra de botões, links e campos; seta desliza 3px."
+      },
+      {
+        "name": "duration-underline",
+        "value": "0.25s",
+        "purpose": "Fio dourado do link ativo crescendo da esquerda; círculo de seta deslizando."
+      },
+      {
+        "name": "duration-lift",
+        "value": "0.3s",
+        "purpose": "Card sobe 4px e passa a shadow-3 no hover; sombra do cabeçalho."
+      },
+      {
+        "name": "duration-disclosure",
+        "value": "0.35s",
+        "purpose": "Abertura de resposta do FAQ."
+      },
+      {
+        "name": "counter-on-enter",
+        "value": "IntersectionObserver",
+        "purpose": "Valores da faixa de números contam uma vez ao entrar na tela; o valor final já está no HTML."
+      },
+      {
+        "name": "marquee-exception",
+        "value": "40s linear infinite",
+        "purpose": "Exceção pedida pelo cliente: só a fita de seguradoras. Não reutilizar."
+      }
     ],
     "breakpoints": [
-      { "name": "full-width-buttons", "value": "520px" },
-      { "name": "container-gutter", "value": "768px" },
-      { "name": "grid-2up", "value": "960px" },
-      { "name": "hero-stack", "value": "1024px" },
-      { "name": "nav-drawer", "value": "1080px" },
-      { "name": "split-stack", "value": "1100px" },
-      { "name": "container-max", "value": "1240px" }
+      {
+        "name": "full-width-buttons",
+        "value": "520px"
+      },
+      {
+        "name": "container-gutter",
+        "value": "768px"
+      },
+      {
+        "name": "grid-2up",
+        "value": "960px"
+      },
+      {
+        "name": "hero-stack",
+        "value": "1024px"
+      },
+      {
+        "name": "nav-drawer",
+        "value": "1080px"
+      },
+      {
+        "name": "split-stack",
+        "value": "1100px"
+      },
+      {
+        "name": "container-max",
+        "value": "1240px"
+      }
     ]
   },
   "components": [
@@ -160,12 +536,36 @@
       "Movimento mínimo: números contam ao entrar na tela e cards sobem levemente ao passar o mouse. Nada mais anima por conta própria."
     ],
     "rules": [
-      { "name": "A Regra da Decisão Oliva", "body": "Toda ação clicável que leva a uma cotação, a uma conversa ou a uma página é oliva (ou branca, sobre escuro). Nenhuma outra cor ganha papel de botão; dourado nunca preenche um botão.", "section": "colors" },
-      { "name": "A Regra do Fio Dourado", "body": "O dourado aparece como linha (2px ou 1px), marcador de 6px, aspas ou ícone sobre escuro. Em fundo claro, ícone dourado usa `gold-ink`; texto dourado sobre claro não existe.", "section": "colors" },
-      { "name": "A Regra do Escuro Oliva", "body": "Quando uma seção precisa escurecer, ela usa `olive-deep`, não chumbo nem preto. O escuro é reservado para decisão e prova: contato, chamada final, painéis de destaque.", "section": "colors" },
-      { "name": "A Regra da Ênfase por Cor", "body": "No serifado, ênfase é cor oliva em peso 400 (`em` com `font-style: normal`). Nunca itálico, nunca negrito, nunca gradiente. O serifado só existe em peso 400; hierarquia vem do tamanho.", "section": "typography" },
-      { "name": "A Regra dos Dois Rostos", "body": "Serifado para títulos e números; sans para todo o resto, inclusive botões, FAQ e rótulos. Perguntas de FAQ são DM Sans 600, não serifado.", "section": "typography" },
-      { "name": "A Regra da Sombra que Responde", "body": "Cards repousam em `--shadow-1` e, ao passar o mouse, sobem 4px e vão para `--shadow-3`. Sombra alta em repouso só para o que está de fato sobre outra superfície. Nunca sombra sem desfoque, nunca halo colorido sem deslocamento.", "section": "elevation" }
+      {
+        "name": "A Regra da Decisão Oliva",
+        "body": "Toda ação clicável que leva a uma cotação, a uma conversa ou a uma página é oliva (ou branca, sobre escuro). Nenhuma outra cor ganha papel de botão; dourado nunca preenche um botão.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Fio Dourado",
+        "body": "O dourado aparece como linha (2px ou 1px), marcador de 6px, aspas ou ícone sobre escuro. Em fundo claro, ícone dourado usa `gold-ink`; texto dourado sobre claro não existe.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Escuro Oliva",
+        "body": "Quando uma seção precisa escurecer, ela usa `olive-deep`, não chumbo nem preto. O escuro é reservado para decisão e prova: contato, chamada final, painéis de destaque.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra da Ênfase por Cor",
+        "body": "No serifado, ênfase é cor oliva em peso 400 (`em` com `font-style: normal`). Nunca itálico, nunca negrito, nunca gradiente. O serifado só existe em peso 400; hierarquia vem do tamanho.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra dos Dois Rostos",
+        "body": "Serifado para títulos e números; sans para todo o resto, inclusive botões, FAQ e rótulos. Perguntas de FAQ são DM Sans 600, não serifado.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra da Sombra que Responde",
+        "body": "Cards repousam em `--shadow-1` e, ao passar o mouse, sobem 4px e vão para `--shadow-3`. Sombra alta em repouso só para o que está de fato sobre outra superfície. Nunca sombra sem desfoque, nunca halo colorido sem deslocamento.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "**Do** use oliva (`olive`) para toda ação e branco com texto `olive-deep` para a ação sobre fundo escuro.",
