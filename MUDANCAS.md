@@ -18,7 +18,7 @@ Esta versão está no branch de trabalho e ainda não está no ar. O site public
 
 O cabeçalho é cinza claro, com o botão verde-oliva "Solicitar cotação" à direita. Os botões de ação do site inteiro passaram de dourado para verde-oliva com texto branco. O dourado da logo aparece como um fio fino que abre cada título, nas divisórias da faixa de números e no traço embaixo da página atual no menu.
 
-A página inicial foi reorganizada. Logo na abertura aparece a foto de um atendimento, com o título "Proteção para sua empresa e para sua família", os botões de cotação e de WhatsApp e três garantias: desde 2015, atendimento humanizado e cotação em até 24 horas. Em seguida vêm a faixa com os números da corretora, os cartões Para Empresas e Para Você com links diretos para cada produto, a seção "Por que escolher a Império?", a faixa das seguradoras e operadoras, a história da empresa, os espaços para depoimentos, as perguntas frequentes e o bloco de contato com o formulário.
+A página inicial foi reorganizada. Logo na abertura aparece a foto de um atendimento, com o título "Proteção para sua empresa e para sua família", os botões de cotação e de WhatsApp e três garantias: mais de 15 anos no mercado, atendimento humanizado e cotação em até 24 horas. Em seguida vêm a faixa com os números da corretora, os cartões Para Empresas e Para Você com links diretos para cada produto, a seção "Por que escolher a Império?", a faixa das seguradoras e operadoras, a história da empresa, os espaços para depoimentos, as perguntas frequentes e o bloco de contato com o formulário.
 
 Nas páginas internas, o visual novo foi aplicado sem mudar a ordem das seções. Os rótulos pequenos em letras maiúsculas que ficavam acima dos títulos foram retirados, porque repetiam o que o título já diz.
 
@@ -33,6 +33,10 @@ Nas oito páginas de produto, a seção "Vantagens" tinha texto escuro sobre fun
 A página inicial tinha uma tag de fechamento do conteúdo principal faltando antes do rodapé. Isso foi corrigido.
 
 Um dos logos de seguradora, o da Yelum, tinha uma declaração técnica antiga no arquivo, que foi removida sem mudar o desenho.
+
+### Sem ano de fundação
+
+A pedido do cliente, o site não mostra mais o ano de fundação nem a expressão "mais de 10 anos", que pareciam contradizer os mais de 15 anos de experiência. Em todos os lugares fica apenas "mais de 15 anos de experiência no mercado de seguros". O texto da seção de história também foi reescrito para ficar mais próximo e acolhedor.
 
 ### O que ainda depende do cliente
 

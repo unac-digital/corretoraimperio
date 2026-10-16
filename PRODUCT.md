@@ -15,7 +15,7 @@ O visitante chega querendo saber se a corretora é confiável e quer falar com a
 
 ## Product Purpose
 
-Corretora de seguros independente com sede em Arujá/SP, fundada em 2015. Cota em várias seguradoras e operadoras ao mesmo tempo e entrega a melhor combinação de cobertura e preço, com um consultor que acompanha da cotação à implantação e durante toda a vigência. Sucesso do site é gerar contato qualificado: conversa no WhatsApp ou formulário de cotação preenchido.
+Corretora de seguros independente com sede em Arujá/SP, com mais de 15 anos de experiência no mercado de seguros. Cota em várias seguradoras e operadoras ao mesmo tempo e entrega a melhor combinação de cobertura e preço, com um consultor que acompanha da cotação à implantação e durante toda a vigência. Sucesso do site é gerar contato qualificado: conversa no WhatsApp ou formulário de cotação preenchido.
 
 ## Positioning
 
@@ -45,7 +45,7 @@ Corretora local, com atendimento humano e próximo, que tem acesso às grandes s
 
 ## Evidence on Hand
 
-- Números reais usados no site: mais de 500 clientes atendidos em Arujá e região, mais de 150 empresas com plano de saúde, mais de 10 seguradoras parceiras, mais de 15 anos de experiência no mercado de seguros. Fundação em 2015.
+- Números reais usados no site: mais de 500 clientes atendidos em Arujá e região, mais de 150 empresas com plano de saúde, mais de 10 seguradoras parceiras, mais de 15 anos de experiência no mercado de seguros. O ano de fundação não aparece no site, por decisão do cliente (evita conflito com os 15+ anos); use sempre "mais de 15 anos de experiência".
 - Seguradoras: Porto Seguro, Azul, Tokio Marine, Yelum, Mapfre, Allianz, Bradesco Seguros, Suhai, Zurich, Pier. Operadoras de saúde: Porto Saúde, Bradesco Saúde, SulAmérica, Amil, Hapvida, São Miguel Saúde, Unihosp, Unimed, Plena Saúde, Garantia de Saúde. Logos em `images/logos-seguradoras/` e `images/logos-operadoras-saude/`.
 - Fotos licenciadas em `images/conteudo/` (consultora, executiva, casal, família, equipe, auto, odonto, consórcio etc.), em 3 tamanhos webp.
 - Não existem depoimentos reais ainda. As páginas usam espaços marcados `[CLIENTE: inserir depoimento real]`. Nunca inventar nomes, textos de clientes, notas ou números.

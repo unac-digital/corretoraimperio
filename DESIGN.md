@@ -214,7 +214,7 @@ Uma paleta de dia claro: neutros quentes levemente esverdeados, um oliva decidid
 ### Primary
 - **Oliva Decisão** (`olive`): fundo de todo botão primário, contorno e texto do botão secundário, círculos de seta "ver mais", marcas de check, ícones de destaque em superfície clara, palavras de ênfase no título (`em` em cor, sem itálico), seleção de texto e cursor de digitação. Contraste de 7,5:1 com branco.
 - **Oliva Pressionado** (`olive-hover`): estado de hover do primário e dos círculos de seta. Só existe como resposta.
-- **Oliva Profundo** (`olive-deep`): o único escuro de painel. Bloco de contato, chamada final (`cta-final`), painel "Fundada em" da história, coluna de solução nas páginas internas e cartão de citação sobre a foto do hero.
+- **Oliva Profundo** (`olive-deep`): o único escuro de painel. Bloco de contato, chamada final (`cta-final`), painel "15+ anos" da história, coluna de solução nas páginas internas e cartão de citação sobre a foto do hero.
 - **Oliva Véu** (`olive-tint`): hover do botão de contorno e do botão branco sobre escuro. Um sopro de cor, nunca uma superfície de seção.
 
 ### Secondary
@@ -317,7 +317,7 @@ Confiantes e baixos, como uma assinatura num documento: retangulares, cantos de 
 - **Card de serviço:** foto no topo em 16:8, ícone circular oliva sobreposto à borda da foto com anel branco de 4px, lista de recursos com marcadores dourados de 6px, botões no rodapé.
 
 ### Painel Oliva
-Painel `olive-deep` de 14px de canto, texto branco, fio dourado interno e ícones de traço dourados. Usado no painel "Fundada em 2015" da história, na coluna de solução das páginas internas e no cartão de citação sobre a foto do hero (com `--shadow-3`). Sempre um por composição.
+Painel `olive-deep` de 14px de canto, texto branco, fio dourado interno e ícones de traço dourados. Usado no painel "15+ anos de experiência" da história, na coluna de solução das páginas internas e no cartão de citação sobre a foto do hero (com `--shadow-3`). Sempre um por composição.
 
 ### Inputs / Fields
 - **Style:** fundo `ground`, borda `line` de 1,5px, cantos de 8px, altura mínima de 48px, cursor oliva. Rótulo acima em `label`. Select com seta de traço oliva desenhada.
