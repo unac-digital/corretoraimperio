@@ -1,143 +1,137 @@
 /* ============================================================
-   IMPÉRIO CORRETORA DE SEGUROS — style.css
-   Paleta: Cinza chumbo + preto + dourado (fiel à logo)
-   Tipografia: DM Serif Display + DM Sans
+   IMPÉRIO CORRETORA DE SEGUROS — style.css · versão 2.0
+   Escritório à luz do dia: cinza claro e branco, verde-oliva nas
+   decisões, dourado da logo como fio de acabamento.
+   Tipografia: DM Serif Display (títulos) + DM Sans (texto)
    ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
 /* ── Tokens ─────────────────────────────────────────────── */
 :root {
-  /* Cores */
-  --color-bg:          #f2f2f2;
-  --color-surface:     #ffffff;
-  --color-primary:     #3d3d3d;
-  --color-primary-d:   #111111;
-  --color-primary-l:   #5a5a5a;
-  --color-accent:      #c9a84c;
-  --color-accent-l:    #e0c06a;
-  --color-accent-rgb:  201, 168, 76;
-  --color-text:        #1a1a1a;
-  --color-muted:       #6a6a6a;
-  --color-border:      #e0e0e0;
-  --color-white:       #ffffff;
+  --ground:      #f7f7f5;
+  --surface:     #ffffff;
+  --band:        #e9e9e6;
+  --band-deep:   #dededa;
+  --line:        #d9d9d3;
+  --line-soft:   #e6e6e1;
 
-  /* Tipografia */
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
+  --ink:         #22231f;
+  --ink-2:       #45463f;
+  --muted:       #5c5d56;
 
-  --font-xs:   0.75rem;
-  --font-sm:   0.875rem;
-  --font-base: 1rem;
-  --font-md:   1.125rem;
-  --font-lg:   1.25rem;
-  --font-xl:   1.5rem;
-  --font-2xl:  2rem;
-  --font-3xl:  2.75rem;
-  --font-4xl:  3.5rem;
-  --font-5xl:  4.5rem;
+  --olive:       #4b5a2b;
+  --olive-hover: #3f4c23;
+  --olive-deep:  #36421f;
+  --olive-tint:  #e8ebdc;
 
-  --font-normal:   400;
-  --font-medium:   500;
-  --font-semibold: 600;
-  --font-bold:     700;
+  --gold:        #c9a84c;
+  --gold-soft:   #e2cd92;
+  --gold-ink:    #7d6420;
 
-  --leading-tight:   1.1;
-  --leading-snug:    1.3;
-  --leading-normal:  1.5;
-  --leading-relaxed: 1.7;
+  --charcoal:    #3d3d3d;
+  --charcoal-2:  #333331;
 
-  --tracking-tight:  -0.02em;
-  --tracking-normal:  0;
-  --tracking-wide:    0.05em;
-  --tracking-wider:   0.1em;
+  --on-dark:     #ffffff;
+  --on-dark-2:   rgba(255, 255, 255, 0.80);
+  --on-dark-line: rgba(255, 255, 255, 0.16);
 
-  /* Espaçamento */
-  --space-1:  0.25rem;
-  --space-2:  0.5rem;
-  --space-3:  0.75rem;
-  --space-4:  1rem;
-  --space-5:  1.25rem;
-  --space-6:  1.5rem;
-  --space-8:  2rem;
+  --font-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --text-xs:   0.8125rem;
+  --text-sm:   0.9375rem;
+  --text-base: 1.0625rem;
+  --text-md:   1.1875rem;
+  --text-lg:   1.375rem;
+  --title-sm:  clamp(1.375rem, 1.2rem + 0.6vw, 1.625rem);
+  --title-md:  clamp(1.75rem, 1.4rem + 1.3vw, 2.375rem);
+  --title-lg:  clamp(2rem, 1.5rem + 2vw, 3rem);
+  --title-xl:  clamp(2.5rem, 1.55rem + 3.6vw, 4.375rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
-  --space-32: 8rem;
+  --section-y: clamp(4rem, 3rem + 4vw, 6.5rem);
 
-  /* Altura do header: 72px do .header__inner + 1px da borda de baixo.
-     Usada para o hero ocupar exatamente o resto da tela. */
-  --header-h: 73px;
-
-  /* Bordas */
+  --header-h: 84px;
   --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --radius:    8px;
+  --radius-md: 14px;
   --radius-full: 999px;
 
-  /* Sombras */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.07);
-  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.16);
+  --shadow-1: 0 1px 2px rgba(34, 35, 31, 0.06), 0 2px 8px rgba(34, 35, 31, 0.05);
+  --shadow-2: 0 2px 4px rgba(34, 35, 31, 0.05), 0 10px 28px rgba(34, 35, 31, 0.09);
+  --shadow-3: 0 4px 10px rgba(34, 35, 31, 0.06), 0 20px 48px rgba(34, 35, 31, 0.14);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Reset ──────────────────────────────────────────────── */
+/* ── Base ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scrollbar-color: #b9b9b2 var(--ground); }
 body {
   font-family: var(--font-body);
-  font-size: var(--font-base);
-  line-height: var(--leading-normal);
-  color: var(--color-text);
-  background: var(--color-bg);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--ground);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
 }
-img, video, iframe { max-width: 100%; display: block; }
-a { color: inherit; }
-button { cursor: pointer; font-family: inherit; }
+img, video, svg { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+button { cursor: pointer; font: inherit; color: inherit; }
 ul, ol { list-style: none; }
+input, select, textarea { font: inherit; color: inherit; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
+h4, h5, h6 { font-weight: 600; }
+p { text-wrap: pretty; }
+strong { font-weight: 600; }
+::selection { background: var(--olive); color: #fff; }
+[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 
-/* ── Motion reduzido ────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
 
 /* ── Acessibilidade ─────────────────────────────────────── */
 .skip-link {
   position: absolute;
-  top: -48px;
+  top: -60px;
   left: var(--space-4);
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: var(--space-3) var(--space-6);
-  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-  font-weight: var(--font-semibold);
-  text-decoration: none;
   z-index: 9999;
-  transition: top 0.2s ease;
+  padding: var(--space-3) var(--space-5);
+  background: var(--olive);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  transition: top 0.2s var(--ease-out);
 }
 .skip-link:focus { top: 0; }
-
 :focus { outline: none; }
-:focus-visible {
-  outline: 3px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
 .visually-hidden {
-  position: absolute;
+  position: absolute !important;
   width: 1px; height: 1px;
   padding: 0; margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
 }
@@ -145,521 +139,502 @@ ul, ol { list-style: none; }
 /* ── Layout ─────────────────────────────────────────────── */
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 var(--space-4);
+  padding: 0 var(--space-5);
 }
 @media (min-width: 768px) { .container { padding: 0 var(--space-8); } }
 
-.section        { padding: var(--space-20) 0; }
-.section--alt   { padding: var(--space-20) 0; background: var(--color-surface); }
-.section--dark  { padding: var(--space-20) 0; background: var(--color-primary); color: var(--color-white); }
-.section__header {
-  /* 760px, não 680px: o título "Proteção sob medida para cada perfil" precisa
-     de 694px numa linha só e ficava 14px maior que o bloco, jogando "perfil"
-     sozinho para a linha de baixo. O parágrafo continua limitado a 680px
-     (ver .section__desc), que é a largura boa de leitura. */
-  max-width: 760px;
-  margin: 0 auto var(--space-16);
-  text-align: center;
-}
-.section__eyebrow {
-  display: inline-block;
-  font-size: var(--font-sm);
-  font-weight: var(--font-semibold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: #7e6410;
-  margin-bottom: var(--space-4);
-}
-.section--dark .section__eyebrow { color: var(--color-accent-l); }
-.section__title {
-  font-family: var(--font-display);
-  font-size: var(--font-2xl);
-  line-height: var(--leading-snug);
-  letter-spacing: var(--tracking-tight);
-  color: var(--color-text);
-  margin-bottom: var(--space-4);
-  /* Quando o título realmente não couber numa linha (telas menores), reparte
-     as linhas de forma equilibrada em vez de deixar uma palavra órfã. */
-  text-wrap: balance;
-}
-.section--dark .section__title { color: var(--color-white); }
-.section__desc {
-  font-size: var(--font-md);
-  line-height: var(--leading-relaxed);
-  color: var(--color-muted);
-  /* Segura o parágrafo na largura de leitura mesmo com o cabeçalho mais
-     largo, que existe só para o título caber numa linha. */
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.section--dark .section__desc { color: rgba(255,255,255,0.72); }
-@media (min-width: 768px) {
-  .section__title { font-size: var(--font-3xl); }
-}
+.section       { padding: var(--section-y) 0; }
+.section--alt  { padding: var(--section-y) 0; background: var(--surface); }
+.section--dark { padding: var(--section-y) 0; background: var(--charcoal); color: var(--on-dark); }
 
-/* ── Tipografia ─────────────────────────────────────────── */
-h1, h2, h3 { font-family: var(--font-display); line-height: var(--leading-snug); }
-h4, h5, h6 { font-family: var(--font-body); font-weight: var(--font-semibold); }
-p { line-height: var(--leading-relaxed); }
-strong { font-weight: var(--font-semibold); }
+/* Fio dourado: a assinatura que abre cada título de seção. */
+.rule {
+  display: block;
+  width: 44px;
+  height: 2px;
+  background: var(--gold);
+  border: 0;
+  margin-bottom: var(--space-5);
+}
+.rule--center { margin-left: auto; margin-right: auto; }
+
+.section__header { max-width: 760px; margin: 0 auto var(--space-12); text-align: center; }
+.section__title,
+.section-title {
+  font-size: var(--title-lg);
+  color: var(--ink);
+  margin-bottom: var(--space-4);
+}
+.section-title { text-align: center; max-width: 820px; margin-left: auto; margin-right: auto; margin-bottom: var(--space-12); }
+.section-title::before {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 2px;
+  margin: 0 auto var(--space-5);
+  background: var(--gold);
+}
+.section__desc {
+  font-size: var(--text-md);
+  color: var(--muted);
+  max-width: 680px;
+  margin: 0 auto;
+}
+.section--dark .section__title,
+.section--dark .section-title { color: var(--on-dark); }
+.section--dark .section__desc { color: var(--on-dark-2); }
+.section-title + .section__desc { margin-top: calc(var(--space-8) * -1); margin-bottom: var(--space-12); }
+
+.text-center { text-align: center; }
+.mt-2 { margin-top: var(--space-2); }
+.mt-8 { margin-top: var(--space-8); }
 
 /* ── Botões ─────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-8);
-  font-size: var(--font-base);
-  font-weight: var(--font-semibold);
-  letter-spacing: var(--tracking-wide);
-  border-radius: var(--radius-sm);
-  border: 2px solid transparent;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
   text-decoration: none;
-  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-  cursor: pointer;
   white-space: nowrap;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.18s var(--ease-out), color 0.18s var(--ease-out),
+              border-color 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out),
+              transform 0.18s var(--ease-out);
 }
-.btn:hover { transform: translateY(-1px); }
-.btn:active { transform: translateY(0); }
+.btn svg { flex-shrink: 0; }
+.btn__arrow { transition: transform 0.18s var(--ease-out); }
+.btn:hover .btn__arrow { transform: translateX(3px); }
+.btn:active { transform: translateY(1px); }
 
 .btn--primary,
 .btn--accent {
-  background: var(--color-accent);
-  color: var(--color-primary);
-  border-color: var(--color-accent);
+  background: var(--olive);
+  border-color: var(--olive);
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(54, 66, 31, 0.25);
 }
 .btn--primary:hover,
-.btn--accent:hover { background: var(--color-accent-l); border-color: var(--color-accent-l); }
+.btn--accent:hover {
+  background: var(--olive-hover);
+  border-color: var(--olive-hover);
+  box-shadow: 0 6px 18px rgba(54, 66, 31, 0.28);
+}
 
-.btn--secondary {
+.btn--secondary,
+.btn--outline,
+.btn--outline-white {
   background: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  border-color: var(--olive);
+  color: var(--olive);
 }
-.btn--secondary:hover { background: var(--color-primary); color: var(--color-white); }
+.btn--secondary:hover,
+.btn--outline:hover,
+.btn--outline-white:hover { background: var(--olive-tint); }
 
-.btn--outline-white,
-.btn--outline {
+.btn--lg { min-height: 54px; padding: 0.875rem 1.75rem; font-size: 1rem; }
+
+/* Em superfícies escuras a ação vira branca: oliva sobre chumbo ou sobre
+   oliva profundo não teria contorno legível. */
+.section--dark .btn--primary, .section--dark .btn--accent,
+.cta-final .btn--primary, .cta-final .btn--accent,
+.contato .btn--accent {
+  background: #fff;
+  border-color: #fff;
+  color: var(--olive-deep);
+  box-shadow: none;
+}
+.section--dark .btn--primary:hover, .section--dark .btn--accent:hover,
+.cta-final .btn--primary:hover, .cta-final .btn--accent:hover,
+.contato .btn--accent:hover { background: var(--olive-tint); border-color: var(--olive-tint); }
+.btn--outline-light,
+.section--dark .btn--outline,
+.section--dark .btn--secondary,
+.cta-final .btn--outline,
+.contato .btn--outline {
   background: transparent;
-  color: var(--color-white);
-  border-color: rgba(255,255,255,0.5);
-}
-.btn--outline-white:hover,
-.btn--outline:hover { background: rgba(255,255,255,0.12); border-color: var(--color-white); }
-
-.btn--ghost {
-  background: transparent;
-  color: var(--color-accent);
-  border-color: transparent;
-  padding-left: 0;
-}
-.btn--ghost:hover { color: var(--color-accent-l); transform: translateX(4px); }
-
-.btn--lg {
-  padding: var(--space-4) var(--space-10);
-  font-size: var(--font-md);
-}
-
-/* WhatsApp button */
-.btn--whatsapp {
-  background: #25D366;
+  border-color: rgba(255, 255, 255, 0.7);
   color: #fff;
-  border-color: #25D366;
 }
-.btn--whatsapp:hover { background: #1ebe5b; border-color: #1ebe5b; }
+.btn--outline-light:hover,
+.section--dark .btn--outline:hover,
+.section--dark .btn--secondary:hover,
+.cta-final .btn--outline:hover,
+.contato .btn--outline:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; }
 
 /* ── Header ─────────────────────────────────────────────── */
 .header {
   position: sticky;
   top: 0;
   z-index: 100;
-  /* Cinza claro (pedido do cliente). Os links abaixo usam texto escuro: com
-     o header claro, os tons brancos herdados do header preto sumiam. */
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease;
+  background: var(--band);
+  border-bottom: 1px solid var(--line);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
 }
+.header--scrolled { box-shadow: 0 6px 24px rgba(34, 35, 31, 0.08); }
+.header--hidden { transform: translateY(-100%); }
 .header__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-8);
-  height: 72px;
+  height: var(--header-h);
 }
-.header__logo {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  text-decoration: none;
-  flex-shrink: 0;
-}
-.header__logo-icon {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-}
-.header__logo-img {
-  /* 54px dentro do header de 72px: 9px de folga em cima e embaixo. O PNG já
-     vem recortado no tamanho da arte, então são 54px de logo visível.
-     Encher os 72px inteiros deixava a logo grande demais para o header. */
-  height: 54px;
-  width: auto;
-  flex-shrink: 0;
-}
-.footer__logo-img {
-  /* Acompanha o recorte do PNG: a 130px de caixa a arte visível dava ~73px por
-     causa da margem transparente. Com o arquivo recortado, manter 130px faria
-     a logo do rodapé quase dobrar de tamanho — 88px repõe o tamanho de antes
-     com uma folga, sem estourar a coluna. */
-  height: 88px;
-  width: auto;
-}
-.header__logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-.header__logo-name {
-  font-family: var(--font-display);
-  font-size: var(--font-lg);
-  font-weight: var(--font-bold);
-  color: var(--color-accent);
-  letter-spacing: var(--tracking-tight);
-}
-.header__logo-tagline {
-  font-size: var(--font-xs);
-  font-weight: var(--font-medium);
-  color: var(--color-muted);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-}
+.header__logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+.header__logo-img { height: 64px; width: auto; }
 .header__nav {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
-  /* Ocupa o espaço que sobra depois da logo, para os links começarem logo
-     após a linha divisória em vez de ficarem colados no WhatsApp. */
+  gap: var(--space-8);
   flex: 1;
 }
-/* Linha discreta separando a logo das opções de navegação. */
-.header__nav::before {
-  content: "";
-  width: 1px;
-  height: 24px;
-  background: var(--color-border);
-  flex-shrink: 0;
-}
-.header__nav a {
-  font-size: var(--font-sm);
-  font-weight: var(--font-medium);
-  color: var(--color-primary);
-  text-decoration: none;
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
-  transition: background 0.15s ease, color 0.15s ease;
-  white-space: nowrap;
-}
-.header__nav a:hover { background: rgba(0, 0, 0, 0.05); color: var(--color-primary-d); }
-.header__nav a[aria-current="page"] { color: var(--color-primary-d); font-weight: var(--font-semibold); }
-.header__nav .nav-divider {
-  width: 1px;
-  height: 20px;
-  background: var(--color-border);
-  margin: 0 var(--space-2);
-}
-.header__cta { display: flex; align-items: center; gap: var(--space-3); }
-.header__menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  padding: var(--space-2);
-  color: var(--color-primary);
-  border-radius: var(--radius-sm);
-}
-@media (max-width: 900px) {
-  .header__nav { display: none; }
-  .header__menu-btn { display: flex; align-items: center; justify-content: center; }
-  .header__cta .btn { display: none; }
-}
-
-/* ── Hero ───────────────────────────────────────────────── */
-.hero {
-  /* Cores invertidas entre a primeira e a segunda dobra: o hero assumiu o
-     cinza claro que era da seção seguinte, e ela assumiu o cinza do hero
-     (ver `.hero + .section`). Por isso todo o texto e os cards daqui
-     passaram a usar as cores escuras, não mais as brancas. */
-  background: var(--color-bg);
-  /* Ocupa a tela inteira menos o header (que é sticky e fica no fluxo).
-     Antes eram 88vh, e os 12% restantes deixavam aparecer uma faixa branca
-     da seção seguinte no rodapé da primeira tela.
-     A segunda declaração usa dvh, que desconta as barras do navegador no
-     celular; navegadores sem suporte ficam com a primeira (vh). */
-  min-height: calc(100vh - var(--header-h));
-  min-height: calc(100dvh - var(--header-h));
+.header__nav-list {
   display: flex;
   align-items: center;
-  /* Padding proporcional à altura da tela: fixo em 96px ele estourava a
-     primeira tela em monitores baixos (ex.: 1440x700). */
-  padding: clamp(var(--space-8), 8vh, var(--space-24)) 0;
+  gap: var(--space-1);
+  margin: 0 auto;
+}
+.header__nav-link {
   position: relative;
+  display: block;
+  padding: 0.625rem 0.875rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink-2);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: color 0.18s var(--ease-out), background-color 0.18s var(--ease-out);
+}
+.header__nav-link:hover { color: var(--ink); background: rgba(34, 35, 31, 0.05); }
+.header__nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.875rem;
+  right: 0.875rem;
+  bottom: 4px;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease-out);
+}
+.header__nav-link--active,
+.header__nav-link[aria-current="page"] { color: var(--ink); font-weight: 600; }
+.header__nav-link--active::after,
+.header__nav-link[aria-current="page"]::after { transform: scaleX(1); }
+.header__cta { flex-shrink: 0; }
+.header__menu-btn,
+.header__nav-close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 0;
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+.header__menu-btn:hover,
+.header__nav-close:hover { background: rgba(34, 35, 31, 0.06); }
+
+@media (max-width: 1080px) {
+  .header__menu-btn { display: inline-flex; }
+  .header__nav { display: none; }
+  .header__nav.header__nav--open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-6);
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    padding: calc(var(--header-h) + var(--space-4)) var(--space-6) var(--space-8);
+    background: var(--ground);
+    overflow-y: auto;
+  }
+  .header__nav--open .header__nav-close { display: inline-flex; position: absolute; top: 20px; right: var(--space-5); }
+  .header__nav--open .header__nav-list { flex-direction: column; align-items: stretch; margin: 0; gap: 0; }
+  .header__nav--open .header__nav-list li { border-bottom: 1px solid var(--line); }
+  .header__nav--open .header__nav-link { padding: var(--space-5) var(--space-2); font-family: var(--font-display); font-size: 1.625rem; font-weight: 400; color: var(--ink); }
+  .header__nav--open .header__nav-link::after { left: var(--space-2); right: auto; width: 44px; bottom: 14px; }
+  .header__nav--open .header__cta { width: 100%; min-height: 56px; }
+  .header__logo-img { height: 54px; }
+}
+body.menu-open { overflow: hidden; }
+
+/* ── Hero da home ───────────────────────────────────────── */
+.hero-home {
+  position: relative;
+  background: var(--ground);
   overflow: hidden;
 }
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -30%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -20%;
-  left: -5%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero__inner {
-  display: grid;
-  /* Coluna única: a figura saiu do grid e virou camada posicionada, então o
-     texto volta a ter a largura que tinha antes — botões e selos intactos.
-     O 61,8% (proporção áurea, para onde Fibonacci converge) reaparece na
-     divisão visual: o texto ocupa a faixa esquerda e a figura, a direita. */
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-16);
-  align-items: center;
+.hero-home__inner {
   position: relative;
   z-index: 1;
-}
-.hero__eyebrow {
-  font-size: var(--font-sm);
-  font-weight: var(--font-semibold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: var(--space-5);
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  min-height: clamp(560px, calc(100svh - var(--header-h) - 116px), 760px);
+  padding: var(--space-16) 0;
 }
-.hero__eyebrow::before {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 2px;
-  background: var(--color-accent);
-  flex-shrink: 0;
-}
-.hero__title {
-  font-family: var(--font-display);
-  font-size: var(--font-4xl);
-  font-weight: var(--font-bold);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-  color: var(--color-text);
+.hero-home__content { max-width: 560px; }
+.hero-home__title {
+  font-size: var(--title-xl);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--ink);
   margin-bottom: var(--space-6);
 }
-.hero__title .highlight {
-  color: var(--color-accent);
-  font-style: italic;
+.hero-home__title em { font-style: normal; color: var(--olive); }
+.hero-home__lead {
+  font-size: var(--text-md);
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 34em;
+  margin-bottom: var(--space-8);
 }
-.hero__subtitle {
-  font-size: var(--font-lg);
-  line-height: var(--leading-relaxed);
-  color: var(--color-muted);
-  margin-bottom: var(--space-10);
-  max-width: 520px;
-  text-align: justify;
-}
-.hero__ctas {
-  display: flex;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-  margin-bottom: var(--space-12);
-}
-.hero__badges {
-  display: flex;
-  gap: var(--space-6);
-  flex-wrap: wrap;
-}
-.hero__badge {
+.hero-home__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-8); }
+.hero-home__trust { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
+.hero-home__trust li {
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  font-size: var(--font-sm);
-  color: var(--color-muted);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
 }
-.hero__badge svg { color: var(--color-accent); flex-shrink: 0; }
-/* Os botões secundários usam estilos de contorno branco, feitos para fundo
-   escuro — sobre o hero claro ficavam invisíveis. Escopado ao hero: as
-   mesmas classes continuam brancas nas seções que seguem escuras (o CTA
-   final, por exemplo). Vale para a home (--outline-white) e para as
-   páginas internas e suas subpáginas (--outline). */
-.hero .btn--outline-white,
-.hero .btn--outline {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+.hero-home__trust svg { color: var(--gold-ink); }
+.hero-home__media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 52%;
+  margin: 0;
 }
-.hero .btn--outline-white:hover,
-.hero .btn--outline:hover {
-  background: var(--color-primary);
-  color: var(--color-white);
-  border-color: var(--color-primary);
+.hero-home__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 40%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 26%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 26%);
 }
-/* Figura da consultora: camada posicionada no hero, fora do grid, para não
-   disputar espaço com o texto nem alterar a largura dos botões.
-   Entregue por background-image dentro de um media query (e não por <img>)
-   porque é decorativa e só existe no desktop — assim o celular não chega a
-   baixar o arquivo; um <img> com display:none ainda seria baixado.
-   `bottom: 0` encosta na borda inferior do hero, eliminando a faixa vazia
-   que sobrava embaixo dela. */
-@media (min-width: 1025px) {
-  /* Largura do texto por página: é ela que define onde a figura pode
-     começar. O valor de cada página é o mínimo que mantém os dois botões
-     do CTA na mesma linha — eles têm textos de tamanhos diferentes. */
-  .hero--figura { --hero-texto: 525px; }
-  .hero--figura-empresas { --hero-texto: 565px; }
-  /* Segura o texto na faixa esquerda para ele não correr por baixo da
-     figura. Escopado em .hero--figura porque as páginas internas definem
-     .hero__content com max-width: 720px mais adiante na folha, e as que
-     não têm figura devem continuar com essa largura. */
-  .hero--figura .hero__content { max-width: var(--hero-texto); }
-  /* Recuo lateral menor nos botões do hero que tem figura: com o padding
-     original eles pediam ~555px e empurravam a figura para a direita.
-     Não afeta os botões do resto do site. */
-  .hero--figura .hero__ctas .btn--lg,
-  .hero--figura .hero__actions .btn--lg { padding-left: var(--space-8); padding-right: var(--space-8); }
-  .hero__pessoa {
-    position: absolute;
-    /* A borda esquerda sai do fim do texto, não de uma porcentagem: recuo
-       do container (só existe acima de 1280px, quando ele centraliza) +
-       32px de padding + a largura do texto + 8px de respiro. Com
-       porcentagem a figura avançava 82px sobre o texto em telas de
-       1100px, porque o texto tem largura fixa e ela não. */
-    left: calc(max(0px, (100vw - 1280px) / 2) + 32px + var(--hero-texto) + 8px);
-    right: 6%;
-    bottom: 0;
-    /* Dimensionada pela altura para preencher a seção de cima a baixo; a
-       largura vem do par left/right acima. */
-    height: 92%;
-    /* A imagem em si vem de uma variável definida por página (ver as regras
-       .hero--figura-* abaixo): o comportamento é o mesmo nas três, só o
-       arquivo muda, então não se duplica o bloco inteiro. */
-    background-image: var(--hero-figura);
-    background-repeat: no-repeat;
-    /* Encostada à esquerda da própria caixa: em telas largas, onde a altura
-       é o limite e sobra espaço horizontal, é isso que a mantém próxima do
-       texto em vez de jogada contra a margem direita. */
-    background-position: bottom left;
-    background-size: contain;
-    pointer-events: none;
+.hero-home__quote {
+  position: absolute;
+  right: clamp(var(--space-5), 4vw, var(--space-16));
+  bottom: clamp(var(--space-6), 5vw, var(--space-12));
+  max-width: 300px;
+  padding: var(--space-6);
+  background: var(--olive-deep);
+  color: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-3);
+}
+.hero-home__quote p { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.3; }
+.hero-home__quote .rule { margin: var(--space-4) 0 0; width: 32px; }
+
+@media (max-width: 1024px) {
+  .hero-home__inner { min-height: 0; padding: var(--space-12) 0 var(--space-10); }
+  .hero-home__content { max-width: 640px; }
+  .hero-home__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
   }
-  /* Arquivos grandes no desktop: uma variável por página. */
-  .hero--figura-home {
-    --hero-figura: -webkit-image-set(url('../images/conteudo/consultora-660.webp') 1x, url('../images/conteudo/consultora-980.webp') 1.5x);
-    --hero-figura: image-set(url('../images/conteudo/consultora-660.webp') 1x, url('../images/conteudo/consultora-980.webp') 1.5x);
-  }
-  .hero--figura-empresas {
-    --hero-figura: -webkit-image-set(url('../images/conteudo/executiva-660.webp') 1x, url('../images/conteudo/executiva-980.webp') 1.5x);
-    --hero-figura: image-set(url('../images/conteudo/executiva-660.webp') 1x, url('../images/conteudo/executiva-980.webp') 1.5x);
-  }
-  .hero--figura-voce {
-    --hero-figura: -webkit-image-set(url('../images/conteudo/casal-660.webp') 1x, url('../images/conteudo/casal-980.webp') 1.5x);
-    --hero-figura: image-set(url('../images/conteudo/casal-660.webp') 1x, url('../images/conteudo/casal-980.webp') 1.5x);
-  }
+  .hero-home__media img { -webkit-mask-image: none; mask-image: none; }
+  .hero-home__quote { left: var(--space-5); right: auto; bottom: var(--space-5); max-width: 280px; padding: var(--space-5); }
+  .hero-home__quote p { font-size: 1.0625rem; }
+}
+@media (max-width: 520px) {
+  .hero-home__actions .btn { width: 100%; }
+  .hero-home__media { aspect-ratio: 4 / 3.4; }
+  .hero-home__media img { object-position: 70% 30%; }
 }
 
-/* ── Figura do hero no celular ──────────────────────────── */
-/* Abaixo de 1025px a figura vai para a faixa inferior do hero, centralizada
-   e abaixo do texto. O padding extra no .hero reserva essa faixa, para o
-   conteúdo não ficar por cima dela.
-   Aqui usa-se o arquivo de 420px, sem versão 2x: exibida com ~200px de
-   largura, essa imagem já entrega mais que densidade retina, e puxar o
-   arquivo de 660px seria o dobro do peso sem ganho visível. */
-@media (max-width: 1024px) {
-  .hero--figura { padding-bottom: calc(clamp(var(--space-8), 8vh, var(--space-24)) + 250px); }
-  .hero--figura .hero__pessoa {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 250px;
-    background-image: var(--hero-figura-mob);
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-size: contain;
-    pointer-events: none;
-  }
-  .hero--figura-home     { --hero-figura-mob: url('../images/conteudo/consultora-420.webp'); }
-  .hero--figura-empresas { --hero-figura-mob: url('../images/conteudo/executiva-420.webp'); }
-  .hero--figura-voce     { --hero-figura-mob: url('../images/conteudo/casal-420.webp'); }
+/* ── Faixa de números ───────────────────────────────────── */
+.numeros { background: var(--band); border-block: 1px solid var(--line); }
+.numeros__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
-/* A outra metade da troca: a seção logo depois do hero recebe o cinza que
-   era dele. O seletor exige a classe `.section`, então pega só o bloco
-   Empresas/Você da home — nas páginas internas a seção vizinha é
-   `.section-dor`, que continua clara e com texto escuro solto sobre ela.
-   Aqui todo o conteúdo vive dentro de cards com fundo próprio, então o
-   fundo escuro não afeta legibilidade de nada. */
-.hero + .section {
-  background: var(--color-primary-l);
+.numero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-6);
 }
-@media (max-width: 1024px) {
-  .hero__inner { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
-  .hero__title { font-size: var(--font-3xl); }
-  .hero__subtitle { max-width: 100%; }
-  /* Empilhado, a figura volta a caber na coluna e é centralizada; o
-     estouro de 14% só faz sentido nas duas colunas do desktop. */
+.numero + .numero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 28%;
+  bottom: 28%;
+  width: 1px;
+  background: var(--gold);
+}
+.numero__icon { flex-shrink: 0; color: var(--gold-ink); }
+.numero__valor {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.6rem + 1.2vw, 2.75rem);
+  line-height: 1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.numero__rotulo { font-size: var(--text-sm); line-height: 1.35; color: var(--muted); margin-top: var(--space-1); }
+@media (max-width: 960px) {
+  .numeros__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .numero:nth-child(3)::before { display: none; }
+  .numero:nth-child(n+3) { border-top: 1px solid var(--line); }
 }
 @media (max-width: 480px) {
-  /* O hero mantém a tela inteira também no celular — havia aqui um
-     min-height: auto que era justamente o que quebrava isso nos aparelhos
-     menores. O padding continua vindo do clamp da regra .hero. */
-  .hero__ctas { flex-direction: column; }
-  .hero__ctas .btn { width: 100%; justify-content: center; }
+  .numero { flex-direction: column; align-items: flex-start; gap: var(--space-3); padding: var(--space-6) var(--space-4); }
 }
 
-/* ── Seguradoras Banner ─────────────────────────────────── */
+/* ── Portas: Empresas / Você ────────────────────────────── */
+.portas__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
+.porta {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+  transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+.porta:hover { box-shadow: var(--shadow-3); transform: translateY(-4px); }
+.porta__media { margin: 0; min-height: 100%; }
+.porta__media img { width: 100%; height: 100%; object-fit: cover; }
+.porta__body { display: flex; flex-direction: column; padding: var(--space-8) var(--space-8) var(--space-6); }
+.porta__title { font-size: var(--title-md); color: var(--ink); margin-bottom: var(--space-2); }
+.porta__lead { font-size: var(--text-sm); color: var(--muted); margin-bottom: var(--space-5); }
+.porta__list { display: grid; gap: var(--space-3); margin-bottom: var(--space-6); }
+.porta__list a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+.porta__list a:hover { color: var(--olive); text-decoration: underline; }
+.check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--olive);
+  color: #fff;
+}
+.porta__go {
+  align-self: flex-end;
+  white-space: nowrap;
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--olive);
+  text-decoration: none;
+}
+.porta__go-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--olive);
+  color: #fff;
+  transition: background-color 0.18s var(--ease-out), transform 0.25s var(--ease-out);
+}
+.porta__go:hover .porta__go-icon { background: var(--olive-hover); transform: translateX(3px); }
+@media (max-width: 1100px) {
+  .portas__grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .porta { grid-template-columns: minmax(0, 1fr); }
+  .porta__media { aspect-ratio: 16 / 9; }
+  .porta__body { padding: var(--space-6) var(--space-5) var(--space-5); }
+}
+
+/* ── Motivos (por que a Império) ────────────────────────── */
+.motivos { padding-top: 0; }
+.motivos__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 3fr);
+  gap: var(--space-10);
+  align-items: center;
+}
+.motivos__title { font-size: var(--title-lg); color: var(--ink); }
+.motivos__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+}
+.motivo { padding: var(--space-8) var(--space-6); }
+.motivo + .motivo { border-left: 1px solid var(--line-soft); }
+.motivo__icon { color: var(--olive); margin-bottom: var(--space-4); }
+.motivo__title { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.2; color: var(--ink); margin-bottom: var(--space-2); }
+.motivo__desc { font-size: var(--text-sm); color: var(--muted); line-height: 1.55; }
+@media (max-width: 1100px) {
+  .motivos__inner { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .motivos__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .motivo:nth-child(3) { border-left: 0; }
+  .motivo:nth-child(n+3) { border-top: 1px solid var(--line-soft); }
+}
+@media (max-width: 560px) {
+  .motivos__list { grid-template-columns: minmax(0, 1fr); }
+  .motivo + .motivo { border-left: 0; border-top: 1px solid var(--line-soft); }
+}
+
+/* ── Seguradoras (fita de logos) ────────────────────────── */
 .seguradoras {
-  padding: var(--space-8) 0;
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-12) 0;
+  background: var(--surface);
+  border-block: 1px solid var(--line-soft);
   overflow: hidden;
 }
+.seguradoras + .seguradoras { border-top: 0; padding-top: 0; }
 .seguradoras__label {
+  font-size: var(--title-sm);
   text-align: center;
-  font-family: var(--font-display);
-  font-size: var(--font-xl);
-  font-weight: var(--font-semibold);
-  color: var(--color-primary);
-  margin: 0 0 var(--space-6);
-  letter-spacing: -0.01em;
-  padding: 0 var(--space-4);
+  color: var(--ink);
+  margin: 0 auto var(--space-6);
+  padding: 0 var(--space-5);
 }
 .seguradoras-track {
   position: relative;
   overflow: hidden;
-  -webkit-mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
-  mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
 }
 .seguradoras-slider {
   display: flex;
   align-items: center;
   width: max-content;
-  padding: var(--space-2) 0;
   animation: seguradoras-marquee var(--marquee-duration, 40s) linear infinite;
-  /* Fica parada até o JS medir a fita e marcar a seção como is-ready.
-     Se a animação começasse antes, a duração mudaria com ela em curso —
-     o navegador remapeia o tempo decorrido e a fita dá um salto. */
   animation-play-state: paused;
   will-change: transform;
 }
@@ -667,1766 +642,593 @@ strong { font-weight: var(--font-semibold); }
 .seguradoras-slider--reverse { animation-direction: reverse; }
 .seguradoras.is-ready .seguradoras-slider { animation-play-state: running; }
 .seguradoras.is-ready .seguradoras-slider:hover { animation-play-state: paused; }
-.seguradoras--saude {
-  background: var(--color-bg);
-  border-top: 0;
-}
-.seguradoras + .seguradoras--saude { margin-top: 0; border-top: 1px solid var(--color-border); }
-@keyframes seguradoras-marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .seguradoras-slider { animation: none; }
-}
-.seguradoras-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80px;
-  flex-shrink: 0;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-}
-.seguradoras-logo:hover {
-  opacity: 1;
-}
-.seguradoras-logo img {
-  /* Altura definida, não `auto`: tokio-marine.svg e unimed.svg não declaram
-     width/height próprios e, sem uma dimensão definida, colapsam para zero. */
-  height: 58px;
-  width: auto;
-  max-width: 150px;
-  object-fit: contain;
-  display: block;
-  /* Sem clarear demais: brightness(2) apagava arte branca vazada sobre fundo
-     colorido — o Porto Seguro virava um quadrado cinza chapado. */
-  filter: grayscale(1) contrast(0.9) brightness(1.1);
-  mix-blend-mode: multiply;
-  transition: filter 0.3s ease;
-}
-/* Equilíbrio óptico. Só pela altura, a área renderizada varia 5x entre o logo
-   mais estreito e o mais largo; com estes três ajustes a variação cai para 1,6x.
-   --alto: retrato · --largo: muito horizontal · --compacto: pesado demais. */
-.seguradoras-logo.seguradoras-logo--alto img     { height: 78px; }
-.seguradoras-logo.seguradoras-logo--largo img    { max-width: 168px; }
-.seguradoras-logo.seguradoras-logo--compacto img { max-width: 138px; }
-/* Para marcas muito horizontais (a partir de ~5:1, como a Bradesco Seguros):
-   com o teto de 168px do --largo elas batem na largura máxima antes de
-   chegar perto da altura das vizinhas e ficam com metade da área visível
-   das outras. Os 196px reequilibram sem estourar o espaçamento da fita. */
-.seguradoras-logo.seguradoras-logo--extralargo img { max-width: 196px; }
-.seguradoras-logo:hover img {
-  filter: grayscale(0) brightness(1) contrast(1);
-  mix-blend-mode: normal;
-}
+@keyframes seguradoras-marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .seguradoras-slider { animation: none; } }
+.seguradoras-logo { display: flex; align-items: center; justify-content: center; height: 64px; flex-shrink: 0; }
+.seguradoras-logo img { height: 44px; width: auto; max-width: 140px; object-fit: contain; }
+.seguradoras-logo--alto img { height: 58px; }
+.seguradoras-logo--largo img { max-width: 156px; }
+.seguradoras-logo--compacto img { max-width: 124px; }
+.seguradoras-logo--extralargo img { max-width: 184px; }
 
-/* ── Sobre ──────────────────────────────────────────────── */
-/* Ocupa a tela inteira menos o header (sticky, fica no fluxo), mesma conta
-   do .hero — para o clique no menu sentir como entrar numa página nova, não
-   como rolar até um pedaço de página. A segunda declaração usa dvh, que
-   desconta as barras do navegador no celular; sem suporte, fica na primeira. */
-/* Seções que o menu abre como se fossem página própria (#sobre e #contato).
-   Repete a fórmula do .hero de propósito: é o comportamento que o usuário
-   usa como referência ("igual quando clico em Início"). */
-#sobre,
-#contato {
-  min-height: calc(100vh - var(--header-h));
-  min-height: calc(100dvh - var(--header-h));
-  display: flex;
-  align-items: center;
-
-  /* Padding proporcional à altura da tela, não os 80px fixos do .section:
-     fixo, o conteúdo + 160px estourava a primeira tela em monitores baixos.
-     Mesmo clamp do .hero. */
-  padding: clamp(var(--space-8), 8vh, var(--space-24)) 0;
-
-  /* O header é sticky e cobre os primeiros 73px da tela. Sem isto, o salto
-     alinha o topo da seção em y=0, o header tapa essa faixa e o que aparece
-     abaixo dele é o fim da seção anterior. Reserva a altura do header antes
-     de parar de rolar — e vale também para quem chega de outra página
-     (empresas.html → index.html#sobre), porque quem aplica é o navegador,
-     não o JS do clique. */
-  scroll-margin-top: var(--header-h);
-}
-/* Filho direto vira item flex: sem isto o .container perde a largura total
-   e o conteúdo encolhe para o tamanho do texto. */
-#sobre > .container,
-#contato > .container {
-  width: 100%;
-}
-.sobre__inner {
+/* Na home a fita ganha um título à esquerda, como uma assinatura de parceiros. */
+.parceiros__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 3fr);
+  gap: var(--space-10);
   align-items: center;
 }
-.sobre__content .section__title { text-align: left; margin-bottom: var(--space-6); }
-.sobre__content .section__eyebrow { text-align: left; }
-.sobre__text {
-  font-size: var(--font-base);
-  color: var(--color-muted);
-  line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-6);
-  text-align: justify;
-}
-.sobre__text + .sobre__text { margin-top: calc(var(--space-4) * -1); }
-.sobre__highlights {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-  margin-top: var(--space-8);
-}
-.sobre__highlight {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  background: var(--color-bg);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border);
-}
-.sobre__highlight-icon {
-  color: var(--color-accent);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-.sobre__highlight-text {
-  font-size: var(--font-sm);
-  color: var(--color-text);
-  font-weight: var(--font-medium);
-  line-height: var(--leading-normal);
-}
-/* Só um contêiner de centralização: o painel escuro que existia aqui foi
-   removido a pedido, ficou apenas a logo sobre o fundo da própria seção.
-   A arte não tem nenhum pixel claro (é dourada e cinza-média), então ela
-   se lê bem sobre o cinza claro sem precisar de fundo próprio. */
-.sobre__visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Logo à esquerda, texto à direita. Feito por `order` e não trocando a
-     ordem no HTML porque, na versão empilhada (≤900px), o título precisa
-     vir antes — ver a reposição no media query abaixo. */
-  order: -1;
-}
-.sobre__visual-logo {
-  width: min(340px, 100%);
-  height: auto;
-  display: block;
-}
-@media (max-width: 900px) {
-  .sobre__inner { grid-template-columns: minmax(0, 1fr); }
-  /* Empilhado, o texto volta a vir primeiro: a inversão só faz sentido
-     enquanto há duas colunas lado a lado. */
-  .sobre__visual { order: 0; }
-  .sobre__highlights { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 480px) {
-  .sobre__highlights { grid-template-columns: minmax(0, 1fr); }
+.parceiros__title { font-size: var(--title-sm); color: var(--ink); }
+.parceiros__tracks { display: grid; gap: var(--space-4); min-width: 0; }
+.parceiros__sub { font-size: var(--text-xs); font-weight: 600; color: var(--muted); margin-bottom: var(--space-1); }
+@media (max-width: 1100px) {
+  .parceiros__inner { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
 }
 
-/* ── Stats ──────────────────────────────────────────────── */
-.stats__grid {
+/* ── História ───────────────────────────────────────────── */
+.historia__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-6);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr) minmax(0, 0.85fr);
+  gap: var(--space-8);
+  align-items: stretch;
 }
-.stat-card {
-  text-align: center;
-  padding: var(--space-8);
-}
-.stat-card__number {
-  font-family: var(--font-display);
-  font-size: var(--font-4xl);
-  font-weight: var(--font-bold);
-  color: var(--color-white);
-  line-height: 1;
-  margin-bottom: var(--space-3);
-}
-.stat-card__number .stat-suffix {
-  font-size: var(--font-2xl);
-}
-.stat-card__label {
-  font-size: var(--font-sm);
-  color: rgba(255,255,255,0.65);
-  line-height: var(--leading-normal);
-}
-.stat-card__icon {
-  color: var(--color-accent);
-  margin-bottom: var(--space-4);
-  display: flex;
-  justify-content: center;
-}
-@media (max-width: 768px) {
-  .stats__grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 480px) {
-  .stats__grid { grid-template-columns: 1fr 1fr; }
-  .stat-card__number { font-size: var(--font-3xl); }
-}
-
-/* ── Cards de audiência (seções de serviços) ────────────── */
-.audience-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
-}
-.audience-block {
-  background: var(--color-surface);
-  /* Contorno dourado suave em vez do cinza neutro (--color-border): puro
-     branco+cinza sobre o fundo cinza-claro da página (--color-bg) quase não
-     se distinguia, e o card ficava sem presença ao lado do irmão escuro
-     (.audience-block--primary). O tom dourado ecoa a etiqueta "Para Você"
-     e os ícones da lista, que já usam essa cor. */
-  border: 1px solid rgba(var(--color-accent-rgb), 0.22);
-  border-radius: var(--radius-lg);
-  padding: var(--space-12);
+.historia__media { margin: 0; border-radius: var(--radius-md); overflow: hidden; min-height: 360px; }
+.historia__media img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 50%; }
+.historia__text { align-self: center; }
+.historia__title { font-size: var(--title-lg); color: var(--ink); margin-bottom: var(--space-5); }
+.historia__text p { color: var(--muted); margin-bottom: var(--space-4); max-width: 60ch; }
+.historia__text .btn { margin-top: var(--space-4); }
+.historia__panel {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
-  /* Sombra já em repouso, não só no hover: sem ela o card não "descolava"
-     do fundo da página. */
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-}
-.audience-block:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
-  border-color: rgba(var(--color-accent-rgb), 0.45);
-}
-/* Banner sangrado até as bordas do card: as margens negativas cancelam o
-   padding de 48px, que não muda em nenhum breakpoint. O `aspect-ratio`
-   reserva a altura antes da imagem carregar — sem ele o texto abaixo dá um
-   salto quando ela chega, justamente no celular, onde a conexão é pior. */
-.audience-block__media {
-  margin: calc(var(--space-12) * -1) calc(var(--space-12) * -1) 0;
-  border-radius: calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0 0;
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-}
-.audience-block__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.audience-block--primary {
-  background: var(--color-primary);
-  /* Mesmo tom dourado do card claro ao lado, calibrado mais forte (35% em
-     vez de 22%) porque precisa aparecer sobre o fundo escuro, não só o
-     claro. Antes era var(--color-primary), igual ao próprio fundo — ou
-     seja, sem nenhum contorno visível em repouso (só o :hover genérico de
-     .audience-block já deixava o contorno dourado aparecer). */
-  border-color: rgba(var(--color-accent-rgb), 0.35);
-}
-.audience-block__tag {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-xs);
-  font-weight: var(--font-semibold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-accent);
-  padding: var(--space-2) var(--space-4);
-  background: rgba(201,168,76,0.10);
-  border-radius: var(--radius-full);
-  width: fit-content;
-}
-.audience-block__title {
-  font-family: var(--font-display);
-  font-size: var(--font-2xl);
-  line-height: var(--leading-snug);
-  color: var(--color-text);
-}
-.audience-block--primary .audience-block__title { color: var(--color-white); }
-.audience-block__desc {
-  font-size: var(--font-base);
-  color: var(--color-muted);
-  line-height: var(--leading-relaxed);
-  text-align: justify;
-}
-.audience-block--primary .audience-block__desc { color: rgba(255,255,255,0.7); }
-.audience-block__services {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-.service-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  font-size: var(--font-base);
-  color: var(--color-text);
-  padding: var(--space-3) var(--space-4);
-  /* Cinza neutro (--color-bg) sobre um cartão branco que já ficava fraco
-     não dava nenhuma definição ao "chip". Um toque do dourado do ícone ao
-     lado cria contraste sem introduzir uma cor nova na paleta. */
-  background: rgba(var(--color-accent-rgb), 0.05);
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(var(--color-accent-rgb), 0.16);
-}
-.audience-block--primary .service-item {
-  background: rgba(255,255,255,0.07);
-  border-color: rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.9);
-}
-.service-item svg { color: var(--color-accent); flex-shrink: 0; }
-@media (max-width: 768px) {
-  .audience-section { grid-template-columns: minmax(0, 1fr); }
-}
-
-/* ── Diferenciais ───────────────────────────────────────── */
-.diferenciais__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
-}
-.diferencial-card {
   padding: var(--space-8);
+  background: var(--olive-deep);
+  color: #fff;
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
-.diferencial-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
-  border-color: var(--color-accent);
-}
-.diferencial-card__icon {
-  width: 52px;
-  height: 52px;
-  background: rgba(201,168,76,0.12);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-accent);
-  margin-bottom: var(--space-6);
-}
-.diferencial-card__title {
+.historia__since { font-size: var(--text-sm); color: var(--gold-soft); }
+.historia__year {
   font-family: var(--font-display);
-  font-size: var(--font-xl);
-  color: var(--color-text);
-  margin-bottom: var(--space-3);
+  font-size: clamp(3.5rem, 2.5rem + 3vw, 5rem);
+  line-height: 1;
+  margin-bottom: var(--space-4);
+  font-variant-numeric: lining-nums;
 }
-.diferencial-card__desc {
-  font-size: var(--font-base);
-  color: var(--color-muted);
-  line-height: var(--leading-relaxed);
+.historia__panel .rule { margin-bottom: var(--space-6); }
+.historia__values { display: grid; gap: var(--space-5); }
+.historia__values li { display: flex; gap: var(--space-3); align-items: flex-start; font-size: var(--text-sm); color: var(--on-dark-2); }
+.historia__values strong { display: block; color: #fff; font-weight: 600; }
+.historia__values svg { color: var(--gold); margin-top: 3px; flex-shrink: 0; }
+@media (max-width: 1100px) {
+  .historia__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .historia__media { grid-column: 1 / -1; min-height: 0; aspect-ratio: 21 / 9; }
 }
-@media (max-width: 900px) {
-  .diferenciais__grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 580px) {
-  .diferenciais__grid { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 720px) {
+  .historia__grid { grid-template-columns: minmax(0, 1fr); }
+  .historia__media { aspect-ratio: 16 / 10; }
 }
 
 /* ── Depoimentos ────────────────────────────────────────── */
-.depoimentos__grid {
+.depoimentos-home__inner {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 3fr);
+  gap: var(--space-10);
+  align-items: center;
 }
+.depoimentos-home__title { font-size: var(--title-lg); color: var(--ink); }
+.depoimentos-home__note { font-size: var(--text-sm); color: var(--muted); margin-top: var(--space-4); }
+.depoimentos__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
 .depoimento-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-8);
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
 }
-.depoimento-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-.depoimento-card__stars {
-  display: flex;
-  gap: var(--space-1);
-  color: var(--color-accent);
-}
-.depoimento-card__text {
-  font-size: var(--font-base);
-  color: var(--color-text);
-  line-height: var(--leading-relaxed);
-  flex: 1;
-  text-align: justify;
-}
-.depoimento-card__author {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border);
-}
+.depoimento-card--vazio { border: 1.5px dashed var(--line); box-shadow: none; background: rgba(255, 255, 255, 0.6); }
+.depoimento-card__quote { color: var(--gold); }
+.depoimento-card__text { font-size: var(--text-sm); line-height: 1.6; color: var(--ink-2); font-style: italic; flex: 1; }
+.depoimento-card--vazio .depoimento-card__text { color: var(--muted); }
+.depoimento-card__footer { display: flex; align-items: center; gap: var(--space-3); }
 .depoimento-card__avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent);
-  font-family: var(--font-display);
-  font-size: var(--font-lg);
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--band);
+  color: var(--muted);
+  font-size: var(--text-xs);
   overflow: hidden;
 }
-.depoimento-card__avatar img { width: 100%; height: 100%; object-fit: cover; }
-.depoimento-card__name {
-  font-weight: var(--font-semibold);
-  font-size: var(--font-base);
-  color: var(--color-text);
-  line-height: 1.2;
+.depoimento-card__name { display: block; font-style: normal; font-weight: 600; font-size: var(--text-sm); color: var(--ink); }
+.depoimento-card__role { display: block; font-size: var(--text-xs); color: var(--muted); }
+@media (max-width: 1100px) {
+  .depoimentos-home__inner { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
 }
-.depoimento-card__role {
-  font-size: var(--font-sm);
-  color: var(--color-muted);
-}
-.depoimento-card__quote {
-  font-size: 2.5rem;
-  line-height: 1;
-  color: var(--color-accent);
-  font-family: Georgia, serif;
-  margin-bottom: calc(var(--space-4) * -1);
-}
-
-/* Variante escura: só depoimentos de para-voce.html (#depoimentos) — a
-   mesma classe aparece em empresas.html sobre fundo claro e ficaria
-   ilegível se herdasse isto. Estrelas, aspas e avatar já são douradas/
-   escuras e funcionam em qualquer fundo, por isso ficam de fora. */
-#depoimentos .depoimento-card { background: var(--color-primary); border-color: rgba(255,255,255,0.12); }
-#depoimentos .depoimento-card__text { color: rgba(255,255,255,0.85); }
-#depoimentos .depoimento-card__author { border-top-color: rgba(255,255,255,0.12); }
-#depoimentos .depoimento-card__name { color: var(--color-white); }
-#depoimentos .depoimento-card__role { color: rgba(255,255,255,0.6); }
-@media (max-width: 900px) {
-  .depoimentos__grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 580px) {
+@media (max-width: 860px) {
   .depoimentos__grid { grid-template-columns: minmax(0, 1fr); }
 }
 
-/* ── Prêmios ────────────────────────────────────────────── */
-.premios__grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-6);
-}
-.premio-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-6) var(--space-8);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  text-align: center;
-  min-width: 160px;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-.premio-item:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.premio-item__icon { color: var(--color-accent); }
-.premio-item__name {
-  font-weight: var(--font-semibold);
-  font-size: var(--font-sm);
-  color: var(--color-text);
-  line-height: var(--leading-normal);
-}
-.premio-item__year {
-  font-size: var(--font-xs);
-  color: var(--color-muted);
-}
-
-/* ── CTA / Contato ──────────────────────────────────────── */
-.contato__inner {
+/* ── FAQ ────────────────────────────────────────────────── */
+.faq-home__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
+  gap: var(--space-12);
   align-items: start;
 }
-.contato__info { display: flex; flex-direction: column; gap: var(--space-8); }
-.contato__title {
-  font-family: var(--font-display);
-  font-size: var(--font-3xl);
-  color: var(--color-white);
-  line-height: var(--leading-snug);
-  margin-bottom: var(--space-4);
+.faq-home__title { font-size: var(--title-lg); color: var(--ink); margin-bottom: var(--space-4); }
+.faq-home__aside p { color: var(--muted); margin-bottom: var(--space-6); }
+@media (min-width: 961px) { .faq-home__aside { position: sticky; top: calc(var(--header-h) + var(--space-8)); } }
+@media (max-width: 960px) { .faq-home__inner { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); } }
+
+.faq__list { max-width: 820px; margin: 0 auto; border-top: 1px solid var(--line); }
+.faq-home .faq__list { max-width: none; }
+.faq__item { border-bottom: 1px solid var(--line); }
+.faq__item h3, .faq__question { font: inherit; margin: 0; }
+.faq__btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  width: 100%;
+  padding: var(--space-5) 0;
+  background: none;
+  border: 0;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  transition: color 0.18s var(--ease-out);
 }
-.contato__desc {
-  font-size: var(--font-md);
-  color: rgba(255,255,255,0.72);
-  line-height: var(--leading-relaxed);
+.faq__btn:hover { color: var(--olive); }
+.faq__icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border: 1.5px solid var(--line);
+  border-radius: 50%;
+  color: var(--olive);
+  transition: transform 0.3s var(--ease-out), background-color 0.18s, border-color 0.18s, color 0.18s;
 }
-.contato__channels { display: flex; flex-direction: column; gap: var(--space-4); }
+.faq__btn[aria-expanded="true"] .faq__icon { transform: rotate(45deg); background: var(--olive); border-color: var(--olive); color: #fff; }
+.faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  color: var(--muted);
+  line-height: 1.65;
+  transition: max-height 0.35s var(--ease-out), padding 0.35s var(--ease-out), visibility 0s linear 0.35s;
+}
+.faq__answer.is-open { visibility: visible; transition: max-height 0.35s var(--ease-out), padding 0.35s var(--ease-out), visibility 0s; }
+.faq__answer > p { padding-bottom: var(--space-6); max-width: 68ch; }
+dd.faq__answer { max-width: 68ch; }
+dd.faq__answer.is-open { padding-bottom: var(--space-6); }
+.section--dark .faq__btn { color: #fff; }
+
+/* ── Contato ────────────────────────────────────────────── */
+.contato {
+  position: relative;
+  padding: var(--section-y) 0;
+  background: var(--charcoal);
+  color: #fff;
+  overflow: hidden;
+}
+.contato__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 0.95fr);
+  gap: var(--space-10);
+  align-items: start;
+}
+.contato__info { position: relative; z-index: 1; display: flex; flex-direction: column; align-self: stretch; }
+.contato__title { font-size: var(--title-lg); color: #fff; margin-bottom: var(--space-4); }
+.contato__desc { color: var(--on-dark-2); margin-bottom: var(--space-8); max-width: 34em; }
+.contato__figure {
+  margin-top: auto;
+  margin-bottom: calc(var(--section-y) * -1);
+  width: min(300px, 80%);
+  pointer-events: none;
+}
+.contato__channels { display: grid; gap: var(--space-3); }
 .contato__channel {
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  padding: var(--space-4) var(--space-5);
-  background: rgba(255,255,255,0.06);
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255,255,255,0.10);
+  padding: var(--space-4);
+  border: 1px solid var(--on-dark-line);
+  border-radius: var(--radius);
+  color: #fff;
   text-decoration: none;
-  color: var(--color-white);
-  font-size: var(--font-base);
-  transition: background 0.2s ease;
+  transition: background-color 0.18s var(--ease-out), border-color 0.18s var(--ease-out);
 }
-.contato__channel:hover { background: rgba(255,255,255,0.10); }
-.contato__channel svg { color: var(--color-accent); flex-shrink: 0; }
-.contato__channel-label {
-  font-size: var(--font-xs);
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  font-weight: var(--font-semibold);
-  display: block;
-  line-height: 1;
-  margin-bottom: 2px;
+a.contato__channel:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.32); }
+.contato__channel svg { flex-shrink: 0; color: var(--gold); }
+.contato__channel-label { display: block; font-size: var(--text-xs); color: var(--on-dark-2); }
+.contato__channel-value { display: block; font-size: var(--text-sm); font-weight: 500; overflow-wrap: anywhere; }
+.contato__channels-title { font-family: var(--font-display); font-size: var(--title-sm); margin-bottom: var(--space-4); }
+@media (max-width: 1180px) {
+  .contato__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+  .contato__aside { grid-column: 1 / -1; }
+  .contato__aside .contato__channels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contato__figure { display: none; }
 }
-.contato__channel-value { font-weight: var(--font-medium); }
+@media (max-width: 860px) {
+  .contato__inner { grid-template-columns: minmax(0, 1fr); }
+  .contato__aside .contato__channels { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ── Formulário ─────────────────────────────────────────── */
 .contato__form-card {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  padding: var(--space-10);
+  position: relative;
+  padding: var(--space-8);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-3);
 }
-.form__title {
-  font-family: var(--font-display);
-  font-size: var(--font-xl);
-  color: var(--color-text);
-  margin-bottom: var(--space-2);
-}
-.form__desc {
-  font-size: var(--font-sm);
-  color: var(--color-muted);
-  margin-bottom: var(--space-8);
-}
-.form__group { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-5); }
-.form__group:last-of-type { margin-bottom: var(--space-6); }
-.form__label {
-  font-size: var(--font-sm);
-  font-weight: var(--font-semibold);
-  color: var(--color-text);
-}
-.form__label .required { color: var(--color-accent); }
+.form__title { font-size: var(--title-sm); color: var(--ink); margin-bottom: var(--space-6); }
+.form__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-4); }
+.form__group { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
+.form__label { font-size: var(--text-xs); font-weight: 600; color: var(--ink-2); }
+.form__label .required { color: var(--gold-ink); }
 .form__input,
 .form__select,
 .form__textarea {
-  padding: var(--space-3) var(--space-4);
-  font-family: var(--font-body);
-  font-size: var(--font-base);
-  color: var(--color-text);
-  background: var(--color-bg);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  transition: border-color 0.2s ease;
   width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 0.875rem;
+  font-size: 1rem;
+  background: var(--ground);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  caret-color: var(--olive);
+  transition: border-color 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out), background-color 0.18s;
 }
-.form__input:focus-visible,
-.form__select:focus-visible,
-.form__textarea:focus-visible {
+.form__textarea { resize: vertical; min-height: 96px; }
+.form__select {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234b5a2b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.875rem center;
+}
+.form__input::placeholder, .form__textarea::placeholder { color: #75766e; }
+.form__input:hover, .form__select:hover, .form__textarea:hover { border-color: #bdbdb5; }
+.form__input:focus, .form__select:focus, .form__textarea:focus {
   outline: none;
-  border-color: var(--color-primary);
+  background: #fff;
+  border-color: var(--olive);
+  box-shadow: 0 0 0 3px rgba(75, 90, 43, 0.18);
 }
-.form__input[aria-invalid="true"],
-.form__select[aria-invalid="true"],
-.form__textarea[aria-invalid="true"] {
-  border-color: #c0392b;
-}
-.form__textarea { resize: vertical; min-height: 100px; }
-.form__select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7a6b' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
-.form__error {
-  font-size: var(--font-xs);
-  color: #c0392b;
-  display: none;
-}
+.form__input[aria-invalid="true"], .form__select[aria-invalid="true"] { border-color: #a23b2a; }
+.form__error { display: none; font-size: var(--text-xs); color: #a23b2a; font-weight: 500; }
 .form__error.is-visible { display: block; }
-.form__security {
-  text-align: center;
-  font-size: var(--font-xs);
-  color: var(--color-muted);
-  margin-top: var(--space-3);
+.form__submit { width: 100%; margin-top: var(--space-2); }
+.form__submit[disabled] { opacity: 0.7; cursor: progress; }
+.form__security { display: flex; align-items: center; justify-content: center; gap: var(--space-2); margin-top: var(--space-4); font-size: var(--text-xs); color: var(--muted); text-align: center; }
+.form__security svg { color: var(--olive); }
+#form-resumo-erros:not(:empty) {
+  margin-bottom: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid #e6c3bb;
+  border-radius: var(--radius);
+  background: #fbefec;
+  color: #7f2c1f;
+  font-size: var(--text-sm);
 }
-.form__submit { width: 100%; justify-content: center; }
 .form__success {
+  position: absolute;
+  inset: 0;
   display: none;
-  text-align: center;
-  padding: var(--space-8);
-  gap: var(--space-4);
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-8);
+  text-align: center;
+  background: var(--surface);
+  border-radius: var(--radius-md);
 }
 .form__success.is-visible { display: flex; }
-/* Ícone de confirmação do formulário — as únicas classes que faltavam
-   quando a seção de contato foi restaurada. */
-.checkmark-svg { width: 56px; height: 56px; flex-shrink: 0; }
-.checkmark-circle {
-  fill: none;
-  stroke: var(--color-accent);
-  stroke-width: 3;
-}
-.checkmark-tick {
-  fill: none;
-  stroke: var(--color-accent);
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .form__success.is-visible .checkmark-circle {
-    stroke-dasharray: 151;
-    stroke-dashoffset: 151;
-    animation: checkmarkDraw 0.5s ease forwards;
-  }
-  .form__success.is-visible .checkmark-tick {
-    stroke-dasharray: 36;
-    stroke-dashoffset: 36;
-    animation: checkmarkDraw 0.3s ease 0.4s forwards;
-  }
-}
+.checkmark-svg { width: 64px; height: 64px; }
+.checkmark-circle { fill: none; stroke: var(--olive); stroke-width: 2; stroke-dasharray: 166; stroke-dashoffset: 166; animation: checkmarkDraw 0.6s var(--ease-out) forwards; }
+.checkmark-tick { fill: none; stroke: var(--olive); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 48; stroke-dashoffset: 48; animation: checkmarkDraw 0.4s 0.4s var(--ease-out) forwards; }
 @keyframes checkmarkDraw { to { stroke-dashoffset: 0; } }
-.form__success-text { font-size: var(--font-md); font-weight: var(--font-semibold); color: var(--color-primary); }
-.form__success-sub { font-size: var(--font-sm); color: var(--color-muted); }
-.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
-@media (max-width: 480px) { .form__row { grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 900px) {
-  .contato__inner { grid-template-columns: minmax(0, 1fr); }
+.form__success-text { font-family: var(--font-display); font-size: var(--title-sm); color: var(--ink); }
+.form__success-sub { font-size: var(--text-sm); color: var(--muted); max-width: 30em; }
+@media (max-width: 520px) {
+  .form__row { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .contato__form-card { padding: var(--space-6) var(--space-5); }
 }
 
 /* ── Footer ─────────────────────────────────────────────── */
-.footer {
-  background: var(--color-primary-d);
-  color: rgba(255,255,255,0.75);
-  padding: var(--space-16) 0 var(--space-8);
-}
+.footer { background: var(--band); color: var(--ink-2); border-top: 1px solid var(--line); padding: var(--space-16) 0 var(--space-8); }
 .footer__inner {
   display: grid;
-  /* minmax(0, Nfr), não só Nfr: sem o piso em 0, uma trilha com conteúdo
-     que não pode quebrar (o e-mail, mais abaixo) vira maior que sua fração
-     nominal e espreme as colunas vizinhas. As frações também deixaram de
-     ser todas iguais: Grupo Império tem só 2 links (não precisa da mesma
-     largura de Soluções, que tem 5) e Contato precisa de mais espaço que
-     um link solto por causa do e-mail e do endereço em duas linhas. */
-  /* A última trilha (Contato) é dimensionada pelo conteúdo, para o e-mail
-     caber numa linha só; as demais dividem o que sobra. */
-  grid-template-columns:
-    minmax(0, 1.9fr) minmax(0, 1.05fr) minmax(0, 1.1fr)
-    minmax(0, 0.7fr) auto;
+  grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 0.8fr)) minmax(0, 1.25fr);
   gap: var(--space-8);
   margin-bottom: var(--space-12);
 }
 .footer__brand { display: flex; flex-direction: column; gap: var(--space-5); }
-.footer__logo { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; }
-.footer__logo-name { font-family: var(--font-display); font-size: var(--font-lg); color: var(--color-white); }
-.footer__brand-desc { font-size: var(--font-sm); line-height: var(--leading-relaxed); color: rgba(255,255,255,0.6); max-width: 280px; }
-.footer__social { display: flex; gap: var(--space-3); }
+.footer__logo { display: inline-flex; text-decoration: none; }
+.footer__logo-img { height: 72px; width: auto; }
+.footer__brand-desc { font-size: var(--text-sm); color: var(--muted); max-width: 30ch; }
+.footer__social { display: flex; gap: var(--space-2); }
 .footer__social a {
-  width: 36px; height: 36px;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(255,255,255,0.08);
-  border-radius: var(--radius-sm);
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-.footer__social a:hover { background: var(--color-accent); color: var(--color-primary); }
-.footer__col-title {
-  font-size: var(--font-sm);
-  font-weight: var(--font-semibold);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--color-white);
-  margin-bottom: var(--space-5);
-}
-.footer__links { display: flex; flex-direction: column; gap: var(--space-3); }
-.footer__links a {
-  font-size: var(--font-sm);
-  color: rgba(255,255,255,0.6);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.footer__links a:hover { color: var(--color-accent); }
-.footer__contact { display: flex; flex-direction: column; gap: var(--space-4); }
-.footer__contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-  font-size: var(--font-sm);
-  color: rgba(255,255,255,0.6);
-  text-decoration: none;
-  transition: color 0.2s ease;
-  /* O e-mail fica numa linha só. Quem garante o espaço para isso é a última
-     trilha do grid, dimensionada por conteúdo (ver .footer__inner). O <br>
-     do endereço continua quebrando normalmente. */
-  white-space: nowrap;
-}
-.footer__contact-item:hover { color: rgba(255,255,255,0.9); }
-.footer__contact-item svg { color: var(--color-accent); flex-shrink: 0; margin-top: 2px; }
-.footer__bottom {
-  padding-top: var(--space-8);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-}
-.footer__copyright { font-size: var(--font-xs); color: rgba(255,255,255,0.6); }
-.footer__legal { display: flex; gap: var(--space-6); }
-.footer__legal a { font-size: var(--font-xs); color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s ease; }
-.footer__legal a:hover { color: rgba(255,255,255,0.7); }
-/* Abaixo de ~1080px as 5 colunas ficam estreitas demais (a de contato tem
-   largura fixa por causa do e-mail) e os links começam a quebrar linha;
-   antes disso o rodapé passa para duas colunas, que respiram melhor. */
-@media (max-width: 1080px) {
-  .footer__inner { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
-  .footer__brand { grid-column: 1 / -1; }
-}
-@media (max-width: 580px) {
-  .footer__inner { grid-template-columns: minmax(0, 1fr); }
-  .footer__bottom { flex-direction: column; text-align: center; }
-}
-
-/* ── Page hero (interno) ────────────────────────────────── */
-.page-hero {
-  background: var(--color-primary);
-  padding: var(--space-20) 0 var(--space-16);
-}
-.page-hero__eyebrow {
-  font-size: var(--font-sm);
-  font-weight: var(--font-semibold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: var(--space-4);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-.page-hero__eyebrow::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--color-accent);
-}
-.page-hero__title {
-  font-family: var(--font-display);
-  font-size: var(--font-4xl);
-  color: var(--color-white);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-  margin-bottom: var(--space-6);
-  max-width: 700px;
-}
-.page-hero__desc {
-  font-size: var(--font-lg);
-  color: rgba(255,255,255,0.72);
-  max-width: 600px;
-  line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-10);
-}
-.page-hero__ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; }
-@media (max-width: 768px) {
-  .page-hero__title { font-size: var(--font-3xl); }
-}
-
-/* ── Serviços página interna ────────────────────────────── */
-.servicos__grid {
-  display: grid;
-  /* 2 colunas: com os 4 cards que empresas.html e para-voce.html têm hoje,
-     3 colunas deixava um card sozinho na segunda linha. */
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-6);
-}
-.servico-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-8);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-}
-.servico-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
-  border-color: var(--color-accent);
-}
-/* Mesmo banner sangrado dos cards da home, ajustado ao padding menor destes
-   (32px) e ao raio menor. O `aspect-ratio` reserva a altura antes da foto
-   chegar, então o texto do card não salta durante o carregamento. */
-.servico-card__media {
-  margin: calc(var(--space-8) * -1) calc(var(--space-8) * -1) 0;
-  border-radius: calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px) 0 0;
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-}
-.servico-card__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-/* Movimento discreto nas fotos dos cards: um zoom lento de 4% ao passar o
-   mouse. Só a imagem se move — a moldura tem overflow: hidden, então ela
-   cresce por dentro do recorte, sem empurrar nada em volta (não recalcula
-   layout, só compõe: é transform, barato para o navegador).
-   1,2s de saída contra 0,6s de entrada dá a sensação de "assentar" em vez
-   de voltar de repente. */
-.audience-block__media img,
-.servico-card__media img {
-  transform: scale(1);
-  transition: transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: transform;
-}
-/* Só em aparelhos com mouse: no toque o :hover fica "grudado" depois do
-   tap e a foto ficaria ampliada até o usuário tocar em outro lugar. */
-@media (hover: hover) and (pointer: fine) {
-  .audience-block:hover .audience-block__media img,
-  .audience-block:focus-within .audience-block__media img,
-  .servico-card:hover .servico-card__media img,
-  .servico-card:focus-within .servico-card__media img {
-    transform: scale(1.04);
-    transition-duration: 0.6s;
-  }
-}
-/* Quem pediu menos animação no sistema não recebe o zoom. */
-@media (prefers-reduced-motion: reduce) {
-  .audience-block__media img,
-  .servico-card__media img { transition: none; }
-  .audience-block:hover .audience-block__media img,
-  .servico-card:hover .servico-card__media img { transform: none; }
-}
-.servico-card__icon {
-  width: 56px;
-  height: 56px;
-  background: rgba(201,168,76,0.10);
-  border-radius: var(--radius-sm);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent);
-}
-.servico-card__title {
-  font-family: var(--font-display);
-  font-size: var(--font-xl);
-  color: var(--color-text);
-}
-.servico-card__desc {
-  font-size: var(--font-base);
-  color: var(--color-muted);
-  line-height: var(--leading-relaxed);
-  flex: 1;
-  text-align: justify;
-}
-.servico-card__features {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border);
-}
-.servico-card__feature {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-sm);
-  color: var(--color-text);
-}
-.servico-card__feature svg { color: var(--color-accent); flex-shrink: 0; }
-.servico-card__actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: auto; padding-top: 1.25rem; }
-.servico-card__actions .btn {
-  flex: 1;
-  min-width: 0;
-  /* .btn é inline-flex: quem centraliza o texto dentro dele é justify-content,
-     não text-align — text-align não tem efeito sobre um item de flexbox. */
-  justify-content: center;
-}
-@media (max-width: 900px) { .servicos__grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 580px) { .servicos__grid { grid-template-columns: minmax(0, 1fr); } }
-
-/* ── Benefícios (VR) ────────────────────────────────────── */
-/* A seção existe no HTML mas não tinha nenhuma regra: os .beneficio-card
-   renderizavam como <li> cru (display:list-item, sem caixa) e o ícone esticava
-   na largura inteira da página — daí destoarem do resto do site. */
-.beneficios__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
-  /* Estreita a grade: em 1280px, dois cards de ~600px ficariam largos demais
-     para o pouco texto que carregam. */
-  max-width: 940px;
-  margin: var(--space-12) auto 0;
-}
-.beneficio-card {
-  /* Grid, não flex: o ícone é irmão do título e da descrição no HTML, e o
-     grid põe ele na coluna da esquerda ocupando as duas linhas — ícone ao
-     lado do título, sem precisar de um <div> extra em volta do texto. */
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  column-gap: var(--space-4);
-  row-gap: var(--space-1);
-  align-items: start;
-  padding: var(--space-5);
-  /* Cinza sobre a seção branca: fosse branco, o card sumiria no fundo. */
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-}
-.beneficio-card:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-2px);
-}
-.beneficio-card__icon {
-  grid-row: 1 / span 2;
   width: 44px;
   height: 44px;
-  flex-shrink: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--ink-2);
+  transition: background-color 0.18s var(--ease-out), color 0.18s, border-color 0.18s;
+}
+.footer__social a:hover { background: var(--olive); border-color: var(--olive); color: #fff; }
+.footer__col-title { font-family: var(--font-display); font-size: 1.125rem; color: var(--ink); margin-bottom: var(--space-4); }
+.footer__links { display: grid; gap: var(--space-2); }
+.footer__links a { font-size: var(--text-sm); color: var(--ink-2); text-decoration: none; }
+.footer__links a:hover { color: var(--olive); text-decoration: underline; }
+.footer__contact { display: grid; gap: var(--space-3); align-content: start; font-style: normal; }
+.footer__contact-item { display: flex; align-items: flex-start; gap: var(--space-3); font-size: var(--text-sm); color: var(--ink-2); text-decoration: none; }
+a.footer__contact-item:hover { color: var(--olive); }
+.footer__contact-item svg { flex-shrink: 0; margin-top: 3px; color: var(--gold-ink); }
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+.footer__copyright { font-size: var(--text-xs); color: var(--muted); }
+.footer__legal { display: flex; gap: var(--space-6); }
+.footer__legal a { font-size: var(--text-xs); color: var(--muted); }
+.footer__legal a:hover { color: var(--olive); }
+@media (max-width: 1080px) {
+  .footer__inner { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer__brand { grid-column: 1 / -1; }
+  .footer__contact { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .footer__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+
+/* ============================================================
+   PÁGINAS INTERNAS
+   ============================================================ */
+
+/* ── Hero interno ───────────────────────────────────────── */
+.hero {
+  position: relative;
+  background: var(--ground);
+  padding: var(--space-20) 0 var(--space-16);
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-soft);
+}
+.hero__content { position: relative; z-index: 1; max-width: 680px; }
+.hero__eyebrow {
   display: flex;
   align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--gold-ink);
+  margin-bottom: var(--space-5);
+}
+.hero__eyebrow::before { content: ""; width: 44px; height: 2px; background: var(--gold); flex-shrink: 0; }
+.hero__title {
+  font-size: clamp(2.25rem, 1.5rem + 2.8vw, 3.75rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: var(--space-6);
+}
+.hero__subtitle { font-size: var(--text-md); color: var(--muted); max-width: 36em; margin-bottom: var(--space-8); }
+.hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-6); }
+.hero__trust {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.hero__trust::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  background: var(--olive);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.hero__pessoa { display: none; }
+@media (min-width: 1025px) {
+  .hero--figura { min-height: calc(100svh - var(--header-h)); display: flex; align-items: center; padding: var(--space-12) 0; }
+  .hero--figura > .container { width: 100%; }
+  .hero--figura .hero__content { max-width: 560px; }
+  .hero--figura .hero__pessoa {
+    display: block;
+    position: absolute;
+    right: max(var(--space-8), calc((100vw - 1240px) / 2));
+    bottom: 0;
+    width: min(46vw, 620px);
+    height: 92%;
+    background: var(--hero-figura) bottom center / contain no-repeat;
+    pointer-events: none;
+  }
+  .hero--figura .hero__pessoa::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 12%;
+    right: 12%;
+    bottom: 0;
+    height: 78%;
+    background: var(--band);
+    border-radius: 999px 999px 0 0;
+  }
+  .hero--figura-empresas { --hero-figura: image-set(url('../images/conteudo/executiva-660.webp') 1x, url('../images/conteudo/executiva-980.webp') 2x); }
+  .hero--figura-voce { --hero-figura: image-set(url('../images/conteudo/casal-660.webp') 1x, url('../images/conteudo/casal-980.webp') 2x); }
+}
+@media (max-width: 520px) {
+  .hero { padding: var(--space-12) 0 var(--space-10); }
+  .hero__actions .btn { width: 100%; }
+  .hero__trust { align-items: flex-start; }
+}
+
+/* ── Seção dor / solução ─────────────────────────────────── */
+.section-dor { padding: var(--section-y) 0; background: var(--surface); }
+.dor__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-12); align-items: center; }
+.dor__col .section-title { text-align: left; margin: 0 0 var(--space-8); font-size: var(--title-md); }
+.dor__col .section-title::before { margin-left: 0; }
+.dor__list { display: grid; gap: var(--space-4); }
+.dor__item { display: flex; align-items: flex-start; gap: var(--space-3); font-size: var(--text-base); color: var(--ink-2); line-height: 1.5; }
+.dor__item svg { flex-shrink: 0; margin-top: 2px; }
+.dor__icon--bad { color: #9a4a3a; }
+.dor__icon--good { color: var(--olive); }
+.dor__col--solution {
+  padding: var(--space-10);
+  background: var(--olive-deep);
+  color: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-2);
+}
+.dor__solution-title { font-size: var(--title-sm); margin-bottom: var(--space-6); padding-bottom: var(--space-5); border-bottom: 1px solid var(--on-dark-line); }
+.dor__col--solution .dor__item { color: var(--on-dark-2); }
+.dor__col--solution .dor__icon--good { color: var(--gold); }
+.dor__list--beneficios { max-width: 760px; margin: 0 auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4) var(--space-8); }
+@media (max-width: 900px) {
+  .dor__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  .dor__col--solution { padding: var(--space-8) var(--space-6); }
+  .dor__list--beneficios { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ── Cards de serviço ───────────────────────────────────── */
+.servicos__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
+.servico-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+  transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+.servico-card:hover { box-shadow: var(--shadow-3); transform: translateY(-4px); }
+.servico-card__media { aspect-ratio: 16 / 8; overflow: hidden; }
+.servico-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.servico-card__icon {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  background: rgba(201, 168, 76, 0.12);
-  border-radius: var(--radius-sm);
-  color: var(--color-accent);
+  width: 48px;
+  height: 48px;
+  margin: calc(var(--space-6) * -1 - 4px) 0 var(--space-4) var(--space-8);
+  position: relative;
+  border-radius: 50%;
+  background: var(--olive);
+  color: #fff;
+  box-shadow: 0 0 0 4px var(--surface);
 }
-.beneficio-card__title {
-  font-family: var(--font-display);
-  font-size: var(--font-md);
-  line-height: var(--leading-snug);
-  color: var(--color-text);
-  align-self: center;
+.servico-card__title { font-size: var(--title-sm); color: var(--ink); margin: 0 var(--space-8) var(--space-2); }
+.servico-card__desc { font-size: var(--text-sm); color: var(--muted); margin: 0 var(--space-8) var(--space-5); }
+.servico-card__features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-5);
+  margin: 0 var(--space-8) var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line-soft);
 }
-.beneficio-card__desc {
-  font-size: var(--font-sm);
-  color: var(--color-muted);
-  line-height: var(--leading-normal);
-  text-align: justify;
+.servico-card__features li { position: relative; padding-left: var(--space-4); font-size: var(--text-sm); color: var(--ink-2); line-height: 1.45; }
+.servico-card__features li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.servico-card__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: auto var(--space-8) var(--space-8); }
+.servico-card__actions .btn { flex: 1 1 140px; }
+@media (max-width: 900px) { .servicos__grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) {
+  .servico-card__title, .servico-card__desc, .servico-card__features, .servico-card__actions { margin-left: var(--space-5); margin-right: var(--space-5); }
+  .servico-card__icon { margin-left: var(--space-5); }
+  .servico-card__features { grid-template-columns: minmax(0, 1fr); }
+  .servico-card__actions { margin-bottom: var(--space-6); }
 }
+
+/* ── Benefícios (VR) ────────────────────────────────────── */
+.beneficios__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-4); }
+.beneficio-card { padding: var(--space-6); border: 1px solid var(--on-dark-line); border-radius: var(--radius-md); }
+.beneficio-card__icon { color: var(--gold); margin-bottom: var(--space-4); }
+.beneficio-card__title { font-size: 1.1875rem; color: #fff; margin-bottom: var(--space-2); }
+.beneficio-card__desc { font-size: var(--text-sm); color: var(--on-dark-2); line-height: 1.55; }
 .beneficios__coverage {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: var(--space-8);
-  max-width: 940px;
-  margin: var(--space-10) auto 0;
-  padding: var(--space-8);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  gap: var(--space-6) var(--space-10);
+  margin-top: var(--space-12);
+  padding: var(--space-6) var(--space-8);
+  border-block: 1px solid var(--on-dark-line);
 }
 .beneficios__coverage-item { text-align: center; }
-.beneficios__coverage-num {
-  display: block;
-  font-family: var(--font-display);
-  font-size: var(--font-2xl);
-  color: var(--color-accent);
-  line-height: 1.15;
-}
-.beneficios__coverage-label {
-  display: block;
-  margin-top: var(--space-2);
-  font-size: var(--font-sm);
-  color: var(--color-muted);
-}
-.beneficios__coverage-divider {
-  width: 1px;
-  align-self: stretch;
-  background: var(--color-border);
-}
-@media (max-width: 768px) {
+.beneficios__coverage-num { display: block; font-family: var(--font-display); font-weight: 400; font-size: var(--title-sm); color: #fff; }
+.beneficios__coverage-label { font-size: var(--text-xs); color: var(--on-dark-2); }
+.beneficios__coverage-divider { width: 1px; height: 40px; background: var(--gold); }
+@media (max-width: 1100px) { .beneficios__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
   .beneficios__grid { grid-template-columns: minmax(0, 1fr); }
-  /* A divisória é vertical: empilhado, viraria um risco solto no meio. */
   .beneficios__coverage-divider { display: none; }
 }
 
-/* Variante escura: só quando #beneficios está dentro de .section--dark.
-   .beneficio-card também é usado em 4 páginas de para-você/ sobre fundo claro
-   (herdam as cores normais acima) — por isso a sobrescrita é escopada, não
-   direto na classe base, senão o texto ficaria ilegível lá. Mesma paleta do
-   .audience-card do header: branco translúcido faz as vezes de "cinza" sobre
-   o fundo escuro, título branco, descrição branca semi-transparente. */
-.section--dark .section-title { color: var(--color-white); }
-.section--dark .beneficio-card {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.12);
-}
-.section--dark .beneficio-card:hover {
-  background: rgba(255,255,255,0.10);
-  border-color: var(--color-accent);
-}
-.section--dark .beneficio-card__title { color: var(--color-white); }
-.section--dark .beneficio-card__desc { color: rgba(255,255,255,0.65); }
-.section--dark .beneficios__coverage {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.12);
-}
-.section--dark .beneficios__coverage-label { color: rgba(255,255,255,0.65); }
-.section--dark .beneficios__coverage-divider { background: rgba(255,255,255,0.15); }
-
-/* ── FAQ ────────────────────────────────────────────────── */
-.faq__list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-3); }
-.faq__item {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  overflow: hidden;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-.faq__item:hover,
-.faq__item--open {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-sm);
-}
-.faq__btn {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-6) var(--space-8);
-  background: none;
-  border: none;
-  text-align: left;
-  font-family: var(--font-display);
-  font-size: var(--font-lg);
-  color: var(--color-text);
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-.faq__btn:hover { color: var(--color-primary); }
-.faq__btn[aria-expanded="true"] { color: var(--color-primary); }
-.faq__icon {
-  flex-shrink: 0;
-  color: var(--color-accent);
-  transition: transform 0.3s ease;
-}
-.faq__btn[aria-expanded="true"] .faq__icon { transform: rotate(45deg); }
-.faq__answer {
-  /* max-height, não display:none: display não é animável, e a abertura por
-     hover precisa deslizar suavemente. O padding fica sempre declarado (fora
-     da transição) para que o scrollHeight que o JS mede já inclua ele — sem
-     isso a resposta abriria com a última linha cortada. */
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  padding: 0 var(--space-8) var(--space-6);
-  font-size: var(--font-base);
-  color: var(--color-muted);
-  line-height: var(--leading-relaxed);
-  text-align: justify;
-  transition: max-height 0.35s ease, opacity 0.25s ease;
-}
-.faq__answer.is-open { opacity: 1; }
-
-/* Variante escura: só o FAQ da home (#faq), como cards escuros destacados
-   sobre a seção clara — não a base .faq__item, que também aparece em 10
-   outras páginas sobre fundo claro e ficaria ilegível se herdasse isto. */
-#faq .faq__item {
-  background: var(--color-primary);
-  border-color: rgba(255,255,255,0.12);
-}
-#faq .faq__item:hover,
-#faq .faq__item--open {
-  border-color: var(--color-accent);
-}
-#faq .faq__btn { color: var(--color-white); }
-#faq .faq__btn:hover,
-#faq .faq__btn[aria-expanded="true"] { color: var(--color-accent); }
-#faq .faq__answer { color: rgba(255,255,255,0.65); }
-
-/* ── Badge placeholder ──────────────────────────────────── */
-.placeholder-note {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-xs);
-  color: var(--color-muted);
-  background: var(--color-bg);
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: var(--space-1) var(--space-3);
-}
-
-/* ── Animações ──────────────────────────────────────────── */
-/* F1 — Entrada hero */
-@keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.hero__eyebrow  { animation: heroFadeUp 0.6s ease forwards; }
-.hero__title    { animation: heroFadeUp 0.7s ease 0.1s both; }
-.hero__subtitle { animation: heroFadeUp 0.7s ease 0.2s both; }
-.hero__ctas     { animation: heroFadeUp 0.7s ease 0.3s both; }
-.hero__badges   { animation: heroFadeUp 0.7s ease 0.4s both; }
-.hero__visual   { animation: heroFadeUp 0.7s ease 0.2s both; }
-.page-hero__eyebrow { animation: heroFadeUp 0.6s ease forwards; }
-.page-hero__title   { animation: heroFadeUp 0.7s ease 0.1s both; }
-.page-hero__desc    { animation: heroFadeUp 0.7s ease 0.2s both; }
-.page-hero__ctas    { animation: heroFadeUp 0.7s ease 0.3s both; }
-
-/* A1 — Fade up ao rolar */
-.anim-fade-up {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.anim-fade-up.visible { opacity: 1; transform: translateY(0); }
-.anim-fade-up:nth-child(2) { transition-delay: 0.08s; }
-.anim-fade-up:nth-child(3) { transition-delay: 0.16s; }
-.anim-fade-up:nth-child(4) { transition-delay: 0.24s; }
-.anim-fade-up:nth-child(5) { transition-delay: 0.32s; }
-.anim-fade-up:nth-child(6) { transition-delay: 0.40s; }
-
-/* C3 — Destaque em palavra */
-.highlight-word {
-  position: relative;
-  display: inline-block;
-}
-.highlight-word::after {
-  content: '';
-  position: absolute;
-  bottom: 4px;
-  left: 0;
-  width: 0;
-  height: 10px;
-  background: var(--color-accent);
-  opacity: 0.25;
-  z-index: -1;
-  transition: width 0.7s ease 0.4s;
-}
-.highlight-word.visible::after { width: 100%; }
-
-/* ── Status messages ────────────────────────────────────── */
-#form-status { min-height: 0; }
-#form-error-global { min-height: 0; }
-
-/* ── Utilities ──────────────────────────────────────────── */
-.text-center { text-align: center; }
-.text-accent { color: var(--color-accent); }
-.text-white { color: var(--color-white); }
-.mt-2 { margin-top: var(--space-2); }
-.mt-4 { margin-top: var(--space-4); }
-.mt-8 { margin-top: var(--space-8); }
-.mb-0 { margin-bottom: 0; }
-
-/* ============================================================
-   ESTILOS DAS PÁGINAS INTERNAS (empresas.html / para-voce.html)
-   ============================================================ */
-
-/* ── Animate fade-up (alias para .anim-fade-up) ─────────── */
-.animate-fade-up {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.animate-fade-up--visible { opacity: 1; transform: translateY(0); }
-.animate-fade-up:nth-child(2) { transition-delay: 0.08s; }
-.animate-fade-up:nth-child(3) { transition-delay: 0.16s; }
-.animate-fade-up:nth-child(4) { transition-delay: 0.24s; }
-.animate-fade-up:nth-child(5) { transition-delay: 0.32s; }
-.animate-fade-up:nth-child(6) { transition-delay: 0.40s; }
-@media (prefers-reduced-motion: reduce) {
-  .animate-fade-up { opacity: 1; transform: none; transition: none; }
-}
-
-/* ── Header — scroll states ─────────────────────────────── */
-/* O header agora tem uma única cor fixa (ver regra .header acima), então
-   .header--scrolled não precisa mais trocar background/texto — a classe
-   continua sendo alternada pelo JS, mas hoje não muda mais nada visível. */
-.header--hidden {
-  transform: translateY(-100%);
-}
-
-/* ── Header nav — mobile open state (JS usa --open) ─────── */
-.header__nav.header__nav--open {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  inset: 0;
-  top: 0;
-  background: var(--color-primary-d);
-  z-index: 100;
-  padding: var(--space-20) var(--space-6) var(--space-8);
-  gap: var(--space-3);
-  overflow-y: auto;
-}
-/* No menu mobile aberto a nav vira coluna: a linha divisória vertical não
-   faz sentido ali e apareceria como um risco solto. */
-.header__nav.header__nav--open::before { display: none; }
-/* O botão hambúrguer fica fora de #main-nav, atrás do painel de tela cheia
-   (mesmo z-index do header, mas o painel pinta por cima por vir depois no
-   DOM) — sem este botão, fechar o menu no toque é impossível: Escape não
-   existe no celular e não há "fora" para tocar, já que o painel cobre tudo. */
-.header__nav-close {
-  display: none;
-  position: absolute;
-  top: var(--space-6);
-  right: var(--space-6);
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.85);
-  cursor: pointer;
-  border-radius: var(--radius-sm);
-  transition: background 0.2s ease, color 0.2s ease;
-}
-.header__nav-close:hover { background: rgba(255,255,255,0.08); color: var(--color-accent); }
-.header__nav.header__nav--open .header__nav-close { display: flex; }
-.header__nav.header__nav--open .header__nav-list {
-  display: flex;
-  flex-direction: column;
-  /* A regra base (.header__nav-list) tem align-items:center, pensada para o
-     menu horizontal do desktop — nele, "center" só afeta a altura da linha.
-     Em coluna esse mesmo align-items passa a agir no eixo horizontal e
-     centralizava cada link. stretch: 100% de largura, alinhado à esquerda. */
-  align-items: stretch;
-  gap: var(--space-2);
-}
-.header__nav.header__nav--open .header__nav-list a,
-.header__nav.header__nav--open .header__nav-link {
-  color: rgba(255,255,255,0.85);
-  font-size: var(--font-lg);
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-sm);
-  display: block;
-  text-decoration: none;
-}
-.header__nav.header__nav--open .header__nav-list a:hover,
-.header__nav.header__nav--open .header__nav-link:hover {
-  background: rgba(255,255,255,0.08);
-  color: var(--color-accent);
-}
-.header__nav.header__nav--open .header__nav-link--active,
-.header__nav.header__nav--open .header__nav-link[aria-current="page"] {
-  color: var(--color-accent);
-  box-shadow: none;
-  border-radius: var(--radius-sm);
-}
-.header__nav.header__nav--open .header__cta {
-  display: inline-flex;
-  margin-top: var(--space-4);
-}
-body.menu-open { overflow: hidden; }
-
-/* ── Header nav links ────────────────────────────────────── */
-.header__nav-list {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  /* Recolhe a folga toda depois dos links: eles ficam à esquerda, junto da
-     linha divisória, e só o botão do WhatsApp é empurrado para a direita. */
-  margin-right: auto;
-}
-.header__nav-link {
-  font-size: var(--font-sm);
-  font-weight: var(--font-medium);
-  color: var(--color-primary);
-  text-decoration: none;
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
-  transition: color 0.2s ease, background 0.2s ease;
-}
-.header__nav-link:hover { color: var(--color-primary-d); background: rgba(0, 0, 0, 0.05); }
-/* Dourado como texto sobre o cinza claro não passa no contraste (~2:1);
-   a página atual fica em texto escuro com um traço dourado embaixo. */
-.header__nav-link--active,
-.header__nav-link[aria-current="page"] {
-  color: var(--color-primary-d);
-  font-weight: var(--font-semibold);
-  box-shadow: inset 0 -2px 0 var(--color-accent);
-  border-radius: 0;
-}
-
-/* ── Hero — páginas internas (single column) ────────────── */
-/* A altura vem de .hero (tela inteira menos o header). Estas páginas tinham
-   um override de 72vh que deixava a seção seguinte aparecendo embaixo. */
-.hero__content {
-  max-width: 720px;
-  position: relative;
-  z-index: 1;
-}
-.hero__actions {
-  display: flex;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-  margin-bottom: var(--space-8);
-}
-.hero__trust {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-sm);
-  /* Mesmo cinza dos selos da home: o branco translúcido de antes dependia
-     do hero escuro e sumia sobre o fundo claro atual. */
-  color: var(--color-muted);
-}
-.hero__trust svg { color: var(--color-accent); flex-shrink: 0; }
-@media (max-width: 580px) {
-  .hero__actions { flex-direction: column; }
-  .hero__actions .btn { width: 100%; justify-content: center; }
-}
-
-/* ── Servico card — featured variant ────────────────────── */
-.servico-card--featured {
-  border-color: var(--color-accent);
-  background: var(--color-primary);
-  color: var(--color-white);
-}
-.servico-card--featured .servico-card__title { color: var(--color-white); }
-.servico-card--featured .servico-card__desc { color: rgba(255,255,255,0.72); }
-.servico-card--featured .servico-card__features { border-color: rgba(255,255,255,0.15); }
-.servico-card--featured .servico-card__features li { color: rgba(255,255,255,0.85); }
-.servico-card--featured .servico-card__icon { background: rgba(201,168,76,0.2); }
-
-/* ── Servico card features (li items) ───────────────────── */
-.servico-card__features li {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-sm);
-  color: var(--color-muted);
-}
-.servico-card__features li::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  flex-shrink: 0;
-}
-
 /* ── Como funciona ──────────────────────────────────────── */
-/* Havia duas definições disputando esta seção: uma em grade de 4 colunas com
-   linha conectora (escrita para `.step-card`, classe que nenhum HTML usa — era
-   código morto) e esta, em lista vertical de 680px, que vencia por vir depois.
-   O resultado era uma lista estreita com 600px de vazio nas laterais e sem
-   caixa nenhuma, destoando de todas as outras seções, que usam cards.
-   Consolidado num bloco só, com o card padrão do site. */
-.como-funciona__steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-4);
-  margin-bottom: var(--space-12);
-  position: relative;
-}
-/* Fio ligando os passos: fica atrás dos cards (z-index 0) e aparece só nos
-   vãos entre eles, sugerindo a sequência sem poluir. Começa e termina no
-   centro da primeira e da última coluna — 12.5% é meia coluna de quatro.
-   O topo alinha com o centro do círculo: 1px de borda + 32px de padding +
-   32px de raio do círculo. */
-.como-funciona__steps::before {
-  content: '';
-  position: absolute;
-  top: 65px;
-  left: 12.5%;
-  right: 12.5%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-border) 100%);
-  z-index: 0;
-}
-.como-funciona__step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-4);
-  padding: var(--space-8) var(--space-6);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  position: relative;
-  z-index: 1;
-  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-}
-.como-funciona__step:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
-  border-color: var(--color-accent);
-}
-.como-funciona__num {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  color: var(--color-accent);
-  font-family: var(--font-display);
-  font-size: var(--font-xl);
-  font-weight: var(--font-bold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  border: 2px solid var(--color-accent);
-}
-.como-funciona__title {
-  font-family: var(--font-display);
-  font-size: var(--font-lg);
-  color: var(--color-text);
-  margin-bottom: var(--space-2);
-}
-.como-funciona__desc {
-  font-size: var(--font-sm);
-  color: var(--color-muted);
-  line-height: var(--leading-relaxed);
-}
-.como-funciona__cta { text-align: center; }
-@media (max-width: 900px) {
-  .como-funciona__steps { grid-template-columns: 1fr 1fr; }
-  /* Em duas linhas o fio horizontal não liga mais nada. */
-  .como-funciona__steps::before { display: none; }
-}
-@media (max-width: 580px) {
-  .como-funciona__steps { grid-template-columns: minmax(0, 1fr); }
+.como-funciona { background: var(--surface); }
+.como-funciona__steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-6); counter-reset: none; }
+.como-funciona__step { position: relative; padding-top: var(--space-6); border-top: 2px solid var(--line-soft); }
+.como-funciona__step::before { content: ""; position: absolute; top: -2px; left: 0; width: 44px; height: 2px; background: var(--gold); }
+.como-funciona__num { font-family: var(--font-display); font-size: 2.5rem; line-height: 1; color: var(--olive); margin-bottom: var(--space-4); font-variant-numeric: lining-nums; }
+.como-funciona__title { font-size: 1.25rem; color: var(--ink); margin-bottom: var(--space-2); }
+.como-funciona__desc { font-size: var(--text-sm); color: var(--muted); }
+.como-funciona__cta { margin-top: var(--space-12); text-align: center; }
+@media (max-width: 1000px) { .como-funciona__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-6); } }
+@media (max-width: 560px) { .como-funciona__steps { grid-template-columns: minmax(0, 1fr); } }
+
+/* ── Números nas páginas internas ───────────────────────── */
+.stats__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.stat-card { position: relative; text-align: center; padding: var(--space-4) var(--space-6); }
+.stat-card + .stat-card::before { content: ""; position: absolute; left: 0; top: 18%; bottom: 18%; width: 1px; background: var(--gold); }
+.stat-card__icon { display: flex; justify-content: center; color: var(--gold); margin-bottom: var(--space-3); }
+.stat-card__number { font-family: var(--font-display); font-size: clamp(2.25rem, 1.8rem + 1.4vw, 3rem); line-height: 1; margin-bottom: var(--space-2); font-variant-numeric: tabular-nums lining-nums; }
+.stat-suffix { color: var(--gold); }
+.stat-card__label { font-size: var(--text-sm); color: var(--on-dark-2); }
+@media (max-width: 800px) {
+  .stats__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-8); }
+  .stat-card:nth-child(3)::before { display: none; }
 }
 
-/* ── Seção dor / solução ─────────────────────────────────── */
-.section-dor {
-  /* Mesmo cinza que a seção logo abaixo do hero usa na home: as internas
-     passam a repetir o contraste claro (hero) → escuro (seção seguinte). */
-  background: var(--color-primary-l);
-  padding: var(--space-20) 0;
-}
-/* Só a coluna da esquerda tem texto solto sobre o fundo escuro. A da
-   direita (.dor__col--solution) é um card branco, e as duas compartilham
-   .dor__item — por isso a cor clara é escopada com :not(), senão o texto
-   do card sumiria no branco. */
-.section-dor .section-title {
-  color: var(--color-white);
-}
-.section-dor .dor__col:not(.dor__col--solution) .dor__item {
-  color: rgba(255, 255, 255, 0.88);
-}
-/* O vermelho original (#dc2626) rende 2,5:1 sobre este cinza — abaixo do
-   mínimo de 3:1 para elemento gráfico. Este tom claro sobe para 3,6:1.
-   O verde do card branco não muda: lá o fundo continua claro. */
-.section-dor .dor__col:not(.dor__col--solution) .dor__icon--bad {
-  color: #fca5a5;
-}
-.dor__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-12);
-  align-items: flex-start;
-}
-.dor__col .section-title { margin-bottom: var(--space-8); text-align: left; }
-.section-title {
-  font-family: var(--font-display);
-  font-size: var(--font-2xl);
-  line-height: var(--leading-snug);
-  letter-spacing: var(--tracking-tight);
-  color: var(--color-text);
-  text-align: center;
-  margin-bottom: var(--space-4);
-}
-.section-eyebrow {
-  display: block;
-  font-size: var(--font-sm);
-  font-weight: var(--font-semibold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-accent);
-  text-align: center;
-  margin-bottom: var(--space-4);
-}
-@media (min-width: 768px) {
-  .section-title { font-size: var(--font-3xl); }
-}
-.dor__col--solution {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-10);
-}
-.dor__solution-title {
-  font-family: var(--font-display);
-  font-size: var(--font-xl);
-  color: var(--color-primary);
-  margin-bottom: var(--space-6);
-  padding-bottom: var(--space-4);
-  border-bottom: 2px solid var(--color-accent);
-}
-.dor__list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.dor__item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-  font-size: var(--font-base);
-  line-height: var(--leading-relaxed);
-  color: var(--color-text);
-}
-.dor__icon--bad { color: #dc2626; flex-shrink: 0; margin-top: 2px; }
-.dor__icon--good { color: #16a34a; flex-shrink: 0; margin-top: 2px; }
-@media (max-width: 768px) {
-  .dor__grid { grid-template-columns: minmax(0, 1fr); }
-  .dor__col--solution { padding: var(--space-6); }
-}
+/* ── Faixas de chamada ──────────────────────────────────── */
+.cta-band { padding: var(--space-16) 0; background: var(--band); border-block: 1px solid var(--line); text-align: center; }
+.cta-band__title { font-size: var(--title-md); color: var(--ink); max-width: 760px; margin: 0 auto var(--space-4); }
+.cta-band__desc { color: var(--muted); max-width: 580px; margin: 0 auto var(--space-8); }
 
-/* ── CTA Final ───────────────────────────────────────────── */
-.cta-final {
-  background: var(--color-primary);
-  padding: var(--space-20) 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.cta-final::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 70%);
-  pointer-events: none;
-}
-.cta-final__title {
-  font-family: var(--font-display);
-  font-size: var(--font-3xl);
-  color: var(--color-white);
-  line-height: var(--leading-tight);
-  margin-bottom: var(--space-4);
-  position: relative;
-  z-index: 1;
-}
-.cta-final__desc {
-  font-size: var(--font-lg);
-  color: rgba(255,255,255,0.65);
-  margin-bottom: var(--space-10);
-  position: relative;
-  z-index: 1;
-}
-.cta-final__actions {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
-}
-@media (max-width: 580px) {
-  .cta-final__title { font-size: var(--font-2xl); }
-  .cta-final__actions { flex-direction: column; align-items: center; }
-  .cta-final__actions .btn { width: 100%; max-width: 320px; justify-content: center; }
-}
+.cta-final { padding: var(--section-y) 0; background: var(--olive-deep); color: #fff; text-align: center; }
+.cta-final__title { font-size: var(--title-lg); max-width: 820px; margin: 0 auto var(--space-4); }
+.cta-final__title::before { content: ""; display: block; width: 44px; height: 2px; margin: 0 auto var(--space-6); background: var(--gold); }
+.cta-final__desc { color: var(--on-dark-2); max-width: 600px; margin: 0 auto var(--space-8); }
+.cta-final__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); }
+@media (max-width: 520px) { .cta-final__actions .btn { width: 100%; } }
 
-/* ── Botões adicionais ───────────────────────────────────── */
-.btn--outline-light {
-  background: transparent;
-  border: 2px solid rgba(255,255,255,0.4);
-  color: var(--color-white);
-}
-.btn--outline-light:hover {
-  background: rgba(255,255,255,0.10);
-  border-color: rgba(255,255,255,0.7);
-  color: var(--color-white);
-}
-.btn--success {
-  background: #16a34a;
-  border-color: #16a34a;
-  color: #fff;
-  cursor: default;
-}
-.btn--success:hover { background: #16a34a; border-color: #16a34a; transform: none; }
-
-/* ── Faixa Instagram (minimalista) ───────────────────────── */
-.insta-strip {
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  padding: var(--space-5) 0;
-}
-.insta-strip__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-6);
-  flex-wrap: wrap;
-}
-.insta-strip__text {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  font-size: var(--font-base);
-  font-weight: var(--font-medium);
-  color: var(--color-text);
-}
-@media (max-width: 580px) {
-  .insta-strip__inner { justify-content: center; text-align: center; }
-}
-
-/* ══════════════════════════════════════════════════════════════
-   EDITOR MODE — visível apenas para o admin autenticado
-   ══════════════════════════════════════════════════════════════ */
-
-/* Barra de ferramentas fixa no topo */
-.editor-toolbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 48px;
-  background: #0e2219;
-  border-bottom: 1px solid rgba(201, 168, 76, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 var(--space-6);
-  z-index: 200;
-  gap: var(--space-4);
-}
-
-.editor-toolbar__brand {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-display);
-  font-size: var(--font-sm);
-  color: var(--color-accent);
-  letter-spacing: var(--tracking-wide);
-  flex-shrink: 0;
-  user-select: none;
-}
-
-.editor-toolbar__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.editor-btn {
-  display: inline-flex;
-  align-items: center;
-  height: 32px;
-  padding: 0 var(--space-4);
-  border-radius: var(--radius-sm);
-  font-size: var(--font-sm);
-  font-weight: var(--font-medium);
-  font-family: var(--font-body);
-  border: 1px solid transparent;
-  cursor: pointer;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 0.15s, color 0.15s, opacity 0.15s;
-}
-
-.editor-btn--logout {
-  color: rgba(255, 255, 255, 0.45);
-  background: transparent;
-  border-color: rgba(255, 255, 255, 0.12);
-}
-.editor-btn--logout:hover { color: #fff; border-color: rgba(255,255,255,0.35); }
-
-.editor-btn--discard {
-  color: rgba(255, 255, 255, 0.65);
-  background: transparent;
-  border-color: rgba(255, 255, 255, 0.18);
-}
-.editor-btn--discard:hover { color: #fff; background: rgba(255,255,255,0.07); }
-
-.editor-btn--publish {
-  background: var(--color-accent);
-  color: var(--color-primary);
-  border-color: var(--color-accent);
-  font-weight: var(--font-semibold);
-}
-.editor-btn--publish:not(:disabled):hover {
-  background: var(--color-accent-l);
-  border-color: var(--color-accent-l);
-}
-.editor-btn--publish:disabled { opacity: 0.38; cursor: default; }
-
-/* Deslocar conteúdo abaixo da toolbar */
-.editor-mode body { padding-top: 48px; }
-.editor-mode .header { top: 48px; }
-
-/* ── Elementos editáveis — estado "botão" (hover) ── */
-.editor-mode [data-editable] {
-  position: relative;
-  cursor: pointer !important;
-  border-radius: 3px;
-  outline: 2px dashed transparent;
-  outline-offset: 4px;
-  transition: outline-color 0.12s, box-shadow 0.15s, transform 0.15s;
-}
-
-.editor-mode [data-editable]:hover,
-.editor-mode [data-editable]:focus-visible {
-  outline-color: var(--color-accent);
-  box-shadow: 0 0 0 5px rgba(201, 168, 76, 0.1);
-  transform: scale(1.012);
-  transform-origin: left center;
-}
-
-/* ── Elementos editáveis — estado "input" (editando) ── */
-.editor-mode [data-editable][contenteditable],
-.editor-mode [data-editable].editor-active {
-  outline-color: var(--color-accent) !important;
-  box-shadow: 0 0 0 5px rgba(201, 168, 76, 0.18) !important;
-  transform: none !important;
-  cursor: text !important;
-}
-
-/* ── Imagens editáveis ── */
-.editor-mode [data-editable][data-editable-type="image"] {
-  cursor: pointer !important;
-  transform-origin: center;
-}
-
-/* Overlay de hint ao passar o mouse em imagens */
-.editor-mode [data-editable][data-editable-type="image"]:not(img) {
-  position: relative;
-}
-.editor-mode [data-editable][data-editable-type="image"]:not(img)::after {
-  content: '↑ Trocar imagem';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  background: rgba(14, 34, 25, 0.88);
-  color: var(--color-accent);
-  padding: var(--space-2) var(--space-5);
-  border-radius: var(--radius-sm);
-  font-size: var(--font-xs);
-  font-family: var(--font-body);
-  font-weight: var(--font-medium);
-  letter-spacing: var(--tracking-wide);
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s, transform 0.2s;
-  z-index: 2;
-}
-.editor-mode [data-editable][data-editable-type="image"]:not(img):hover::after {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-/* Estado de upload em andamento */
-.editor-mode .editor-uploading {
-  opacity: 0.5;
-  pointer-events: none;
-  filter: blur(1px);
-}
+/* ── Movimento ──────────────────────────────────────────── */
+/* O conteúdo nasce visível; o único movimento autoral são os números
+   contando e o leve levantar dos cards. */
+.animate-fade-up { opacity: 1; transform: none; }
