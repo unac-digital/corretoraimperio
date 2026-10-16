@@ -388,7 +388,7 @@ body.menu-open { overflow: hidden; }
   min-height: clamp(560px, calc(100svh - var(--header-h) - 116px), 760px);
   padding: var(--space-16) 0;
 }
-.hero-home__content { max-width: 560px; }
+.hero-home__content { max-width: 600px; }
 .hero-home__title {
   font-size: var(--title-xl);
   line-height: 1.04;
