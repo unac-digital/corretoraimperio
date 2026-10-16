@@ -8,6 +8,42 @@ O texto foi escrito para ser lido em voz alta por leitor de tela. Não há tabel
 
 ---
 
+## Alteração 13 — Versão 2.0 do visual, em avaliação
+
+Data: 16 de outubro de 2026.
+
+Esta versão está no branch de trabalho e ainda não está no ar. O site publicado continua na versão anterior até o cliente aprovar a nova.
+
+### O que o visitante percebe
+
+O cabeçalho é cinza claro, com o botão verde-oliva "Solicitar cotação" à direita. Os botões de ação do site inteiro passaram de dourado para verde-oliva com texto branco. O dourado da logo aparece como um fio fino que abre cada título, nas divisórias da faixa de números e no traço embaixo da página atual no menu.
+
+A página inicial foi reorganizada. Logo na abertura aparece a foto de um atendimento, com o título "Proteção para sua empresa e para sua família", os botões de cotação e de WhatsApp e três garantias: desde 2015, atendimento humanizado e cotação em até 24 horas. Em seguida vêm a faixa com os números da corretora, os cartões Para Empresas e Para Você com links diretos para cada produto, a seção "Por que escolher a Império?", a faixa das seguradoras e operadoras, a história da empresa, os espaços para depoimentos, as perguntas frequentes e o bloco de contato com o formulário.
+
+Nas páginas internas, o visual novo foi aplicado sem mudar a ordem das seções. Os rótulos pequenos em letras maiúsculas que ficavam acima dos títulos foram retirados, porque repetiam o que o título já diz.
+
+### Por que mudou
+
+O cliente escolheu uma imagem de referência e pediu uma versão nova inspirada nela, sem substituir a atual. Os números, textos e fotos são os do site atual. Nenhum depoimento, nome ou número foi inventado.
+
+### Correções que vieram junto
+
+Nas oito páginas de produto, a seção "Vantagens" tinha texto escuro sobre fundo cinza escuro e ficava quase ilegível. Agora ela tem fundo claro.
+
+A página inicial tinha uma tag de fechamento do conteúdo principal faltando antes do rodapé. Isso foi corrigido.
+
+Um dos logos de seguradora, o da Yelum, tinha uma declaração técnica antiga no arquivo, que foi removida sem mudar o desenho.
+
+### O que ainda depende do cliente
+
+Os três depoimentos da página inicial e os das páginas internas são espaços marcados com colchetes. Eles precisam de depoimentos reais antes de a versão ir para o ar.
+
+### Arquivos tocados
+
+A folha de estilo, em css barra style.css, foi reescrita do zero. A página inicial, index.html, foi reescrita. As páginas empresas.html, para-voce.html e as oito páginas de produto receberam o novo botão do cabeçalho, perderam os rótulos acima dos títulos e tiveram os estilos embutidos substituídos por classes da folha de estilo.
+
+---
+
 ## Alteração 12 — Logo do cabeçalho bem maior, com o arquivo recortado
 
 Data: 5 de agosto de 2026.

@@ -902,7 +902,7 @@ a.contato__channel:hover { background: rgba(255, 255, 255, 0.06); border-color: 
   background-repeat: no-repeat;
   background-position: right 0.875rem center;
 }
-.form__input::placeholder, .form__textarea::placeholder { color: #75766e; }
+.form__input::placeholder, .form__textarea::placeholder { color: #67685f; }
 .form__input:hover, .form__select:hover, .form__textarea:hover { border-color: #bdbdb5; }
 .form__input:focus, .form__select:focus, .form__textarea:focus {
   outline: none;

@@ -8,3 +8,7 @@ Thumbs.db
 # Worktrees temporarios do Claude: foram commitados como submodulos por
 # engano e quebravam o repo quando a pasta do projeto era renomeada.
 .claude/worktrees/
+
+# capturas de revisão da skill impeccable
+.impeccable/review/
+.impeccable/mocks/
