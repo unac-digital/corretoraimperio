@@ -170,11 +170,10 @@
   <main id="main-content" tabindex="-1">
 
     <!-- ── Hero ──────────────────────────────────────────── -->
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero hero--figura hero--figura-home" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero__inner">
           <div class="hero__content">
-            <p class="hero__eyebrow" data-editable="hero-eyebrow">Corretora de Seguros em Arujá/SP</p>
             <h1 class="hero__title" id="hero-title" data-editable="hero-title">
               Proteção para sua <span class="highlight">empresa</span><br>
               e para sua família
@@ -206,50 +205,27 @@
               </div>
             </div>
           </div>
-
-          <div class="hero__visual" aria-hidden="true">
-            <div class="hero__audience-cards">
-              <a href="empresas.html" class="audience-card" tabindex="-1">
-                <div class="audience-card__icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18"/><path d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4"/><path d="M5 21V10.85"/><path d="M19 21V10.85"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg>
-                </div>
-                <p class="audience-card__label">Para Empresas</p>
-                <h2 class="audience-card__title">Planos de saúde e seguros corporativos</h2>
-                <p class="audience-card__desc">Proteção completa para sua equipe com as melhores operadoras.</p>
-                <span class="audience-card__arrow" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </span>
-              </a>
-              <a href="para-voce.html" class="audience-card" tabindex="-1">
-                <div class="audience-card__icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                </div>
-                <p class="audience-card__label">Para Você</p>
-                <h2 class="audience-card__title">Seguro auto, saúde, vida e consórcio</h2>
-                <p class="audience-card__desc">Proteção para você e sua família com o melhor custo-benefício.</p>
-                <span class="audience-card__arrow" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
+      <div class="hero__pessoa" aria-hidden="true"></div>
     </section>
 
 
     <!-- ── Para Empresas preview ──────────────────────────── -->
-    <section class="section" aria-labelledby="audiencias-title">
+    <section class="section">
       <div class="container">
-        <header class="section__header">
-          <span class="section__eyebrow" data-editable="audiencia-eyebrow">Soluções completas</span>
-          <h2 class="section__title" id="audiencias-title" data-editable="audiencia-title">Proteção sob medida para cada perfil</h2>
-          <p class="section__desc" data-editable="audiencia-desc">Seja para proteger sua empresa ou sua família, encontramos a melhor opção nas maiores seguradoras — sem burocracia e sem você precisar pesquisar sozinho.</p>
-        </header>
-
         <div class="audience-section">
           <!-- B2B -->
           <article class="audience-block audience-block--primary animate-fade-up">
+            <div class="audience-block__media">
+              <img src="images/conteudo/equipe-escritorio-768.webp"
+                   srcset="images/conteudo/equipe-escritorio-480.webp 480w,
+                           images/conteudo/equipe-escritorio-768.webp 768w,
+                           images/conteudo/equipe-escritorio-1200.webp 1200w"
+                   sizes="(min-width: 1280px) 596px, (min-width: 768px) calc((100vw - 88px) / 2), calc(100vw - 32px)"
+                   width="1200" height="675" loading="lazy" decoding="async"
+                   alt="Equipe reunida em volta de uma mesa durante uma conversa de trabalho">
+            </div>
             <p class="audience-block__tag" data-editable="audiencia-b2b-tag">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 21h18"/><path d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4"/><path d="M5 21V10.85"/><path d="M19 21V10.85"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg>
               Para Empresas
@@ -275,6 +251,15 @@
 
           <!-- B2C -->
           <article class="audience-block animate-fade-up">
+            <div class="audience-block__media">
+              <img src="images/conteudo/familia-sofa-768.webp"
+                   srcset="images/conteudo/familia-sofa-480.webp 480w,
+                           images/conteudo/familia-sofa-768.webp 768w,
+                           images/conteudo/familia-sofa-1200.webp 1200w"
+                   sizes="(min-width: 1280px) 596px, (min-width: 768px) calc((100vw - 88px) / 2), calc(100vw - 32px)"
+                   width="1200" height="675" loading="lazy" decoding="async"
+                   alt="Mãe e dois filhos sentados juntos no sofá da sala de casa">
+            </div>
             <p class="audience-block__tag" data-editable="audiencia-b2c-tag">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
               Para Você
@@ -304,7 +289,7 @@
     <!-- ── Seguradoras parceiras ──────────────────────────── -->
     <section class="seguradoras seguradoras--auto" aria-label="Seguradoras parceiras">
       <p class="visually-hidden">
-        Seguradoras parceiras: Porto Seguro, Azul Seguros, Tokio Marine, Yelum, Mapfre, Allianz, Bradesco, Suhai e Zurich.
+        Seguradoras parceiras: Porto Seguro, Azul Seguros, Tokio Marine, Yelum, Mapfre, Allianz, Bradesco, Suhai, Zurich e Pier Seguradora.
       </p>
 
       <h2 class="seguradoras__label">Seguradoras parceiras</h2>
@@ -312,13 +297,15 @@
         <div class="seguradoras-slider" data-marquee>
           <div class="seguradoras-logo seguradoras-logo--alto"><img src="images/logos-seguradoras/porto-seguro.svg" alt="Porto Seguro"></div>
           <div class="seguradoras-logo"><img src="images/logos-seguradoras/azul-seguros.svg" alt="Azul Seguros"></div>
-          <div class="seguradoras-logo seguradoras-logo--largo"><img src="images/logos-seguradoras/tokio-marine.svg" alt="Tokio Marine"></div>
+          <div class="seguradoras-logo seguradoras-logo--largo"><img src="images/logos-seguradoras/Tokio-marine.png" alt="Tokio Marine"></div>
           <div class="seguradoras-logo"><img src="images/logos-seguradoras/yelum.svg" alt="Yelum Seguradora"></div>
           <div class="seguradoras-logo"><img src="images/logos-seguradoras/mapfre.webp" alt="Mapfre"></div>
           <div class="seguradoras-logo seguradoras-logo--largo"><img src="images/logos-seguradoras/allianz.svg" alt="Allianz"></div>
           <div class="seguradoras-logo seguradoras-logo--compacto"><img src="images/logos-operadoras-saude/bradesco-saude.svg" alt="Bradesco Seguros"></div>
           <div class="seguradoras-logo"><img src="images/logos-seguradoras/suhai.svg" alt="Suhai Seguradora"></div>
           <div class="seguradoras-logo seguradoras-logo--largo"><img src="images/logos-seguradoras/zurich.svg" alt="Zurich"></div>
+          <div class="seguradoras-logo seguradoras-logo--extralargo"><img src="images/logos-seguradoras/Bradesco_Seguros_idduyDldW6_1.svg" alt="Bradesco Seguros"></div>
+          <div class="seguradoras-logo seguradoras-logo--largo"><img src="images/logos-seguradoras/Pier_Seguradora.png" alt="Pier Seguradora"></div>
         </div>
       </div>
 
@@ -327,7 +314,7 @@
     <!-- ── Operadoras de saúde parceiras ──────────────────── -->
     <section class="seguradoras seguradoras--saude seguradoras--auto" aria-label="Operadoras de saúde parceiras">
       <p class="visually-hidden">
-        Operadoras de saúde parceiras: Porto Saúde, Bradesco Saúde, SulAmérica, Amil, Hapvida, São Miguel Saúde, Unihosp e Unimed.
+        Operadoras de saúde parceiras: Porto Saúde, Bradesco Saúde, SulAmérica, Amil, Hapvida, São Miguel Saúde, Unihosp, Unimed, Plena Saúde e Garantia de Saúde.
       </p>
 
       <h2 class="seguradoras__label">Operadoras de saúde parceiras</h2>
@@ -341,6 +328,8 @@
           <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/sao-miguel-saude.png" alt="São Miguel Saúde"></div>
           <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/unihosp.webp" alt="Unihosp"></div>
           <div class="seguradoras-logo seguradoras-logo--largo"><img src="images/logos-operadoras-saude/unimed.svg" alt="Unimed"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/plena-saude.png" alt="Plena Saúde"></div>
+          <div class="seguradoras-logo"><img src="images/logos-operadoras-saude/garantia-de-saude.png" alt="Garantia de Saúde"></div>
         </div>
       </div>
 
@@ -401,13 +390,15 @@
         <div class="sobre__inner">
           <div class="sobre__content">
             <span class="section__eyebrow" data-editable="sobre-eyebrow">Nossa história</span>
-            <h2 class="section__title" id="sobre-title" data-editable="sobre-title">Mais de uma década cuidando de quem confia em nós</h2>
-            <!-- [CLIENTE: revisar e personalizar os textos abaixo com a história real da empresa] -->
+            <h2 class="section__title" id="sobre-title" data-editable="sobre-title">Mais de 10 anos construindo relações de confiança</h2>
             <p class="sobre__text" data-editable="sobre-p1">
-              A Império Corretora nasceu com uma missão simples: oferecer o atendimento que as grandes seguradoras não conseguem dar — próximo, honesto e sem enrolação. Instalados em Arujá há mais de uma década, construímos nossa reputação cliente a cliente, empresa a empresa.
+              Fundada em 2015, a Império Corretora de Seguros nasceu com o propósito de oferecer um atendimento próximo, transparente e personalizado. Ao longo de mais de uma década, construímos relações de confiança com pessoas e empresas, sempre buscando entender as necessidades de cada cliente.
             </p>
             <p class="sobre__text" data-editable="sobre-p2">
-              Ao longo dos anos, fomos reconhecidos pelas próprias seguradoras com as quais trabalhamos. Não por volume de contratos assinados, mas pela qualidade do atendimento que prestamos e pela satisfação dos clientes que ficam conosco ano após ano.
+              Com experiência, conhecimento e parcerias sólidas com as principais seguradoras do mercado, oferecemos soluções em seguros, benefícios e gestão de riscos, unindo segurança, excelência no atendimento e o melhor custo-benefício.
+            </p>
+            <p class="sobre__text" data-editable="sobre-p3">
+              Nossa história é construída todos os dias com integridade, ética, transparência, inovação e responsabilidade, cuidando do que realmente importa para nossos clientes.
             </p>
             <div class="sobre__highlights">
               <div class="sobre__highlight">
@@ -437,21 +428,9 @@
             </div>
           </div>
           <div class="sobre__visual" aria-hidden="true">
-            <!-- Ilustração decorativa. Quando houver foto real da equipe ou da
-                 sede, troque este <svg> por <img>; a legenda abaixo já é
-                 editável e pode continuar como está. -->
-            <svg class="sobre__visual-badge" width="220" height="220" viewBox="0 0 240 240">
-              <circle cx="120" cy="120" r="118" fill="none" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
-              <circle cx="120" cy="120" r="95" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1" stroke-dasharray="3 7"/>
-              <circle cx="120" cy="2" r="3" fill="#c9a84c"/>
-              <circle cx="222" cy="179" r="3" fill="#c9a84c"/>
-              <circle cx="18" cy="179" r="3" fill="#c9a84c"/>
-              <g transform="translate(77,77) scale(3.6)">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(201,168,76,0.14)" stroke="#c9a84c" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M8.5 12.5l2.4 2.4 4.6-5.4" fill="none" stroke="#c9a84c" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-            </svg>
-            <p class="sobre__visual-quote" data-editable="sobre-visual-quote">"Seu consultor de seguros de confiança em Arujá"</p>
+            <!-- Quando houver foto real da equipe ou da sede, troque este
+                 <img> da logo pela foto. -->
+            <img src="images/logo-imperio/logo-imperio.png" alt="" class="sobre__visual-logo">
           </div>
         </div>
       </div>
@@ -530,7 +509,7 @@
             <div>
               <span class="section__eyebrow" data-editable="contato-eyebrow">Entre em contato</span>
               <h2 class="contato__title" id="contato-title" data-editable="contato-title">
-                Fale com um consultor — resposta em até 24h úteis
+                Fale com um consultor
               </h2>
               <p class="contato__desc" data-editable="contato-desc">Sem compromisso. Nos conte o que você precisa e apresentamos as melhores opções disponíveis no mercado para o seu perfil.</p>
             </div>
@@ -568,7 +547,6 @@
 
           <div class="contato__form-card">
             <h3 class="form__title">Solicite uma cotação gratuita</h3>
-            <p class="form__desc">Sem compromisso — respondemos em até 24h úteis.</p>
 
             <div aria-live="polite" aria-atomic="true" id="form-resumo-erros" tabindex="-1"></div>
 
