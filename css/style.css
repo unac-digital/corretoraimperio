@@ -22,8 +22,7 @@
   --olive-hover: #3f4c23;
   --olive-deep:  #36421f;
   --olive-tint:  #e8ebdc;
-  --tint-olive:  #eceee2;
-  --tint-stone:  #efeee9;
+  --tint:        #f0f0ef;
 
   --gold:        #c9a84c;
   --gold-soft:   #e2cd92;
@@ -505,9 +504,9 @@ body.menu-open { overflow: hidden; }
 }
 
 /* ── Portas: Empresas / Você ────────────────────────────── */
-/* Portas e Motivos dividem o mesmo fundo oliva claro: os cards brancos
-   saltam dele, e a faixa de seguradoras logo abaixo volta ao branco. */
-.portas, .motivos { background: var(--tint-olive); }
+/* Fundos alternam só cinza (--tint) e branco. Portas e Motivos dividem o
+   cinza; a faixa de seguradoras logo abaixo volta ao branco. */
+.portas, .motivos { background: var(--tint); }
 .portas__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
 .porta {
   position: relative;
@@ -671,7 +670,7 @@ body.menu-open { overflow: hidden; }
 }
 
 /* ── História ───────────────────────────────────────────── */
-.historia { background: var(--tint-stone); }
+.historia { background: var(--tint); }
 .historia__grid {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr) minmax(0, 0.85fr);
@@ -715,7 +714,8 @@ body.menu-open { overflow: hidden; }
 }
 
 /* ── Depoimentos ────────────────────────────────────────── */
-.depoimentos-home, .depoimentos { background: var(--tint-olive); }
+.depoimentos-home, .depoimentos { background: var(--surface); }
+.como-funciona + .depoimentos { background: var(--tint); }
 .depoimentos-home__inner {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 3fr);
@@ -763,6 +763,9 @@ body.menu-open { overflow: hidden; }
 }
 
 /* ── FAQ ────────────────────────────────────────────────── */
+.faq-home, .faq { background: var(--tint); }
+.como-funciona + .depoimentos + .faq,
+.cta-band + .faq { background: var(--surface); }
 .faq-home__inner {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
@@ -1060,7 +1063,7 @@ a.footer__contact-item:hover { color: var(--olive); }
 }
 
 /* ── Seção dor / solução ─────────────────────────────────── */
-.section-dor { padding: var(--section-y) 0; background: var(--tint-olive); }
+.section-dor { padding: var(--section-y) 0; background: var(--tint); }
 .dor__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-12); align-items: center; }
 .dor__col .section-title { text-align: left; margin: 0 0 var(--space-8); font-size: var(--title-md); }
 .dor__col .section-title::before { margin-left: 0; }
@@ -1087,7 +1090,7 @@ a.footer__contact-item:hover { color: var(--olive); }
 }
 
 /* ── Cards de serviço ───────────────────────────────────── */
-.servicos { background: var(--tint-stone); }
+.servicos { background: var(--tint); }
 .servicos__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
 .servico-card {
   display: flex;
@@ -1182,7 +1185,7 @@ a.footer__contact-item:hover { color: var(--olive); }
 .section--dark:has(.stats__grid) .stat-card__icon,
 .section--dark:has(.stats__grid) .stat-suffix { color: var(--gold-ink); }
 .section--dark:has(.stats__grid) .stat-card__label { color: var(--muted); }
-.hero + .section:not(.section--dark) { background: var(--tint-olive); }
+.hero + .section:not(.section--dark) { background: var(--tint); }
 .stats__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .stat-card { position: relative; text-align: center; padding: var(--space-4) var(--space-6); }
 .stat-card + .stat-card::before { content: ""; position: absolute; left: 0; top: 18%; bottom: 18%; width: 1px; background: var(--gold); }

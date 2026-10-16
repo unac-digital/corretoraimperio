@@ -254,25 +254,10 @@
           "#ffe6de"
         ]
       },
-      "tint-olive": {
+      "tint": {
         "role": "neutral",
-        "displayName": "Oliva Claro",
-        "canonical": "oklch(94.5% 0.013 113)",
-        "tonalRamp": [
-          "#0b0c04",
-          "#24261b",
-          "#414337",
-          "#606356",
-          "#818476",
-          "#a4a799",
-          "#c8cbbc",
-          "#edf0e1"
-        ]
-      },
-      "tint-stone": {
-        "role": "neutral",
-        "displayName": "Pedra",
-        "canonical": "oklch(94.7% 0.006 98)",
+        "displayName": "Cinza Seção",
+        "canonical": "oklch(95.5% 0.002 106)",
         "tonalRamp": [
           "#0b0b0a",
           "#252524",
