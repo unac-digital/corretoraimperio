@@ -799,7 +799,8 @@ body.menu-open { overflow: hidden; }
   color: var(--olive);
   transition: transform 0.3s var(--ease-out), background-color 0.18s, border-color 0.18s, color 0.18s;
 }
-.faq__btn[aria-expanded="true"] .faq__icon { transform: rotate(45deg); background: var(--olive); border-color: var(--olive); color: #fff; }
+.faq__btn[aria-expanded="true"] .faq__icon { transform: rotate(180deg); background: var(--olive); border-color: var(--olive); color: #fff; }
+.faq-home .faq__btn[aria-expanded="true"] .faq__icon { transform: rotate(45deg); }
 .faq__answer {
   max-height: 0;
   overflow: hidden;
@@ -1044,15 +1045,7 @@ a.footer__contact-item:hover { color: var(--olive); }
   font-size: var(--text-sm);
   color: var(--ink-2);
 }
-.hero__trust::before {
-  content: "";
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  background: var(--olive);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
-}
+.hero__trust svg { flex-shrink: 0; color: var(--olive); }
 .hero__pessoa { display: none; }
 @media (min-width: 1025px) {
   .hero--figura { min-height: calc(100svh - var(--header-h)); display: flex; align-items: center; padding: var(--space-12) 0; }
@@ -1067,17 +1060,6 @@ a.footer__contact-item:hover { color: var(--olive); }
     height: 92%;
     background: var(--hero-figura) bottom center / contain no-repeat;
     pointer-events: none;
-  }
-  .hero--figura .hero__pessoa::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    left: 12%;
-    right: 12%;
-    bottom: 0;
-    height: 78%;
-    background: var(--band);
-    border-radius: 999px 999px 0 0;
   }
   .hero--figura-empresas { --hero-figura: image-set(url('../images/conteudo/executiva-660.webp') 1x, url('../images/conteudo/executiva-980.webp') 2x); }
   .hero--figura-voce { --hero-figura: image-set(url('../images/conteudo/casal-660.webp') 1x, url('../images/conteudo/casal-980.webp') 2x); }
