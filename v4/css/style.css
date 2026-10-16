@@ -389,7 +389,7 @@ body.menu-open { overflow: hidden; }
   min-height: clamp(560px, calc(100svh - var(--header-h) - 116px), 760px);
   padding: var(--space-16) 0;
 }
-.hero-home__content { max-width: 600px; }
+.hero-home__content { max-width: 640px; }
 .hero-home__title {
   font-size: var(--title-xl);
   line-height: 1.04;
@@ -406,7 +406,7 @@ body.menu-open { overflow: hidden; }
   margin-bottom: var(--space-8);
 }
 .hero-home__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-8); }
-.hero-home__trust { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
+.hero-home__trust { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); }
 .hero-home__trust li {
   display: flex;
   align-items: center;
@@ -691,12 +691,12 @@ body.menu-open { overflow: hidden; }
   color: #fff;
   border-radius: var(--radius-md);
 }
-.historia__since { font-size: var(--text-sm); color: var(--gold-soft); }
+.historia__since { font-size: var(--text-sm); color: var(--gold-soft); margin-bottom: var(--space-5); max-width: 18em; }
 .historia__year {
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 2.5rem + 3vw, 5rem);
   line-height: 1;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2);
   font-variant-numeric: lining-nums;
 }
 .historia__panel .rule { margin-bottom: var(--space-6); }
