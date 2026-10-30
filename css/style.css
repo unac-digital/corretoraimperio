@@ -1112,8 +1112,49 @@ a.footer__contact-item:hover { color: var(--olive); }
     background: var(--hero-figura) bottom center / contain no-repeat;
     pointer-events: none;
   }
-  .hero--figura-empresas { --hero-figura: image-set(url('../images/conteudo/executiva-660.webp') 1x, url('../images/conteudo/executiva-980.webp') 2x); }
-  .hero--figura-voce { --hero-figura: image-set(url('../images/conteudo/casal-660.webp') 1x, url('../images/conteudo/casal-980.webp') 2x); }
+  /* Empresas e Para Você passam a usar a foto do assunto em vez do recorte
+     de pessoa: painel colado na direita, altura inteira e a mesma máscara
+     da capa da home — a borda esquerda dissolve no fundo em vez de cortar
+     reta, e é isso que deixa a foto conversar com o texto ao lado. */
+  .hero--figura-empresas .hero__pessoa,
+  .hero--figura-voce .hero__pessoa {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 52%;
+    height: auto;
+    background-position: center;
+    background-size: cover;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 26%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 26%);
+  }
+  .hero--figura-empresas { --hero-figura: image-set(url('../images/conteudo/empresas-torres-768.webp') 1x, url('../images/conteudo/empresas-torres-1200.webp') 1.6x); }
+  .hero--figura-voce { --hero-figura: image-set(url('../images/conteudo/voce-familia-768.webp') 1x, url('../images/conteudo/voce-familia-1200.webp') 1.6x); }
+}
+/* No celular a foto vira um bloco abaixo do texto, como a capa da home
+   faz: a máscara sai (não há texto ao lado para dissolver) e a seção passa
+   a empilhar em coluna, senão o painel ficaria lado a lado com o conteúdo. */
+@media (max-width: 1024px) {
+  .hero--figura-empresas,
+  .hero--figura-voce { flex-direction: column; display: flex; }
+  .hero--figura-empresas .hero__pessoa,
+  .hero--figura-voce .hero__pessoa {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    margin-top: var(--space-8);
+    /* A regra base com o background vive no bloco de desktop, então aqui a
+       imagem precisa ser declarada de novo. */
+    background-image: var(--hero-figura);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .hero--figura-empresas { --hero-figura: image-set(url('../images/conteudo/empresas-torres-480.webp') 1x, url('../images/conteudo/empresas-torres-768.webp') 1.6x); }
+  .hero--figura-voce { --hero-figura: image-set(url('../images/conteudo/voce-familia-480.webp') 1x, url('../images/conteudo/voce-familia-768.webp') 1.6x); }
 }
 @media (max-width: 520px) {
   .hero { padding: var(--space-12) 0 var(--space-10); }
