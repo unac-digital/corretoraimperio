@@ -717,8 +717,19 @@ body.menu-open { overflow: hidden; }
   .historia__media { grid-column: 1 / -1; min-height: 0; aspect-ratio: 21 / 9; }
 }
 @media (max-width: 720px) {
-  .historia__grid { grid-template-columns: minmax(0, 1fr); }
-  .historia__media { aspect-ratio: 16 / 10; }
+  /* No celular a foto fica ao lado do texto, e inteira: a proporção da
+     caixa passa a ser a da própria imagem (1200×2270), então o `cover` não
+     tem o que cortar. O `grid-column: auto` desfaz o span de largura
+     total herdado do breakpoint de 1100px. */
+  .historia__grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+  .historia__media { grid-column: auto; aspect-ratio: 1200 / 2270; }
+  .historia__text { align-self: start; }
+  /* O painel escuro continua ocupando a largura inteira, abaixo dos dois. */
+  .historia__panel { grid-column: 1 / -1; }
 }
 
 /* ── Depoimentos ────────────────────────────────────────── */
