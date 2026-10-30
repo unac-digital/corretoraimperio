@@ -545,3 +545,25 @@
     el.textContent = new Date().getFullYear();
   });
 })();
+
+/* ─── Mapa do endereço ───────────────────────────────── */
+/* O iframe do Google Maps só é criado na primeira vez que alguém passa o
+   mouse ou foca o endereço: quem não usa o mapa não baixa nada. */
+(function () {
+  document.querySelectorAll('.mapa[data-mapa-embed]').forEach((mapa) => {
+    const frame = mapa.querySelector('.mapa__frame');
+    if (!frame) return;
+    const carregar = () => {
+      if (frame.querySelector('iframe')) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = mapa.dataset.mapaEmbed;
+      iframe.title = 'Mapa com a localização da Império Corretora em Arujá';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.tabIndex = -1;
+      frame.appendChild(iframe);
+    };
+    mapa.addEventListener('mouseenter', carregar, { once: true });
+    mapa.addEventListener('focusin', carregar, { once: true });
+  });
+})();
